@@ -11,7 +11,9 @@ const Section = ({ title, projects }: Props): React.ReactElement => {
       <h1 className="text-white font-[SFUI] ml-[70px] text-[35px] italic text-bold">
         {title}
       </h1>
-      {projects.map((p) => p)}
+      {projects.map((p) => (
+        <div key={Math.random()}>{p}</div>
+      ))}
     </div>
   );
 };

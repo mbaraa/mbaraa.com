@@ -8,6 +8,7 @@ const Achievements = (): React.ReactElement => {
       title: "College Related",
       projects: [
         <Project
+          key={Math.random()}
           name="Ross 2"
           description="My biggest project ever, Ross is a university contest manager, it manages and automates all contest registration and closure routines."
           startYear="2021"
@@ -17,6 +18,7 @@ const Achievements = (): React.ReactElement => {
           image="/ross2.png"
         />,
         <Project
+          key={Math.random()}
           name="Sheev"
           description="Form to image genrator, I made this project because of the lack of digitalized forms in my university, so it can help everyone fill form easily, without having to waith for other people to approve the forms or not."
           startYear="2021"
@@ -31,6 +33,7 @@ const Achievements = (): React.ReactElement => {
       title: "Early Web",
       projects: [
         <Project
+          key={Math.random()}
           name="Shorts Ninja"
           description="My second web project, I was exploring web and I decided to go with the classic hello web project i.e. a URL Shortner"
           startYear="2020"
@@ -40,6 +43,7 @@ const Achievements = (): React.ReactElement => {
           image="/shortsninja.png"
         />,
         <Project
+          key={Math.random()}
           name="GDSC Logo Generator"
           description="My first web project, my Google Developer Student Clubs chapter's lead thought it would be a great idea if we had a logo generator that every other GDSC chapters can use it, so that every GDSC logos look the same in a neat way."
           startYear="2020"
@@ -54,6 +58,7 @@ const Achievements = (): React.ReactElement => {
       title: "Terminal Games",
       projects: [
         <Project
+          key={Math.random()}
           name="Snek"
           description="Funny story, I saw a snake screen saver, and thought to myself, it would be great if I made a snake game, soon it'll solve itself!"
           startYear="2022"
@@ -62,6 +67,7 @@ const Achievements = (): React.ReactElement => {
           image="/snek.png"
         />,
         <Project
+          key={Math.random()}
           name="Tic Tac Toe"
           description="I was boared again :)"
           startYear="2021"
@@ -70,6 +76,7 @@ const Achievements = (): React.ReactElement => {
           image="/ttt.png"
         />,
         <Project
+          key={Math.random()}
           name="Tetris"
           description="Terminal based tetris game, this is my fist Go project ever, I made it because I had nothing else to do."
           startYear="2020"
@@ -83,8 +90,13 @@ const Achievements = (): React.ReactElement => {
 
   return (
     <div className="bg-[#2d333b] w-full h-full">
+      <h1 className="text-white font-[SFUI] ml-[70px] mb-[-20px] mt-[20px] text-[40px] italic text-bold">
+        My Stuff...
+      </h1>
       {sections.map((s) => (
-        <Section title={s.title} projects={s.projects} />
+        <div key={Math.random()}>
+          <Section title={s.title} projects={s.projects} />
+        </div>
       ))}
     </div>
   );
