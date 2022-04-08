@@ -37,11 +37,16 @@ const Project = ({
   image,
 }: Props): React.ReactElement => {
   return (
-    <div className="text-white grid grid-cols-4 md:pl-[50px] m-[10px] font-[SFUI]">
+    <div className="text-white grid grid-cols-4 md:pl-[50px] m-[10px] font-[SFUI] pt-[20px]">
       <div>
-        <Image src={image} width={200} height={200} />
+        <Image
+          src={image}
+          width={150}
+          height={150}
+          className="rounded-[100%]"
+        />
       </div>
-      <div className="md:pt-[30px] w-[250%]">
+      <div className="md:pt-[10px] pl-[15px] w-[250%]">
         <label className="italic text-[25px] font-bold">
           {name} ({startYear} - {endYear ?? "present"})
         </label>

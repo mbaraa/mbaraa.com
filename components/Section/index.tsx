@@ -11,7 +11,6 @@ const Section = ({ title, projects }: Props): React.ReactElement => {
       <h1 className="text-white font-[SFUI] ml-[70px] text-[35px] italic text-bold">
         {title}
       </h1>
-      <br />
       {projects.map((p) => p)}
     </div>
   );
