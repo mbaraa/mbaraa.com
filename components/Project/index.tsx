@@ -47,8 +47,8 @@ const Project = ({
         />
       </div>
       <div className="md:pt-[10px] pl-[15px] w-[250%]">
-        <label className="italic text-[25px] font-bold">
-          {name} ({startYear} - {endYear ?? "present"})
+        <label className="italic text-[22px] font-bold">
+          {name} ({startYear}-{endYear ?? "present"})
         </label>
         <br />
         <br />
