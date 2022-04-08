@@ -90,7 +90,7 @@ const Achievements = (): React.ReactElement => {
 
   return (
     <div className="bg-[#2d333b] w-full h-full">
-      <h1 className="text-white font-[SFUI] ml-[20px] md:ml-[70px] mb-[-20px] mt-[20px] text-[40px] italic text-bold">
+      <h1 className="text-white font-[SFUI] ml-[20px] md:ml-[55px] mb-[-20px] mt-[20px] text-[40px] italic text-bold">
         My Stuff...
       </h1>
       {sections.map((s) => (

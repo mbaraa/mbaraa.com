@@ -37,7 +37,7 @@ const Project = ({
   image,
 }: Props): React.ReactElement => {
   return (
-    <div className="text-white grid grid-cols-4 md:pl-[50px] m-[10px] font-[SFUI] pt-[20px]">
+    <div className="text-white grid grid-cols-4 ml-[25px] sm:ml-[50px] mr-0 font-[SFUI] mt-[25px]">
       <div>
         <Image
           src={image}
@@ -46,15 +46,13 @@ const Project = ({
           className="rounded-[100%]"
         />
       </div>
-      <div className="md:pt-[10px] pl-[15px] w-[250%]">
+      <div className="pl-[15px] w-[250%]">
         <label className="italic text-[22px] font-bold">
           {name} ({startYear}-{endYear ?? "present"})
         </label>
-        <br />
-        <br />
+        <div className="mt-[10px]" />
         <label className="w-[250%] text-[18px]">{description}</label>
-        <br />
-        <br />
+        <div className="mt-[10px]" />
         {website && <Website name="Visit website..." link={website} />}
         &nbsp;
         {sourceCode && <Website name="View source code..." link={sourceCode} />}

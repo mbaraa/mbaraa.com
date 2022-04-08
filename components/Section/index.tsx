@@ -8,7 +8,7 @@ interface Props {
 const Section = ({ title, projects }: Props): React.ReactElement => {
   return (
     <div className="mt-[50px]">
-      <h1 className="text-white font-[SFUI] ml-[15px] md:ml-[70px] text-[35px] italic text-bold">
+      <h1 className="text-white font-[SFUI] ml-[15px] md:ml-[50px] text-[35px] italic text-bold">
         {title}
       </h1>
       {projects.map((p) => (
