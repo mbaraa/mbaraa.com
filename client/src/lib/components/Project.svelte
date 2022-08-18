@@ -12,7 +12,9 @@
         <img
             alt={project.name}
             src={project.imagePath}
-            class="rounded-[100%] w-[150px] h-[150px]"
+            class="rounded-[100%]"
+            width={150}
+            height={150}
         />
     </div>
     <div class="pl-[15px] w-[250%]">
