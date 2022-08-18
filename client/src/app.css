@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "SFUI";
+    src: url("/fonts/SFUIDisplay-Regular.otf");
+    }
+}
