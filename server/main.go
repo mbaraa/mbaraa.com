@@ -164,6 +164,9 @@ func getSnakeCase(s string) string {
 	sb := new(strings.Builder)
 
 	for i := 0; i < len(s); i++ {
+		if !unicode.IsLetter(rune(s[i])) {
+			continue
+		}
 		if (unicode.IsUpper(rune(s[i]))) && i > 0 {
 			sb.WriteRune('-')
 		}
