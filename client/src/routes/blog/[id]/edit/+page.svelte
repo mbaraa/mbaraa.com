@@ -6,6 +6,7 @@
     import type Blog from "$lib/models/Blog";
 
     let blog: Blog;
+    let isEdit = true;
 
     onMount(async () => {
         blog = await BlogRequests.getBlog($page.params.id);
@@ -13,7 +14,5 @@
 </script>
 
 {#if blog}
-    <div class="bg-[#2d333b] w-full h-full">
-        <BlogV {blog} />
-    </div>
+    <BlogV {blog} {isEdit} />
 {/if}

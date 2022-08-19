@@ -45,7 +45,7 @@ export default class Requests {
                 method: method,
                 mode: "cors",
                 headers: headers,
-                body: JSON.stringify(body),
+                body: body ? JSON.stringify(body) : null,
             }
         );
     }
