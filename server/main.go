@@ -18,6 +18,7 @@ type Blog struct {
 	ID          string    `json:"id"`
 	Name        string    `json:"name"`
 	Description string    `json:"description"`
+	ReadTimes   uint      `json:"-"`
 	CreatedAt   time.Time `json:"createdAt"`
 	UpdatedAt   time.Time `json:"updatedAt"`
 }
@@ -66,6 +67,7 @@ func newBlog(b Blog) error {
 	b.UpdatedAt = time.Now()
 
 	b.ID = getSnakeCase(b.Name)
+	b.ReadTimes = 0
 
 	fb, _ := getBlog(getSnakeCase(b.Name))
 	if fb.Name == b.Name {
@@ -83,10 +85,12 @@ func newBlog(b Blog) error {
 }
 
 func updateBlog(newBlog Blog) error {
-	b, err := getBlog(newBlog.ID)
+	_b, err := getReadDB().First("blog", "id", newBlog.ID)
 	if err != nil {
 		return err
 	}
+
+	b := *_b.(*Blog)
 
 	if newBlog.Name != b.Name {
 		b.Name = newBlog.Name
@@ -95,6 +99,8 @@ func updateBlog(newBlog Blog) error {
 	if newBlog.Description != b.Description {
 		b.Description = newBlog.Description
 	}
+
+	b.ReadTimes = newBlog.ReadTimes
 
 	b.UpdatedAt = time.Now()
 
@@ -127,7 +133,12 @@ func getBlog(id string) (Blog, error) {
 	if err != nil || row == nil {
 		return Blog{}, err
 	}
-	return *row.(*Blog), nil
+
+	blog := *row.(*Blog)
+	blog.ReadTimes++
+	updateBlog(blog)
+
+	return blog, nil
 }
 
 func getBlogs() ([]Blog, error) {
@@ -244,10 +255,10 @@ func startServer() {
 
 		f, _ := os.Create("blogs.csv")
 
-		f.WriteString("name,description\n")
+		f.WriteString("name|description|read_times\n")
 
 		for _, b := range blogs {
-			fmt.Fprintf(f, "%s,%s\n", b.Name, b.Description)
+			fmt.Fprintf(f, "%s|%s|%d\n", b.Name, b.Description, b.ReadTimes)
 		}
 
 		err = f.Close()
