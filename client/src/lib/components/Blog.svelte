@@ -15,7 +15,7 @@
     }
 </script>
 
-<div class="bg-[#2d333b] text-white h-[80vh] flex justify-center">
+<div class="bg-[#2d333b] text-white flex justify-center">
     <!-- <div class="hidden lg:block w-[779px] "> -->
     <!--     <img src="/images/blogImage.png" /> -->
     <!-- </div> -->
@@ -56,7 +56,7 @@
                 </div>
                 <br />
 
-                <span class="text-[35px] ">
+                <span class="text-[28px] ">
                     {@html blog.description}
                 </span>
             {/if}

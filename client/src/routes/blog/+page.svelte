@@ -10,6 +10,6 @@
     });
 </script>
 
-<div class="bg-[#2d333b] bg-[#2d333b] w-full h-full ">
+<div class="bg-[#2d333b] bg-[#2d333b] w-full h-max ">
     <Blogs {blogs} />
 </div>
