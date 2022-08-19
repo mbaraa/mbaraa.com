@@ -56,7 +56,7 @@
                 </div>
                 <br />
 
-                <span class="text-[35px] ">
+                <span class="text-[28px] ">
                     {@html blog.description}
                 </span>
             {/if}
