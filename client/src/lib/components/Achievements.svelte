@@ -107,11 +107,19 @@
 </script>
 
 <div class="bg-[#2d333b] w-full h-full">
+    <a href="/blog">
+        <h1
+            class="text-white text-center font-[SFUI] ml-[20px] md:ml-[55px] mb-[-20px] py-[30px] text-[40px] text-bold underline"
+        >
+            ✨✨ Checkout my Blog yo! ✨✨
+        </h1>
+    </a>
     <h1
         class="text-white font-[SFUI] ml-[20px] md:ml-[55px] mb-[-20px] pt-[20px] text-[40px] italic text-bold"
     >
         My Stuff...
     </h1>
+
     {#each groups as group}
         <ProjectGroupV {group} />
     {/each}

@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"os"
 	"sort"
+	"strings"
 	"time"
+	"unicode"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -62,7 +64,13 @@ func getReadDB() *memdb.Txn {
 func newBlog(b Blog) error {
 	b.CreatedAt = time.Now()
 	b.UpdatedAt = time.Now()
-	b.ID = uuid.NewString()
+
+	b.ID = getSnakeCase(b.Name)
+
+	fb, _ := getBlog(getSnakeCase(b.Name))
+	if fb.Name == b.Name {
+		b.ID = fb.ID + "-" + uuid.New().String()[:8]
+	}
 
 	t := getWriteDB()
 	err := t.Insert("blog", &b)
@@ -141,6 +149,21 @@ func getBlogs() ([]Blog, error) {
 	return blogs, nil
 }
 
+func getSnakeCase(s string) string {
+	sb := new(strings.Builder)
+
+	for i := 0; i < len(s); i++ {
+		if (unicode.IsUpper(rune(s[i]))) && i > 0 {
+			sb.WriteRune('-')
+		}
+		if s[i] != ' ' && s[i] != '_' {
+			sb.WriteRune(unicode.ToLower(rune(s[i])))
+		}
+	}
+
+	return sb.String()
+}
+
 func startServer() {
 	app := fiber.New(fiber.Config{
 		Prefork: false,
@@ -148,7 +171,7 @@ func startServer() {
 
 	app.Use(func(c *fiber.Ctx) error {
 		return cors.New(cors.Config{
-			AllowHeaders: "Origin, Content-Type, Accept",
+			AllowHeaders: "Origin, Content-Type, Accept, Authorization",
 			AllowOrigins: "*",
 			AllowMethods: "GET, POST, PUT, DELETE, OPTIONS",
 		})(c)

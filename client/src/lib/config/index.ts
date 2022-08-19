@@ -1,5 +1,5 @@
 const config = {
-    backendAddress: "http://localhost:8080",
+    backendAddress: "https://api.mbaraa.com",
 }
 
 export default config;
