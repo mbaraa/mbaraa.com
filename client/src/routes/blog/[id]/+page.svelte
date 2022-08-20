@@ -12,6 +12,12 @@
     });
 </script>
 
+<svelte:head>
+    <title>
+        {blog?.name}
+    </title>
+</svelte:head>
+
 {#if blog}
     <div class="bg-[#2d333b] w-full h-full">
         <BlogV {blog} />

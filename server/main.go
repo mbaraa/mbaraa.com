@@ -11,34 +11,20 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/google/uuid"
-	"github.com/hashicorp/go-memdb"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 type Blog struct {
-	ID          string    `json:"id"`
-	Name        string    `json:"name"`
-	Description string    `json:"description"`
-	ReadTimes   uint      `json:"-"`
-	CreatedAt   time.Time `json:"createdAt"`
-	UpdatedAt   time.Time `json:"updatedAt"`
+	gorm.Model  `json:"-"`
+	ID          string `gorm:"primaryKey" json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	ReadTimes   uint   `json:"readTimes"`
 }
 
 var (
-	schema = &memdb.DBSchema{
-		Tables: map[string]*memdb.TableSchema{
-			"blog": {
-				Name: "blog",
-				Indexes: map[string]*memdb.IndexSchema{
-					"id": {
-						Name:    "id",
-						Unique:  true,
-						Indexer: &memdb.StringFieldIndex{Field: "ID"},
-					},
-				},
-			},
-		},
-	}
-	db *memdb.MemDB
+	db *gorm.DB
 )
 
 func main() {
@@ -48,95 +34,74 @@ func main() {
 
 func initDB() {
 	var err error
-	db, err = memdb.NewMemDB(schema)
+	db, err = gorm.Open(mysql.New(mysql.Config{
+		DriverName: "mysql",
+		DSN: fmt.Sprintf("%s:%s@tcp(localhost:3306)/madebybaraa?parseTime=True&loc=Local",
+			os.Getenv("DB_USER"), os.Getenv("DB_PASS"),
+		),
+	}))
 	if err != nil {
 		panic(err)
 	}
-}
 
-func getWriteDB() *memdb.Txn {
-	return db.Txn(true)
-}
-
-func getReadDB() *memdb.Txn {
-	return db.Txn(false)
+	db.AutoMigrate(new(Blog))
 }
 
 func newBlog(b Blog) error {
-	b.CreatedAt = time.Now()
-	b.UpdatedAt = time.Now()
-
 	b.ID = getSnakeCase(b.Name)
 	b.ReadTimes = 0
 
-	fb, _ := getBlog(getSnakeCase(b.Name))
-	if fb.Name == b.Name {
+	fb, err := getBlog(getSnakeCase(b.Name))
+	if fb.Name == b.Name && err == nil {
 		b.ID = fb.ID + "-" + uuid.New().String()[:8]
 	}
 
-	t := getWriteDB()
-	err := t.Insert("blog", &b)
-	if err != nil {
-		return err
-	}
-	t.Commit()
-
-	return nil
+	return db.Model(new(Blog)).Create(&b).Error
 }
 
 func updateBlog(newBlog Blog) error {
-	_b, err := getReadDB().First("blog", "id", newBlog.ID)
+	_, err := getBlog(newBlog.ID)
 	if err != nil {
 		return err
 	}
 
-	b := *_b.(*Blog)
+	newBlog.UpdatedAt = time.Now()
 
-	if newBlog.Name != b.Name {
-		b.Name = newBlog.Name
-	}
-
-	if newBlog.Description != b.Description {
-		b.Description = newBlog.Description
-	}
-
-	b.ReadTimes = newBlog.ReadTimes
-
-	b.UpdatedAt = time.Now()
-
-	err = deleteBlog(b.ID)
-	if err != nil {
-		return err
-	}
-
-	t := getWriteDB()
-	err = t.Insert("blog", &b)
-	if err != nil {
-		return err
-	}
-	t.Commit()
-
-	return nil
+	return db.
+		Model(new(Blog)).
+		Where("id = ?", newBlog.ID).
+		Updates(&newBlog).
+		Error
 }
 
 func deleteBlog(id string) error {
-	t := getWriteDB()
-	t.Delete("blog", Blog{
-		ID: id,
-	})
-	t.Commit()
-	return nil
+	blog, err := getBlog(id)
+	if err != nil {
+		return err
+	}
+
+	return db.Model(new(Blog)).Delete(&blog, "id = ?", id).Error
 }
 
 func getBlog(id string) (Blog, error) {
-	row, err := getReadDB().First("blog", "id", id)
-	if err != nil || row == nil {
+	var blog Blog
+	err := db.
+		Model(new(Blog)).
+		First(&blog, "id = ?", id).
+		Error
+	if err != nil {
 		return Blog{}, err
 	}
 
-	blog := *row.(*Blog)
 	blog.ReadTimes++
-	updateBlog(blog)
+	err = db.
+		Model(new(Blog)).
+		Where("id = ?", blog.ID).
+		Updates(&blog).
+		Error
+	if err != nil {
+		return Blog{}, err
+	}
 
 	return blog, nil
 }
@@ -144,17 +109,17 @@ func getBlog(id string) (Blog, error) {
 func getBlogs() ([]Blog, error) {
 	blogs := make([]Blog, 0)
 
-	it, err := getReadDB().Get("blog", "id")
+	err := db.
+		Model(new(Blog)).
+		Find(&blogs).
+		Error
+
 	if err != nil {
 		return nil, err
 	}
 
-	for obj := it.Next(); obj != nil; obj = it.Next() {
-		blogs = append(blogs, *obj.(*Blog))
-	}
-
 	sort.Slice(blogs, func(i, j int) bool {
-		return blogs[i].CreatedAt.Before(blogs[j].CreatedAt)
+		return blogs[i].CreatedAt.After(blogs[j].CreatedAt)
 	})
 
 	return blogs, nil
@@ -215,7 +180,7 @@ func startServer() {
 	authBlog := app.Group("/blog")
 	authBlog.Use(func(c *fiber.Ctx) error {
 		token := c.Get("Authorization")
-		if token != os.Getenv("auth") {
+		if token != os.Getenv("AUTH") {
 			return c.SendStatus(401)
 		}
 		return c.Next()

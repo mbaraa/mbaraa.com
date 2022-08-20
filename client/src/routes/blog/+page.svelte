@@ -10,6 +10,10 @@
     });
 </script>
 
+<svelte:head>
+    <title>Made By Baraa - Blogs</title>
+</svelte:head>
+
 <div class="bg-[#2d333b] bg-[#2d333b] w-full h-max ">
     <Blogs {blogs} />
 </div>
