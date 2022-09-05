@@ -3,7 +3,7 @@
     import Seperator from "./Seperator.svelte";
 </script>
 
-<div class="p-[30px] font-[Vistol]">
+<div class="p-[40px] font-[Vistol]">
     <span
         class="uppercase font-[1000] text-white text-[36px] md:text-[100px] block"
     >

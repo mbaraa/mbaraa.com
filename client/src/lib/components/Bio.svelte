@@ -1,7 +1,7 @@
 <script lang="ts">
     import strings from "$lib/strings";
 </script>
-<div class="p-[30px] ">
+<div class="p-[40px] ">
     <span class="font-[1000] text-white text-[36px] md:text-[80px] block">
         {strings.en.name}
     </span>

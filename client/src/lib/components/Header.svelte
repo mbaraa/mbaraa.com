@@ -20,7 +20,7 @@
 
 <div class="fixed z-[50] ">
     <header
-        class="w-[100vw] bg-black flex justify-center sm:justify-between text-white font-[Vistol] p-[30px] text-[20px] "
+        class="w-[100vw] bg-black flex justify-center sm:justify-between text-white font-[Vistol] p-[40px] text-[20px] "
     >
         <a
             class="font-[1000] hidden sm:block text-[30px] hover:text-[#20db8f] "

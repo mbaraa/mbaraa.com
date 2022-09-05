@@ -6,7 +6,7 @@
     export let group: ProjectGroup;
 </script>
 
-<div class="font-[Vistol] text-white p-[30px] py-[40px] ">
+<div class="font-[Vistol] text-white p-[40px]">
     <h1 class="uppercase font-[1000] text-[30px] ">
         {group.name}
     </h1>
