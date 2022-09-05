@@ -14,7 +14,7 @@ export default class ProjectRequests {
                         description:
                             "The second enhanced version of Sheev, which will have full form automation, instead of just printing papers.",
                         startYear: "2022",
-                        imagePath: `${config.backendAddress}/static/images/sheev2.png`,
+                        imagePath: `/images/sheev2.png`,
                     },
                     {
                         name: "Ross 2",
@@ -24,7 +24,7 @@ export default class ProjectRequests {
                         endYear: "2022",
                         website: "https://ross2.co",
                         sourceCode: "https://github.com/mbaraa/ross2",
-                        imagePath: `${config.backendAddress}/static/images/ross2.png`,
+                        imagePath: `/images/ross2.png`,
                     },
                     {
                         name: "Sheev",
@@ -34,7 +34,7 @@ export default class ProjectRequests {
                         endYear: "2021",
                         website: "https://sheev.vercel.app",
                         sourceCode: "https://github.com/mbaraa/sheev",
-                        imagePath: `${config.backendAddress}/static/images/sheev.png`,
+                        imagePath: `/images/sheev.png`,
                     },
                 ],
             },
@@ -49,7 +49,7 @@ export default class ProjectRequests {
                         startYear: "2021",
                         endYear: "2021",
                         sourceCode: "https://github.com/mbaraa/shortsninja",
-                        imagePath: `${config.backendAddress}/static/images/shortsninja.png`,
+                        imagePath: `/images/shortsninja.png`,
                     },
                     {
                         name: "GDSC Logo Generator",
@@ -60,7 +60,7 @@ export default class ProjectRequests {
                         website: "https://logogen.dscasu.com",
                         sourceCode:
                             "https://github.com/GDSC-ASU/logo_generator",
-                        imagePath: `${config.backendAddress}/static/images/gdg.png`,
+                        imagePath: `/images/gdg.png`,
                     },
                 ],
             },
@@ -76,7 +76,7 @@ export default class ProjectRequests {
                         endYear: "2022",
                         sourceCode:
                             "https://github.com/mbaraa/console_games/tree/master/Snek",
-                        imagePath: `${config.backendAddress}/static/images/snek.png`,
+                        imagePath: `/images/snek.png`,
                     },
                     {
                         name: "Tic Tac Toe",
@@ -85,7 +85,7 @@ export default class ProjectRequests {
                         endYear: "2021",
                         sourceCode:
                             "https://github.com/mbaraa/console_games/tree/master/TicTacToe",
-                        imagePath: `${config.backendAddress}/static/images/ttt.png`,
+                        imagePath: `/images/ttt.png`,
                     },
                     {
                         name: "Tetris",
@@ -95,7 +95,7 @@ export default class ProjectRequests {
                         endYear: "2020",
                         sourceCode:
                             "https://github.com/mbaraa/console_games/tree/master/TheTetrisProject",
-                        imagePath: `${config.backendAddress}/static/images/tetris.png`,
+                        imagePath: `/images/tetris.png`,
                     },
                 ],
             },
