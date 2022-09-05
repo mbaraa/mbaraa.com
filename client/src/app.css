@@ -4,7 +4,12 @@
 
 @layer base {
   @font-face {
-    font-family: "SFUI";
-    src: url("/fonts/SFUIDisplay-Regular.otf");
-    }
+    font-family: "Vistol";
+    src: url("/fonts/VistolSans-Light.otf");
+  }
+  @font-face {
+    font-family: "Vistol";
+    src: url("/fonts/VistolSans-Black.otf");
+    font-weight: 1000;
+  }
 }

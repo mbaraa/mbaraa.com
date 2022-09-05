@@ -5,43 +5,40 @@
     export let project: Project;
 </script>
 
-<div
-    class="text-white grid grid-cols-4 ml-[25px] sm:ml-[50px] mr-0 font-[SFUI] mt-[25px]"
->
-    <div>
-        <img
-            alt={project.name}
-            src={project.imagePath}
-            class="rounded-[100%]"
-            width={150}
-            height={150}
-        />
-    </div>
-    <div class="pl-[15px] w-[250%]">
-        <span class="italic text-[22px] font-bold">
-            {project.name} ({project.startYear}-{project.endYear ?? "Present"})
+<div class="p-[30px] flex ">
+    <img
+        src={project.imagePath}
+        alt={project.name}
+        class="rounded-[100%] w-[100px] h-[100px] "
+    />
+    <div class="px-[20px] md:px-[30px] ">
+        <span class="text-[25px] font-[1000] block">
+            {project.name}
+            <span class="text-[#20db8f] font-[500] ">
+                ({project.startYear}-{project.endYear ?? "Present"})
+            </span>
         </span>
-        <div class="mt-[10px]" />
-        <span class="w-[250%] text-[18px]">
-            {project.description}
+        <span class="text-[15px] md:text-[15px] block py-[10px] ">
+            {@html project.description}
         </span>
-        <br />
-        {#if project.website}
-            <Link
-                link={{
-                    name: "View Website...",
-                    link: project.website,
-                }}
-            />
-            &nbsp;
-        {/if}
-        {#if project.sourceCode}
-            <Link
-                link={{
-                    name: "Check the madness behind this...",
-                    link: project.sourceCode,
-                }}
-            />
-        {/if}
+        <span>
+            {#if project.website}
+                <Link
+                    link={{
+                        name: "View Website...",
+                        link: project.website,
+                    }}
+                />
+                &nbsp;
+            {/if}
+            {#if project.sourceCode}
+                <Link
+                    link={{
+                        name: "Check the madness behind this...",
+                        link: project.sourceCode,
+                    }}
+                />
+            {/if}
+        </span>
     </div>
 </div>

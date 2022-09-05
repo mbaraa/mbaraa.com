@@ -1,14 +1,13 @@
 <script lang="ts">
-    import "../app.css";
     import Header from "$lib/components/Header.svelte";
-    import Name from "$lib/components/Name.svelte";
-    import Separator from "$lib/components/Separator.svelte";
+
+    import "../app.css";
+
+    let scrollY = 0;
 </script>
 
-<div class="font-[SFUI] bg-[#2d333b] h-[100%] ">
-    <Header />
-    <Separator />
-    <Name />
-    <Separator />
-    <slot />
-</div>
+<Header {scrollY} />
+<div class="pb-[85px] block" />
+<slot />
+
+<svelte:window bind:scrollY />

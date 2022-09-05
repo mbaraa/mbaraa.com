@@ -1,21 +1,20 @@
-<script lang="ts">
-    import type ProjectGroup from "$lib/models/ProjectGroup";
-    import { onMount } from "svelte";
-    import { default as ProjectGroupV } from "./ProjectGroup.svelte";
+import config from "$lib/config";
+import type ProjectGroup from "$lib/models/ProjectGroup";
+import Requests from "./Requests";
 
-    let groups: ProjectGroup[] = [];
-
-    async function fetchAchievements() {
-        groups = [
+export default class ProjectRequests {
+    static async getProjectGroups(): Promise<ProjectGroup[]> {
+        return [
             {
                 name: "College Related",
+                description: "Stuff I made for my faculty",
                 projects: [
                     {
                         name: "Sheev 2",
                         description:
                             "The second enhanced version of Sheev, which will have full form automation, instead of just printing papers.",
                         startYear: "2022",
-                        imagePath: "/images/sheev2.png",
+                        imagePath: `${config.backendAddress}/static/images/sheev2.png`,
                     },
                     {
                         name: "Ross 2",
@@ -25,7 +24,7 @@
                         endYear: "2022",
                         website: "https://ross2.co",
                         sourceCode: "https://github.com/mbaraa/ross2",
-                        imagePath: "/images/ross2.png",
+                        imagePath: `${config.backendAddress}/static/images/ross2.png`,
                     },
                     {
                         name: "Sheev",
@@ -35,12 +34,13 @@
                         endYear: "2021",
                         website: "https://sheev.vercel.app",
                         sourceCode: "https://github.com/mbaraa/sheev",
-                        imagePath: "/images/sheev.png",
+                        imagePath: `${config.backendAddress}/static/images/sheev.png`,
                     },
                 ],
             },
             {
                 name: "Early Web",
+                description: "Projects I created when I started learning web.",
                 projects: [
                     {
                         name: "Shorts Ninja",
@@ -49,7 +49,7 @@
                         startYear: "2021",
                         endYear: "2021",
                         sourceCode: "https://github.com/mbaraa/shortsninja",
-                        imagePath: "/images/shortsninja.png",
+                        imagePath: `${config.backendAddress}/static/images/shortsninja.png`,
                     },
                     {
                         name: "GDSC Logo Generator",
@@ -60,12 +60,13 @@
                         website: "https://logogen.dscasu.com",
                         sourceCode:
                             "https://github.com/GDSC-ASU/logo_generator",
-                        imagePath: "/images/gdg.png",
+                        imagePath: `${config.backendAddress}/static/images/gdg.png`,
                     },
                 ],
             },
             {
                 name: "Terminal Games",
+                description: "Some games to play in the terminal",
                 projects: [
                     {
                         name: "Snek",
@@ -75,7 +76,7 @@
                         endYear: "2022",
                         sourceCode:
                             "https://github.com/mbaraa/console_games/tree/master/Snek",
-                        imagePath: "/images/snek.png",
+                        imagePath: `${config.backendAddress}/static/images/snek.png`,
                     },
                     {
                         name: "Tic Tac Toe",
@@ -84,7 +85,7 @@
                         endYear: "2021",
                         sourceCode:
                             "https://github.com/mbaraa/console_games/tree/master/TicTacToe",
-                        imagePath: "/images/ttt.png",
+                        imagePath: `${config.backendAddress}/static/images/ttt.png`,
                     },
                     {
                         name: "Tetris",
@@ -94,33 +95,10 @@
                         endYear: "2020",
                         sourceCode:
                             "https://github.com/mbaraa/console_games/tree/master/TheTetrisProject",
-                        imagePath: "/images/tetris.png",
+                        imagePath: `${config.backendAddress}/static/images/tetris.png`,
                     },
                 ],
             },
-        ];
+        ]
     }
-
-    onMount(async () => {
-        await fetchAchievements();
-    });
-</script>
-
-<div class="bg-[#2d333b] w-full h-full">
-    <a href="/blog">
-        <h1
-            class="text-white text-center font-[SFUI] ml-[20px] md:ml-[55px] mb-[-20px] py-[30px] text-[40px] text-bold underline"
-        >
-            ✨✨ Checkout my Blog yo! ✨✨
-        </h1>
-    </a>
-    <h1
-        class="text-white font-[SFUI] ml-[20px] md:ml-[55px] mb-[-20px] pt-[20px] text-[40px] italic text-bold"
-    >
-        My Stuff...
-    </h1>
-
-    {#each groups as group}
-        <ProjectGroupV {group} />
-    {/each}
-</div>
+}

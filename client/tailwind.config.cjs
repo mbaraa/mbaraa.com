@@ -3,11 +3,11 @@ module.exports = {
     mode: "jit",
     content: ['./src/**/*.{html,js,svelte,ts}'],
     theme: {
-    extend: {
-      fontFamily: {
-        SFUI: ["SFUI", "sans-serif"],
-      },
+        extend: {
+            fontFamily: {
+                Vistol: ["Vistol", "sans-serif"],
+            },
+        },
     },
-  },
     plugins: [],
 }
