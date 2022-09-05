@@ -34,12 +34,9 @@ func main() {
 
 func initDB() {
 	var err error
-	db, err = gorm.Open(mysql.New(mysql.Config{
-		DriverName: "mysql",
-		DSN: fmt.Sprintf("%s:%s@tcp(localhost:3306)/madebybaraa?parseTime=True&loc=Local",
-			os.Getenv("DB_USER"), os.Getenv("DB_PASS"),
-		),
-	}))
+	db, err = gorm.Open(mysql.Open(os.Getenv("DSN")), &gorm.Config{
+		DisableForeignKeyConstraintWhenMigrating: true,
+	})
 	if err != nil {
 		panic(err)
 	}
@@ -147,6 +144,8 @@ func startServer() {
 	app := fiber.New(fiber.Config{
 		Prefork: false,
 	})
+
+	app.Static("/static", "./static")
 
 	app.Use(func(c *fiber.Ctx) error {
 		return cors.New(cors.Config{
