@@ -2,6 +2,7 @@ export default interface Blog {
     id?: string;
     name: string;
     description: string;
-    createdAt?: string;
-    updatedAt?: string;
+    content: string;
+    createdAt: Date;
+    updatedAt: Date;
 }

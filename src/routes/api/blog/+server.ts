@@ -1,5 +1,6 @@
 import auth from "$lib/auth";
 import db from "$lib/db";
+import type Blog from "$lib/models/Blog";
 import {v4 as uuidv4} from "uuid";
 
 export async function GET({url}: any): Promise<Response> {
@@ -26,7 +27,10 @@ export async function GET({url}: any): Promise<Response> {
         return new Response(JSON.stringify(blog))
     }
 
-    const blogs = await db.blog.findMany();
+    const blogs = (await db.blog.findMany())
+        .sort((blogI: Blog, blogJ: Blog) => {
+            return -(blogI.createdAt.getTime() - blogJ.createdAt.getTime());
+        });
     return new Response(JSON.stringify(blogs))
 }
 

@@ -1,4 +1,3 @@
-import config from "$lib/config";
 import type ProjectGroup from "$lib/models/ProjectGroup";
 import Requests from "./Requests";
 
