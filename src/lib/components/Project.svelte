@@ -5,7 +5,7 @@
     export let project: Project;
 </script>
 
-<div class="p-[30px] flex ">
+<div class="py-[30px] flex ">
     <img
         src={project.imagePath}
         alt={project.name}

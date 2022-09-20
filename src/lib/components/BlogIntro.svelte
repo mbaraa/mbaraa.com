@@ -10,7 +10,7 @@
         {strings.en.firstName}&lsquo;s
     </span>
     <span
-        class="uppercase text-[36px] md:text-[100px] font-[1000] text-white blog relative left-[-18px] top-[-10px] md:left-[-50px] md:top-[-35px] "
+        class="uppercase text-[36px] md:text-[100px] font-[1000] text-white blog relative left-[-18px] top-[-10px] md:left-[-50px] md:top-[-44px] "
         >log</span
     >
     <p
