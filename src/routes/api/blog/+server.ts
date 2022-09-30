@@ -28,6 +28,10 @@ export async function GET({url}: any): Promise<Response> {
     }
 
     const blogs = (await db.blog.findMany())
+        .map(blog => {
+            blog.content = ""
+            return blog
+        })
         .sort((blogI: Blog, blogJ: Blog) => {
             return -(blogI.createdAt.getTime() - blogJ.createdAt.getTime());
         });
