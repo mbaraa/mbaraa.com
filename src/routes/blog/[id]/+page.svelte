@@ -4,6 +4,7 @@
     import { onMount } from "svelte";
     import { default as BlogV } from "$lib/components/Blog.svelte";
     import type Blog from "$lib/models/Blog";
+    import { marked } from "marked";
 
     let blog: Blog;
 
@@ -31,7 +32,7 @@
         <div
             class="p-[45px] text-[20px] m-[20px] bg-white rounded-[32px] w-[90vw] "
         >
-            {@html blog.content}
+            {@html marked.parse(blog.content)}
         </div>
     </div>
 {/if}

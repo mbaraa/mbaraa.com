@@ -1,7 +1,6 @@
 <script lang="ts">
     import type Blog from "$lib/models/Blog";
     import BlogRequests from "$lib/utils/requests/BlogRequests";
-    import { marked } from "marked";
 
     export let blog: Blog;
 
@@ -16,7 +15,6 @@
 </style>`;
 
     async function saveBlog() {
-        blog.content = styles + marked(blog.content);
         if (blog.id) {
             await BlogRequests.updateBlog(blog);
         } else {
