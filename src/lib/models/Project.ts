@@ -6,4 +6,5 @@ export default interface Project {
     website?: string;
     sourceCode?: string;
     imagePath: string;
+    comingSoon?: boolean;
 }

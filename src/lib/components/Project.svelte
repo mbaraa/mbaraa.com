@@ -3,13 +3,14 @@
     import Link from "./Link.svelte";
 
     export let project: Project;
+
 </script>
 
 <div class="py-[30px] flex ">
     <img
         src={project.imagePath}
         alt={project.name}
-        class="rounded-[100%] w-[100px] h-[100px] "
+        class={"rounded-[100%] w-[100px] h-[100px]"}
     />
     <div class="px-[20px] md:px-[30px] ">
         <span class="text-[25px] font-[1000] block">
@@ -17,6 +18,7 @@
             <span class="text-[#20db8f] font-[500] ">
                 ({project.startYear}-{project.endYear ?? "Present"})
             </span>
+            <span class="text-[15px] italic">{project.comingSoon? "Coming Soon...": ""}</span>
         </span>
         <span class="text-[15px] md:text-[15px] block py-[10px] ">
             {@html project.description}
