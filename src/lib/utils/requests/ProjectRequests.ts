@@ -6,7 +6,7 @@ export default class ProjectRequests {
     return [
       {
         name: "College Related",
-        description: "Stuff I made for my faculty",
+        description: "Stuff for my faculty",
         projects: [
           {
             name: "Eurus",
@@ -40,7 +40,7 @@ export default class ProjectRequests {
       },
       {
         name: "Google Developer Student Clubs",
-        description: "",
+        description: "Stuff for GDSC - ASU to solve some problems",
         projects: [
           {
             name: "GDSC - ASU Home Page",
@@ -66,7 +66,7 @@ export default class ProjectRequests {
       },
       {
         name: "Misc Web",
-        description: "Some web stuff.",
+        description: "Some other web stuff",
         projects: [
           {
             name: "Ladder and Snake",
