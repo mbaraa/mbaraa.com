@@ -11,6 +11,107 @@
     onMount(async () => {
         blog = await BlogRequests.getBlog($page.params.id);
     });
+
+    const style = `<style scoped>
+        h1 {
+              display: block;
+                font-size: 2em;
+                  font-weight: bold;
+                    margin-block-start: .67em;
+                      margin-block-end: .67em;
+        }
+
+        h2,
+        :-moz-any(article, aside, nav, section)
+        h1 {
+              display: block;
+                font-size: 1.5em;
+                  font-weight: bold;
+                    margin-block-start: .83em;
+                      margin-block-end: .83em;
+        }
+
+        h3,
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        h1 {
+              display: block;
+                font-size: 1.17em;
+                  font-weight: bold;
+                    margin-block-start: 1em;
+                      margin-block-end: 1em;
+        }
+
+        h4,
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        h1 {
+              display: block;
+                font-size: 1.00em;
+                  font-weight: bold;
+                    margin-block-start: 1.33em;
+                      margin-block-end: 1.33em;
+        }
+
+        h5,
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        h1 {
+              display: block;
+                font-size: 0.83em;
+                  font-weight: bold;
+                    margin-block-start: 1.67em;
+                      margin-block-end: 1.67em;
+        }
+
+        h6,
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        :-moz-any(article, aside, nav, section)
+        h1 {
+              display: block;
+                font-size: 0.67em;
+                  font-weight: bold;
+                    margin-block-start: 2.33em;
+                      margin-block-end: 2.33em;
+        }
+
+        p {
+            line-height: 2.3;
+        }
+
+        pre {
+            background-color: #696969;
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            line-height: 1.6;
+        }
+
+        code {
+            background-color: #696969;
+            border-radius: 8px;
+            padding: 3px;
+            color: white;
+        }
+
+        :scope a {
+            color: #20db8f;
+            text-decoration-line: underline;
+        }
+
+        a:hover {
+            text-decoration-line: none;
+            color: #10ca7e;
+            mouse-cursor: pointer;
+        }
+</style>`;
+
 </script>
 
 <svelte:head>
@@ -30,9 +131,13 @@
             {blog.name}
         </h1>
         <div
-            class="p-[45px] text-[20px] m-[20px] bg-white rounded-[32px] w-[90vw] "
+            class="p-[45px] text-[18px] m-[18px] bg-white rounded-[32px] w-[90vw]"
         >
-            {@html marked.parse(blog.content)}
+        <div>
+            {@html (style + marked.parse(blog.content))}
+        </div>
+)}
+
         </div>
     </div>
 {/if}
