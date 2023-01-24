@@ -13,6 +13,14 @@
     });
 
     const style = `<style scoped>
+        table {
+            border: 1px solid #696969;
+            border-radius: 8px;
+        }
+        td {
+            padding: 10px;
+            border: 1px solid #696969;
+        }
         h1 {
               display: block;
                 font-size: 2em;
