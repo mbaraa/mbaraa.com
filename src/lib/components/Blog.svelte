@@ -15,7 +15,7 @@
     }
 </script>
 
-<a href={`/blog/${blog.id}`}>
+<a href={`/blog/${blog.publicId}`}>
     <div
         class="transform transition hover:scale-[105%] w-[80vw] p-[30px] m-[30px] bg-white rounded-[16px] font-[Vistol] "
     >
