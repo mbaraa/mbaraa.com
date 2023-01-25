@@ -12,7 +12,8 @@ FROM node:16-alpine as run
 
 WORKDIR /app
 
-COPY --from=build /app/package*.json ./
+
+COPY --from=build /app ./
 COPY --from=build /app/build ./
 COPY ./firebase-key.json .
 

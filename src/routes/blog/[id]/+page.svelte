@@ -2,7 +2,6 @@
     import { page } from "$app/stores";
     import BlogRequests from "$lib/utils/requests/BlogRequests";
     import { onMount } from "svelte";
-    import { default as BlogV } from "$lib/components/Blog.svelte";
     import type Blog from "$lib/models/Blog";
     import { marked } from "marked";
 
@@ -13,6 +12,12 @@
     });
 
     const style = `<style scoped>
+        ol {
+            list-style: reset;
+        }
+        ul {
+            list-style: circle;
+        }
         table {
             border: 1px solid #696969;
             border-radius: 8px;
@@ -144,7 +149,6 @@
         <div>
             {@html (style + marked.parse(blog.content))}
         </div>
-)}
 
         </div>
     </div>
