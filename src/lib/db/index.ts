@@ -1,5 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { Firestore } from "@google-cloud/firestore";
 
-const prisma = new PrismaClient();
-
-export default prisma;
+export const db = new Firestore({
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  keyFilename: "./firebase-key.json",
+});
