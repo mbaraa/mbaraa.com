@@ -4,7 +4,7 @@
     import Seperator from "./Seperator.svelte";
 </script>
 
-<div>
+<div class="xl:mx-[250px]">
     <Bio />
     <Seperator />
     <Projects />
