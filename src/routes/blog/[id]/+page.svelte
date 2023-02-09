@@ -3,7 +3,15 @@
     import BlogRequests from "$lib/utils/requests/BlogRequests";
     import { onMount } from "svelte";
     import type Blog from "$lib/models/Blog";
-    import { marked } from "marked";
+    import MarkdownIt from "markdown-it";
+    import hljs from "highlight.js"
+    import "highlight.js/styles/base16/gruvbox-dark-hard.css"
+
+  const markdown = new MarkdownIt({
+    highlight: function (str, lang) {
+          return hljs.highlightAuto(str).value
+    }
+  });
 
     let blog: Blog;
 
@@ -12,20 +20,6 @@
     });
 
     const style = `<style scoped>
-        ol {
-            list-style: reset;
-        }
-        ul {
-            list-style: circle;
-        }
-        table {
-            border: 1px solid #696969;
-            border-radius: 8px;
-        }
-        td {
-            padding: 10px;
-            border: 1px solid #696969;
-        }
         h1 {
               display: block;
                 font-size: 2em;
@@ -99,7 +93,7 @@
         }
 
         pre {
-            background-color: #696969;
+            background-color: #282828;
             border-radius: 8px;
             padding: 10px;
             color: white;
@@ -107,7 +101,7 @@
         }
 
         code {
-            background-color: #696969;
+            background-color: #282828;
             border-radius: 8px;
             padding: 3px;
             color: white;
@@ -147,7 +141,7 @@
             class="p-[45px] text-[18px] m-[18px] bg-white rounded-[32px] w-[90vw]"
         >
         <div>
-            {@html (style + marked.parse(blog.content))}
+            {@html (style + markdown.render(blog.content))}
         </div>
 
         </div>
