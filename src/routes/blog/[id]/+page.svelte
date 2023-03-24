@@ -6,6 +6,10 @@
     import MarkdownIt from "markdown-it";
     import hljs from "highlight.js"
     import "highlight.js/styles/base16/gruvbox-dark-hard.css"
+    import type {Load} from "@sveltejs/kit";
+
+    export let data: Load;
+    const blog = data.blog as Blog;
 
   const markdown = new MarkdownIt({
     highlight: function (str, lang) {
@@ -13,11 +17,6 @@
     }
   });
 
-    let blog: Blog;
-
-    onMount(async () => {
-        blog = await BlogRequests.getBlog($page.params.id);
-    });
 
     const style = `<style scoped>
         h1 {

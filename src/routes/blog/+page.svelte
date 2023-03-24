@@ -2,14 +2,10 @@
     import BlogIntro from "$lib/components/BlogIntro.svelte";
     import Blogs from "$lib/components/Blogs.svelte";
     import type Blog from "$lib/models/Blog";
-    import BlogRequests from "$lib/utils/requests/BlogRequests";
-    import { onMount } from "svelte";
+    import type {Load} from "@sveltejs/kit";
 
-    let blogs = new Array<Blog>();
-
-    onMount(async () => {
-        blogs = await BlogRequests.getBlogs();
-    });
+    export let data: Load;
+    const blogs: Blog[] = data.blogs;
 </script>
 
 <svelte:head>
