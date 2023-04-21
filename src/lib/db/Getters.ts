@@ -5,12 +5,13 @@ import type ProjectGroup from "$lib/models/ProjectGroup";
 import type Blog from "$lib/models/Blog";
 import type Info from "$lib/models/Info";
 
-// TODO
-// remove duplicate code and return empty records
-
-export async function getProjectGroups(): Promise<ProjectGroup[]> {
+export async function getProjectGroups(): Promise<unknown> {
     const projectGroupsRef = db.collection("projectGroups");
     const snapshot = await projectGroupsRef.get();
+
+    if (snapshot.empty) {
+        return null;
+    }
 
     let projectGroups: ProjectGroup[] = [];
     snapshot.forEach((projectGroupDoc) => {
@@ -26,9 +27,13 @@ export async function getProjectGroups(): Promise<ProjectGroup[]> {
     return projectGroups;
 }
 
-async function getExperiences(xpName: string): Promise<Experience[]> {
+async function getExperiences(xpName: string): Promise<unknown> {
     const experienceRef = db.collection(xpName);
     const snapshot = await experienceRef.get();
+
+    if (snapshot.empty) {
+        return null;
+    }
 
     let experience: Experience[] = [];
     snapshot.forEach((projectGroupDoc) => {
@@ -40,17 +45,21 @@ async function getExperiences(xpName: string): Promise<Experience[]> {
     });
 }
 
-export async function getWorkExperiences(): Promise<Experience[]> {
+export async function getWorkExperiences(): Promise<unknown> {
     return await getExperiences("work");
 }
 
-export async function getVolunteeringExperiences(): Promise<Experience[]> {
+export async function getVolunteeringExperiences(): Promise<unknown> {
     return await getExperiences("volunteering");
 }
 
-export async function getAllBlogs(): Promise<Blog[]> {
+export async function getAllBlogs(): Promise<unknown> {
     const blogsRef = db.collection("blogs");
     const snapshot = await blogsRef.get();
+
+    if (snapshot.empty) {
+        return null;
+    }
 
     let blogs: Blog[] = [];
 
@@ -89,9 +98,13 @@ export async function getBlog(id: string): Promise<unknown> {
     return blog;
 }
 
-export async function getInfo(): Promise<Info> {
+export async function getInfo(): Promise<unknown> {
     const infoRef = db.collection("info");
     const snapshot = await infoRef.get();
+
+    if (snapshot.empty) {
+        return null
+    }
 
     let info: Info = { name: "", about: "", blogIntro: "", brief: "", technologies: [] };
     snapshot.forEach((infoDoc) => {

@@ -1,4 +1,5 @@
 export default interface Experience {
+	publicId?: string;
 	name: string;
 	description: string;
 	roles: string[];
