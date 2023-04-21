@@ -1,8 +1,10 @@
 export default interface Blog {
-  publicId?: string;
-  name: string;
-  description: string;
-  content: string;
-  createdAt: Date;
-  updatedAt: Date;
+	publicId?: string;
+	name: string;
+	description: string;
+	readTimes: number;
+	likes: number;
+	content: string;
+	createdAt: Date;
+	updatedAt: Date;
 }

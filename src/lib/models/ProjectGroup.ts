@@ -1,7 +1,7 @@
-import type Project from "./Project"
+import type Project from "./Project";
 
 export default interface ProjectGroup {
-    name: string;
-    description: string;
-    projects: Project[]
+	name: string;
+	description: string;
+	projects: Project[];
 }

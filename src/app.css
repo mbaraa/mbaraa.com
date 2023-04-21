@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "Vistol";
-    src: url("/fonts/VistolSans-Light.otf");
-  }
-  @font-face {
-    font-family: "Vistol";
-    src: url("/fonts/VistolSans-Black.otf");
-    font-weight: 1000;
-  }
+	@font-face {
+		font-family: "Vistol";
+		src: url("/fonts/VistolSans-Light.otf");
+	}
+	@font-face {
+		font-family: "Vistol";
+		src: url("/fonts/VistolSans-Black.otf");
+		font-weight: 1000;
+	}
 }
