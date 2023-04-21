@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Home - mbaraa.com</title>
+	<title>Home of Baraa</title>
 </svelte:head>
 
 <div class="">
