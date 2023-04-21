@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>Made by Baraa</title>
+	<title>Contributed by Baraa</title>
 </svelte:head>
 
 <div class="font-[Vistol]">
