@@ -3,4 +3,5 @@ export default interface Info {
 	about: string;
 	brief: string;
 	blogIntro: string;
+	technologies: string[];
 }
