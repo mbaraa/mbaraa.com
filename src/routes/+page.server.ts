@@ -1,8 +1,7 @@
 import { db } from "$lib/db";
-import type ProjectGroup from "$lib/models/ProjectGroup";
 import type Link from "$lib/models/Link";
-import { type Load } from "@sveltejs/kit";
 import type Info from "$lib/models/Info";
+import { type Load } from "@sveltejs/kit";
 
 export let ssr = true;
 
@@ -18,23 +17,11 @@ async function getLinks(): Promise<Link[]> {
 	return links;
 }
 
-async function getProjectGroups(): Promise<ProjectGroup[]> {
-	const projectGroupsRef = db.collection("projectGroups");
-	const snapshot = await projectGroupsRef.get();
-
-	let projectGroups: ProjectGroup[] = [];
-	snapshot.forEach((projectGroupDoc) => {
-		projectGroups.push(projectGroupDoc.data() as ProjectGroup);
-	});
-
-	return projectGroups;
-}
-
 async function getInfo(): Promise<Info> {
 	const infoRef = db.collection("info");
 	const snapshot = await infoRef.get();
 
-	let info: Info = { name: "", about: "", blogIntro: "" };
+	let info: Info = { name: "", about: "", blogIntro: "", brief: "" };
 	snapshot.forEach((infoDoc) => {
 		info = infoDoc.data() as Info;
 	});
@@ -44,7 +31,6 @@ async function getInfo(): Promise<Info> {
 
 export const load: Load = async () => {
 	return {
-		groups: await getProjectGroups(),
 		links: await getLinks(),
 		info: await getInfo()
 	};
