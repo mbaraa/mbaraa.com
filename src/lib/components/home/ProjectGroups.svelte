@@ -12,7 +12,7 @@
 				<li>
 					<div class="timeline-content">
 						<h3 class="date">
-							({project.startYear}-{#if project.endDate}{project.endYear}{:else}Present{/if})
+							({project.startYear}-{#if project.endYear}{project.endYear}{:else}Present{/if})
 						</h3>
 						<h1 class="text-[#20DB8F]">{project.name}</h1>
 						<p>{project.description}</p>
