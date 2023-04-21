@@ -29,7 +29,11 @@
 		"@google-cloud/firestore": "^6.5.0",
 		"@sveltejs/adapter-node": "^1.2.3",
 		"@types/bcrypt": "^5.0.0",
+		"@types/highlight.js": "^10.1.0",
+		"@types/markdown-it": "^12.2.3",
 		"bcrypt": "^5.1.0",
-		"dotenv": "^16.0.3"
+		"dotenv": "^16.0.3",
+		"highlight.js": "^11.7.0",
+		"markdown-it": "^13.0.1"
 	}
 }
