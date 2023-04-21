@@ -5,9 +5,9 @@
 
 	let links: Link[] = [
 		{ name: "Blog", link: "/blog", target: "" },
+		{ name: "Projects", link: "/projects", target: "" },
 		{ name: "Work", link: "/work", target: "" },
-		{ name: "About", link: "/about", target: "" },
-		{ name: "Contact", link: "/contact", target: "" }
+		{ name: "About", link: "/about", target: "" }
 	];
 </script>
 

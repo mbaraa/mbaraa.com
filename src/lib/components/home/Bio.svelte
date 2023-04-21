@@ -14,7 +14,7 @@
 		<button
 			class="text-[#64FFDA] rounded-[4px] border-[2px] border-[#64FFDA] p-[5px] hover:bg-[#64FFDA] hover:text-black mt-[10px]"
 		>
-			<a href="/work">Check out my work!</a>
+			<a href="/projects">Check out my projects!</a>
 		</button>
 	</div>
 </div>
