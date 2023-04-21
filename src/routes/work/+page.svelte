@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type Experience from "$lib/models/Experience";
 	import Experiences from "$lib/components/home/Experiences.svelte";
-	import Seperator from "$lib/ui/Seperator.svelte";
 
 	export let data: {
 		work: Experience[];
