@@ -2,10 +2,14 @@
 	import "../app.css";
 	import Header from "$lib/components/Header.svelte";
 	import type Link from "$lib/models/Link";
-	import type Info from "$lib/models/Info";
 
-	export let data: { links: Link[]; info: Info };
+	let links: Link[] = [
+		{ name: "Blog", link: "/blog", target: "" },
+		{ name: "Work", link: "/work", target: "" },
+		{ name: "About", link: "/about", target: "" },
+		{ name: "Contact", link: "/contact", target: "" }
+	];
 </script>
 
-<Header title={data.info.name} showTitle={false} showSeparator={false} links={data.links} />
+<Header title="mbaraa.com" showTitle showSeparator={false} {links} />
 <slot />

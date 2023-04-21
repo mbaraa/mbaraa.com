@@ -1,12 +1,15 @@
 <script lang="ts">
 	import type Link from "$lib/models/Link";
 	import Seperator from "$lib/ui/Seperator.svelte";
-	import { default as LinkView } from "$lib/ui/Link.svelte";
 
 	export let showTitle: boolean;
 	export let showSeparator: boolean;
 	export let links = new Array<Link>();
 	export let title: string;
+
+	function formatNumber(num: number): string {
+		return num < 10 ? `0${num}` : `${num}`;
+	}
 </script>
 
 <header
@@ -20,9 +23,14 @@
 
 	<nav>
 		<ul class="m-0 list-none flex gap-[20px]">
-			{#each links as link}
+			{#each links as link, i}
 				<li>
-					<LinkView {link} />
+					<a
+						class="underline hover:text-[#20DB8F]"
+						target={link.target ?? "_blank"}
+						href={link.link}
+						><span class="text-[#20DB8F]">{formatNumber(i + 1)}.&nbsp;</span>{link.name}</a
+					>
 				</li>
 			{/each}
 		</ul>
