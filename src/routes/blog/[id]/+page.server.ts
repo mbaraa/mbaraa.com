@@ -1,32 +1,20 @@
 import type { Load } from "@sveltejs/kit";
+import { getBlog } from "$lib/db/Getters";
+import { updateBlog } from "$lib/db/Updaters";
 import type Blog from "$lib/models/Blog";
-import { db } from "$lib/db";
 
 export const ssr = true;
-export const prerender = true;
 
-async function get(id: string): Promise<unknown> {
-  const blogsRef = db.collection("blogs");
-  const snapshot = await blogsRef.where("publicId", "==", id).get();
-
-  if (snapshot.empty) {
-    return null;
-  }
-
-  let blog: Blog | undefined = undefined;
-
-  snapshot.forEach((doc) => {
-    blog = doc.data() as Blog;
-    blog.createdAt = doc.data().createdAt.toDate();
-    blog.updatedAt = doc.data().updatedAt.toDate();
-  });
-
-  return blog;
-}
-
-export const load: Load = async ({ params }) => {
-  const id = params.id;
-  return {
-    blog: await get(id),
-  };
+export const load: Load = async ({ params }: any) => {
+	const id = params.id;
+	const blog = await getBlog(id) as Blog;
+	if (blog.readTimes) {
+		blog.readTimes++;
+	} else {
+		blog.readTimes = 1;
+	}
+	await updateBlog(id, blog);
+	return {
+		blog: blog,
+	};
 };
