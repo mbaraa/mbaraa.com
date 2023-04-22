@@ -12,11 +12,13 @@
 </svelte:head>
 
 <div class="font-[Vistol]">
-	<Intro
-		name={data.info.name.substring(0, data.info.name.indexOf(" "))}
-		blogIntro={data.info.blogIntro}
-	/>
-	<div class="md:relative md:top-[-100px]">
-		<Blogs blogs={data.blogs} />
-	</div>
+	{#if data}
+		<Intro
+				name={data.info.name.substring(0, data.info.name.indexOf(" "))}
+				blogIntro={data.info.blogIntro}
+		/>
+		<div class="md:relative md:top-[-100px]">
+			<Blogs blogs={data.blogs} />
+		</div>
+	{/if}
 </div>
