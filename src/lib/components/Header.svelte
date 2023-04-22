@@ -4,7 +4,7 @@
 
 	export let showTitle: boolean;
 	export let showSeparator: boolean;
-	export let links = new Array<Link>();
+	export let links: Link[];
 	export let title: string;
 
 	function formatNumber(num: number): string {
