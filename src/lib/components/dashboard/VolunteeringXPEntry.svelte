@@ -1,23 +1,27 @@
 <script lang="ts">
-	import type Work from "$lib/models/Work";
+	import type Volunteering from "$lib/models/Volunteering";
 	import Button from "$lib/ui/Button.svelte";
 
-	export let work: Work;
+	export let volunteering: Volunteering;
 	let editMode = false;
 
-	async function saveWork(): Promise<void> {
-		await fetch("/api/work", {
-			method: work.publicId ? "PUT" : "POST",
+	async function saveVolunteering(): Promise<void> {
+		let method = "POST";
+		if (volunteering.publicId) {
+			method = "PUT";
+        }
+		await fetch("/api/volunteering", {
+			method: method,
 			mode: "cors",
 			headers: {
 				"Authorization": localStorage.getItem("token") ?? ""
 			},
-			body: JSON.stringify(work)
+			body: JSON.stringify(volunteering)
 		})
 	}
 
-	async function deleteWork(): Promise<void> {
-		await fetch(`/api/work?id=${work.publicId}`, {
+	async function deleteVolunteering(): Promise<void> {
+		await fetch(`/api/volunteering?id=${volunteering.publicId}`, {
 			method: "DELETE",
 			headers: {
 				"Authorization": localStorage.getItem("token") ?? ""
@@ -28,7 +32,7 @@
 
 <div class="text-black bg-[#CBCBCB] block rounded-[10px] mb-[10px] last:mb-0 p-[15px] ">
     <div class="flex justify-between">
-        <h3>{work.name}</h3>
+        <h3>{volunteering.name}</h3>
         <h3 class="block font-bold cursor-pointer" on:click={() => {editMode = !editMode}}>
             {#if editMode}{"ᐯ"}{:else}{"ᐳ"}{/if}
         </h3>
@@ -49,7 +53,7 @@
                             </td>
                             <td>
                             <textarea
-                                    bind:value={work.name}
+                                    bind:value={volunteering.name}
                                     class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
@@ -59,7 +63,7 @@
                             </td>
                             <td>
                             <textarea
-                                    bind:value={work.description}
+                                    bind:value={volunteering.description}
                                     class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
@@ -69,7 +73,7 @@
                             </td>
                             <td>
                             <textarea
-                                    bind:value={work.location}
+                                    bind:value={volunteering.location}
                                     class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
@@ -79,7 +83,7 @@
                             </td>
                             <td>
                             <textarea
-                                    bind:value={work.startDate}
+                                    bind:value={volunteering.startDate}
                                     class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
@@ -89,7 +93,7 @@
                             </td>
                             <td>
                             <textarea
-                                    bind:value={work.endDate}
+                                    bind:value={volunteering.endDate}
                                     class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
@@ -98,14 +102,14 @@
                                 <h1 class="font-[600] px-[10px]">Roles:</h1>
                             </td>
                             <td>
-                                <Button _class="bg-white" on:click={() => {work.roles.push(""); work = work}}
+                                <Button _class="bg-white" on:click={() => {volunteering.roles.push(""); volunteering = volunteering}}
                                         title="+"/>
-                                {#each work.roles as role}
+                                {#each volunteering.roles as role}
                                     <div class="flex justify-between">
                                     <textarea
                                             bind:value={role}
                                             class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
-                                        <Button _class="" on:click={() => {work.roles = work.roles.filter((_role) => _role !== role)}}
+                                        <Button _class="" on:click={() => {volunteering.roles = volunteering.roles.filter((_role) => _role !== role)}}
                                                 title="-"/>
                                     </div>
                                 {/each}
@@ -114,8 +118,8 @@
                         </tbody>
                     </table>
                     <div class="relative float-right flex justify-between">
-                        <Button _class="bg-white ml-[10px]" on:click={saveWork} title="Save"/>
-                        <Button _class="bg-white ml-[10px]" on:click={deleteWork} title="Delete"/>
+                        <Button _class="bg-white ml-[10px]" on:click={saveVolunteering} title="Save"/>
+                        <Button _class="bg-white ml-[10px]" on:click={deleteVolunteering} title="Delete"/>
                     </div>
                 </div>
             </div>
