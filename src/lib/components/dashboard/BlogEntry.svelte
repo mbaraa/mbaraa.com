@@ -6,8 +6,12 @@
 	let editMode = false;
 
 	async function saveBlog(): Promise<void> {
+		let method = "POST";
+		if (blog.publicId) {
+			method = "PUT";
+		}
 		await fetch("/api/blog", {
-			method: blog.publicId? "PUT": "POST",
+			method: method,
 			mode: "cors",
             headers: {
 				"Authorization": localStorage.getItem("token") ?? ""
@@ -50,8 +54,7 @@
                             <td>
                             <textarea
                                     bind:value={blog.name}
-                                    class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "
-                            />
+                                    class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -61,8 +64,7 @@
                             <td>
                             <textarea
                                     bind:value={blog.description}
-                                    class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "
-                            />
+                                    class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -72,8 +74,7 @@
                             <td>
                             <textarea
                                     bind:value={blog.content}
-                                    class="w-[100%] h-[300px] p-[3px] rounded-[8px] border-[1px] border-[#000] "
-                            />
+                                    class="w-[100%] h-[300px] p-[3px] rounded-[8px] border-[1px] border-[#000] "></textarea>
                             </td>
                         </tr>
                         </tbody>
