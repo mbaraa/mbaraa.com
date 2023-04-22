@@ -1,5 +1,5 @@
 import type { Load } from "@sveltejs/kit";
-import {getVolunteeringExperiences, getWorkExperiences} from "$lib/db/Getters";
+import { getVolunteeringExperiences, getWorkExperiences } from "$lib/db/Getters";
 
 export const ssr = true;
 

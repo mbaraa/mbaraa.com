@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type Volunteering from "$lib/models/Volunteering";
+	import type Volunteering from "$lib/models/Volunteering";
 	import { onMount } from "svelte";
 	import Button from "$lib/ui/Button.svelte";
 	import VolunteeringEntry from "$lib/components/dashboard/VolunteeringXPEntry.svelte";

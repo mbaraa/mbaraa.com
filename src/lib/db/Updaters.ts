@@ -10,7 +10,8 @@ export async function updateBlog(id: string, blog: Blog): Promise<unknown> {
 		content: blog.content,
 		description: blog.description,
 		name: blog.name,
-		updatedAt: new Date()
+		updatedAt: new Date(),
+		readTimes: blog.readTimes,
 	});
 
 	if (!status) {

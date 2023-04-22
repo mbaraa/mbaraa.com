@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type ProjectGroup from "$lib/models/ProjectGroup";
 	import Button from "$lib/ui/Button.svelte";
-	import Seperator from "$lib/ui/Seperator.svelte";
 
 	export let group: ProjectGroup;
 	let editMode = false;

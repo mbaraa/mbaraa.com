@@ -1,4 +1,4 @@
-import type { RequestHandler, RequestEvent } from "@sveltejs/kit";
+import type { RequestEvent, RequestHandler } from "@sveltejs/kit";
 import { getVolunteeringExperiences } from "$lib/db/Getters";
 import { isAuth } from "../_auth";
 import type Experience from "$lib/models/Experience";
