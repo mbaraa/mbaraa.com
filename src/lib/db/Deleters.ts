@@ -5,6 +5,11 @@ export async function deleteBlog(id: string): Promise<unknown> {
 	return await document.delete();
 }
 
+export async function deleteProjectGroup(id: string): Promise<unknown> {
+	const document = db.doc(`projectGroups/${id}`);
+	return await document.delete();
+}
+
 export async function deleteWorkXP(id: string): Promise<unknown> {
 	const document = db.doc(`work/${id}`);
 	return await document.delete();
