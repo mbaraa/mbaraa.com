@@ -4,6 +4,7 @@ import { isAuth } from "../_auth";
 import type Experience from "$lib/models/Experience";
 import { insertWorkXP } from "$lib/db/Creators";
 import { updateWorkXP } from "$lib/db/Updaters";
+import { deleteWorkXP } from "$lib/db/Deleters";
 
 const jsonResp = {"Content-Type": "application/json", "Access-Control-Allow-Headers": "Content-Type"}
 
@@ -41,5 +42,8 @@ export const DELETE: RequestHandler = async (ev: RequestEvent) => {
 	if (!isAuth(ev)) {
 		return new Response("oops", {status: 401});
 	}
-	return new Response("ok", { status: 200 });
+	if (await deleteWorkXP(ev.url.searchParams.get("id") ?? "")) {
+		return new Response("ok", { status: 200 });
+	}
+	return new Response("oops", { status: 500 });
 };
