@@ -1,10 +1,10 @@
 export default interface Project {
-    name: string;
-    description: string;
-    startYear: string;
-    endYear?: string;
-    website?: string;
-    sourceCode?: string;
-    imagePath: string;
-    comingSoon?: boolean;
+	publicId?: string;
+	name: string;
+	description: string;
+	startYear: string;
+	endYear?: string;
+	website?: string;
+	sourceCode?: string;
+	comingSoon?: boolean;
 }

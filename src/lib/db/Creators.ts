@@ -1,6 +1,7 @@
 import type Blog from "$lib/models/Blog";
 import { db, toKebab } from "./index";
 import type Experience from "$lib/models/Experience";
+import type ProjectGroup from "$lib/models/ProjectGroup";
 
 export async function insertBlog(blog: Blog): Promise<unknown> {
 	blog.publicId = toKebab(blog.name);
@@ -15,6 +16,19 @@ export async function insertBlog(blog: Blog): Promise<unknown> {
 	}
 
 	return blog;
+}
+
+export async function insertProjectsGroup(pg: ProjectGroup): Promise<unknown> {
+	pg.publicId = toKebab(pg.name);
+
+	const document = db.doc(`projectGroups/${pg.publicId}`);
+	const status = await document.set(pg);
+
+	if (!status) {
+		return null;
+	}
+
+	return pg;
 }
 
 async function insertXP(xp: Experience, xpName: string): Promise<unknown> {
