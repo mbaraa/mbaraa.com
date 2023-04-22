@@ -9,4 +9,6 @@
 	<title>Home of Baraa</title>
 </svelte:head>
 
+{#if data}
 <Bio name={data.info.name} brief={data.info.brief} />
+{/if}

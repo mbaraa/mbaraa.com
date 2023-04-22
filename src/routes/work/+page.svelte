@@ -13,6 +13,8 @@
 </svelte:head>
 
 <div class="font-[Vistol]">
-	<Experiences xpName="Professional Work" xps={data.work} />
-	<Experiences xpName="Volunteering" xps={data.volunteering} />
+	{#if data}
+		<Experiences xpName="Professional Work" xps={data.work} />
+		<Experiences xpName="Volunteering" xps={data.volunteering} />
+	{/if}
 </div>

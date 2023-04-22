@@ -10,5 +10,7 @@
 </svelte:head>
 
 <div class="font-[Vistol]">
-	<Projects groups={data.groups} />
+	{#if data}
+		<Projects groups={data.groups} />
+	{/if}
 </div>
