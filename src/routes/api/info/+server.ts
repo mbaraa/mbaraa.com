@@ -1,8 +1,8 @@
-import type {RequestEvent, RequestHandler} from "@sveltejs/kit";
-import {getInfo} from "$lib/db/Getters";
+import type { RequestEvent, RequestHandler } from "@sveltejs/kit";
+import { getInfo } from "$lib/db/Getters";
 import type Info from "$lib/models/Info";
-import {updateInfo} from "$lib/db/Updaters";
-import {isAuth} from "../_auth";
+import { updateInfo } from "$lib/db/Updaters";
+import { isAuth } from "../_auth";
 
 const jsonResp = {"Content-Type": "application/json", "Access-Control-Allow-Headers": "Content-Type"}
 

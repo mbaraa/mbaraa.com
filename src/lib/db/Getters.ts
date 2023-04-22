@@ -1,5 +1,5 @@
 import type Experience from "$lib/models/Experience";
-import {db} from "./index";
+import { db } from "./index";
 import type Project from "$lib/models/Project";
 import type ProjectGroup from "$lib/models/ProjectGroup";
 import type Blog from "$lib/models/Blog";

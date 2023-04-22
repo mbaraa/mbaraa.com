@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { ComponentType } from "svelte";
+	import type { ComponentType } from "svelte";
 
-    export let title: string;
-    export let icon: ComponentType | undefined;
+	export let title: string;
+	export let icon: ComponentType | undefined;
     export let _class: string;
     const Icon = icon;
 </script>

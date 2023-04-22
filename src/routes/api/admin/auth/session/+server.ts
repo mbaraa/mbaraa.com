@@ -1,8 +1,8 @@
-import type {RequestEvent, RequestHandler} from "@sveltejs/kit";
+import type { RequestEvent, RequestHandler } from "@sveltejs/kit";
 import * as jwt from "jsonwebtoken";
 import config from "$lib/config";
 import bcrypt from "bcrypt";
-import {isAuth} from "../../../_auth";
+import { isAuth } from "../../../_auth";
 
 export const GET: RequestHandler = async (ev: RequestEvent) => {
     if (!isAuth(ev)) {

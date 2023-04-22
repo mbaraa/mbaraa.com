@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type Work from "$lib/models/Work";
+	import type Work from "$lib/models/Work";
 	import { onMount } from "svelte";
 	import Button from "$lib/ui/Button.svelte";
 	import WorkEntry from "$lib/components/dashboard/WorkXPEntry.svelte";

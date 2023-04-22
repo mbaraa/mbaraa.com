@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type Blog from "$lib/models/Blog";
+	import type Blog from "$lib/models/Blog";
 	import { onMount } from "svelte";
 	import Button from "$lib/ui/Button.svelte";
 	import BlogEntry from "../../../lib/components/dashboard/BlogEntry.svelte";

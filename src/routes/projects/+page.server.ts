@@ -1,5 +1,5 @@
 import type { Load } from "@sveltejs/kit";
-import {getProjectGroups} from "$lib/db/Getters";
+import { getProjectGroups } from "$lib/db/Getters";
 
 export const ssr = true;
 
