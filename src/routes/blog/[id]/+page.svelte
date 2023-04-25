@@ -107,12 +107,16 @@ th {
 	padding: 10px;
 	color: white;
 	line-height: 1.6;
+    width: inherit;
+    overflow-x: scroll;
 }
 .markdown code {
 	background-color: #282828;
 	border-radius: 8px;
 	padding: 3px;
 	color: white;
+    width: inherit;
+    overflow-x: scroll;
 }
 </style>`;
 </script>
