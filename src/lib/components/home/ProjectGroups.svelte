@@ -3,6 +3,10 @@
 	import Link from "$lib/ui/Link.svelte";
 
 	export let projects: Project[];
+
+	function formatDate(date: Date): string {
+		return date.getFullYear().toString();
+	}
 </script>
 
 <div class="container">
@@ -12,7 +16,9 @@
 				<li>
 					<div class="timeline-content">
 						<h3 class="date">
-							({project.startYear}-{#if project.endYear}{project.endYear}{:else}Present{/if})
+							({formatDate(project.startYear)}-{#if project.endYear}{formatDate(
+									project.endYear
+								)}{:else}Present{/if})
 						</h3>
 						<h1 class="text-[#20DB8F]">{project.name}</h1>
 						<p>{project.description}</p>

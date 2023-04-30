@@ -12,8 +12,16 @@ const jsonResp = {
 };
 
 export const GET: RequestHandler = async (ev: RequestEvent) => {
-	const groups = await getProjectGroups();
+	const groups = (await getProjectGroups()) as ProjectGroup[];
 	if (groups) {
+		groups.forEach((pg) => {
+			pg.projects.forEach((p) => {
+				p.startYear = new Date(p.startYear);
+				if (p.endYear) {
+					p.endYear = new Date(p.endYear);
+				}
+			});
+		});
 		return new Response(JSON.stringify(groups), { status: 200, headers: jsonResp });
 	}
 	return new Response("not found", { status: 404 });
@@ -24,6 +32,12 @@ export const POST: RequestHandler = async (ev: RequestEvent) => {
 		return new Response("oops", { status: 401 });
 	}
 	const pg: ProjectGroup = await ev.request.json();
+	pg.projects.forEach((p) => {
+		p.startYear = new Date(p.startYear);
+		if (p.endYear) {
+			p.endYear = new Date(p.endYear);
+		}
+	});
 	if (await insertProjectsGroup(pg)) {
 		return new Response("ok", { status: 200 });
 	}
@@ -35,6 +49,12 @@ export const PUT: RequestHandler = async (ev: RequestEvent) => {
 		return new Response("oops", { status: 401 });
 	}
 	const pg: ProjectGroup = await ev.request.json();
+	pg.projects.forEach((p) => {
+		p.startYear = new Date(p.startYear);
+		if (p.endYear) {
+			p.endYear = new Date(p.endYear);
+		}
+	});
 	if (await updateProjectGroup(pg.publicId ?? "", pg)) {
 		return new Response("ok", { status: 200 });
 	}

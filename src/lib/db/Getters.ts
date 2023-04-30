@@ -17,8 +17,19 @@ export async function getProjectGroups(): Promise<unknown> {
 	snapshot.forEach((projectGroupDoc) => {
 		const projectGroup = projectGroupDoc.data() as ProjectGroup;
 
+		projectGroup.projects = projectGroup.projects.map((p: any) => {
+			const project = p as Project;
+			if (p.startYear) {
+				project.startYear = new Date(p.startYear._seconds * 1000);
+			}
+			if (p.endYear) {
+				project.endYear = new Date(p.endYear._seconds * 1000);
+			}
+			return project;
+		});
+
 		projectGroup.projects = projectGroup.projects.sort((projectI: Project, projectJ: Project) => {
-			return -(+projectI.startYear - +projectJ.startYear);
+			return -(projectI.startYear.getTime() - projectJ.startYear.getTime());
 		});
 
 		projectGroups.push(projectGroup);
