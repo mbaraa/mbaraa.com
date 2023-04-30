@@ -32,7 +32,7 @@
 	</div>
 	<div class="mt-[10px]">
 		{#each projectGroups as projectGroup}
-			<ProjectGroupEntry group={projectGroup} />
+			<ProjectGroupEntry group={projectGroup} groups={projectGroups} />
 		{/each}
 	</div>
 </div>

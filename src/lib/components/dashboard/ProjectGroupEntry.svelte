@@ -2,8 +2,17 @@
 	import type ProjectGroup from "$lib/models/ProjectGroup";
 	import Button from "$lib/ui/Button.svelte";
 
+	export let groups: ProjectGroup[];
 	export let group: ProjectGroup;
 	let editMode = false;
+
+	function getCurrentGroupOrder(): number {
+		return groups.findIndex((g) => g.publicId === group.publicId) + 1;
+	}
+
+	function handleChangeOrder(e: Event) {
+		group.order = Number((e.target as HTMLOptionElement).value);
+	}
 
 	async function saveProjectGroup(): Promise<void> {
 		let method = "POST";
@@ -72,6 +81,21 @@
 							</tr>
 							<tr>
 								<td>
+									<h1 class="font-[600] px-[10px]">Order:</h1>
+								</td>
+								<td>
+									<select name="Order" id="project.order" on:change={handleChangeOrder}>
+										{#each groups as _, orderBetweenAll}
+											<option
+												selected={getCurrentGroupOrder() === orderBetweenAll + 1}
+												value={orderBetweenAll + 1}>{orderBetweenAll + 1}</option
+											>
+										{/each}
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
 									<h1 class="font-[600] px-[10px]">Projects:</h1>
 								</td>
 								<td>
@@ -83,7 +107,7 @@
 										}}
 										title="+"
 									/>
-									{#each group.projects as project}
+									{#each group.projects as project, i}
 										<div class="flex justify-between">
 											<div>
 												<label for="project.name">Name:</label>
@@ -110,13 +134,13 @@
 													bind:value={project.website}
 													class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000]"
 												/>
-												<label for="project.startDate">Start Date:</label>
+												<label for="project.startDate">Start Year:</label>
 												<textarea
 													id="project.startDate"
 													bind:value={project.startYear}
 													class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000]"
 												/>
-												<label for="project.endDate">Start Date:</label>
+												<label for="project.endDate">End Year:</label>
 												<textarea
 													id="project.endDate"
 													bind:value={project.endYear}
