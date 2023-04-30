@@ -135,15 +135,18 @@
 													class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000]"
 												/>
 												<label for="project.startDate">Start Year:</label>
-												<textarea
+												<input
 													id="project.startDate"
 													bind:value={project.startYear}
+													type="datetime-local"
 													class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000]"
 												/>
 												<label for="project.endDate">End Year:</label>
-												<textarea
+
+												<input
 													id="project.endDate"
 													bind:value={project.endYear}
+													type="datetime-local"
 													class="w-[100%] h-[50px] p-[3px] text-[15px] rounded-[8px] border-[1px] border-[#000]"
 												/>
 											</div>
@@ -151,7 +154,7 @@
 												_class=""
 												on:click={() => {
 													group.projects = group.projects.filter(
-														(p) => p.publidId !== project.publicId
+														(p) => p.publicId !== project.publicId
 													);
 												}}
 												title="-"

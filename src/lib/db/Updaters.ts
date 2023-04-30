@@ -11,7 +11,7 @@ export async function updateBlog(id: string, blog: Blog): Promise<unknown> {
 		description: blog.description,
 		name: blog.name,
 		updatedAt: new Date(),
-		readTimes: blog.readTimes,
+		readTimes: blog.readTimes
 	});
 
 	if (!status) {
