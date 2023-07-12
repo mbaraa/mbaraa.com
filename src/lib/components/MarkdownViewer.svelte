@@ -97,7 +97,7 @@ th {
 	margin-block-end: 2.33em;
 }
 .markdown p {
-	line-height: 1.8;
+	line-height: 1.9;
 }
 .markdown pre {
 	background-color: #282828;
