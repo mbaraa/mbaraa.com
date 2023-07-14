@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ContactLinks from "./ContactLinks.svelte";
+
 	export let name: string = "";
 	export let brief: string = "";
 </script>
@@ -19,4 +21,5 @@
 			</button>
 		</a>
 	</div>
+	<ContactLinks />
 </div>
