@@ -26,12 +26,12 @@
 				<p class="text-[#20DB8F] text-[20px]"><MarkdownViewer text={data.info.about} /></p>
 				<hr class="my-10" />
 				<h2 class="text-[#ABABAB] text-[17px] mb-3">Some of the technologies that I've used:</h2>
-				<ul class="list-disc block lg:hidden">
+				<ul class="list-disc block sm:hidden">
 					{#each data.info.technologies as technology}
 						<li class="ml-[15px] text-white">{technology}</li>
 					{/each}
 				</ul>
-				<div class="hidden lg:flex gap-32">
+				<div class="hidden sm:flex gap-32">
 					{#each bigScreenTechLists as technologyChunk}
 						<ul class="list-disc inline">
 							{#each technologyChunk as technology}
