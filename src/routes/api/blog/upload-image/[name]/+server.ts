@@ -1,6 +1,6 @@
 import type { RequestEvent, RequestHandler } from "@sveltejs/kit";
-import { isAuth } from "../../_auth";
-import { uploadBlogImage } from "../../../../lib/db/Creators";
+import { isAuth } from "../../../_auth";
+import { uploadBlogImage } from "../../../../../lib/db/Creators";
 
 const jsonResp = {
 	"Content-Type": "application/json",
@@ -12,7 +12,7 @@ export const POST: RequestHandler = async (ev: RequestEvent) => {
 		return new Response("oops", { status: 401 });
 	}
 	const image = (await ev.request.formData()).get("image") as File;
-	const imageName = ev.request.headers.get("IMAGE_NAME") ?? "";
+	const imageName = ev.params["name"] ?? "";
 	if (!image || !imageName) {
 		return new Response(null, { status: 400 });
 	}
