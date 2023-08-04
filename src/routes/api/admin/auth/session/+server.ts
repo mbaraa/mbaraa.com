@@ -1,8 +1,10 @@
 import type { RequestEvent, RequestHandler } from "@sveltejs/kit";
-import { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import config from "$lib/config";
 import bcrypt from "bcrypt";
 import { isAuth } from "../../../_auth";
+
+const { sign } = jwt;
 
 export const GET: RequestHandler = async (ev: RequestEvent) => {
 	if (!isAuth(ev)) {
