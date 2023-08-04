@@ -111,6 +111,24 @@ export async function getBlog(id: string): Promise<unknown> {
 	return blog;
 }
 
+export async function getBlogImages(): Promise<{ imageName: string; base64: string }[]> {
+	const blogImagesRef = db.collection("blog-images");
+	const snapshot = await blogImagesRef.get();
+
+	if (snapshot.empty) {
+		return [];
+	}
+
+	let images: { imageName: string; base64: string }[] = [];
+
+	snapshot.forEach((doc: any) => {
+		const image = doc.data() as { imageName: string; base64: string };
+		images.push(image);
+	});
+
+	return images;
+}
+
 export async function getInfo(): Promise<unknown> {
 	const infoRef = db.collection("info");
 	const snapshot = await infoRef.get();
