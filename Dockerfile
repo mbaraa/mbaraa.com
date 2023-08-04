@@ -16,6 +16,7 @@ WORKDIR /app
 COPY --from=build /app ./
 COPY --from=build /app/build ./
 COPY ./firebase-key.json .
+COPY --from=build /app/scripts/prodServer.js ./server.js
 
 EXPOSE 3000
-CMD ["node", "./index.js"]
+CMD ["node", "./server.js"]
