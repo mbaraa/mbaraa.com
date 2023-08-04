@@ -48,7 +48,7 @@
 				console.log(data);
 				return data["imageId"];
 			});
-		status = `uploaded file: /api/blog/image/${imageId}`;
+		status = `uploaded file: /img/${imageId}`;
 	}
 </script>
 
