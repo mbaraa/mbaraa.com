@@ -36,10 +36,9 @@
 		status = `uploading`;
 		const formData = new FormData();
 		formData.append("image", imageFile);
-		const imageId = await fetch("/api/blog/upload-image", {
+		const imageId = await fetch(`/api/blog/upload-image/${fileName}`, {
 			method: "POST",
 			headers: {
-				IMAGE_NAME: fileName,
 				Authorization: localStorage.getItem("token") ?? ""
 			},
 			body: formData
