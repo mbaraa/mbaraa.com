@@ -111,21 +111,22 @@ export async function getBlog(id: string): Promise<unknown> {
 	return blog;
 }
 
-export async function getBlogImage(id: string): Promise<string> {
-	const blogsImagesRef = db.collection("blog-images");
-	const snapshot = await blogsImagesRef.where("imageName", "==", id).get();
+export async function getBlogImages(): Promise<{ imageName: string; base64: string }[]> {
+	const blogImagesRef = db.collection("blog-images");
+	const snapshot = await blogImagesRef.get();
 
 	if (snapshot.empty) {
-		return "";
+		return [];
 	}
 
-	let image: { imageName: string; base64: string } = { imageName: "", base64: "" };
+	let images: { imageName: string; base64: string }[] = [];
 
-	snapshot.forEach((doc) => {
-		image = doc.data() as { imageName: string; base64: string };
+	snapshot.forEach((doc: any) => {
+		const image = doc.data() as { imageName: string; base64: string };
+		images.push(image);
 	});
 
-	return image.base64;
+	return images;
 }
 
 export async function getInfo(): Promise<unknown> {
