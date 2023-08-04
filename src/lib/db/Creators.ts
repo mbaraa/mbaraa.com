@@ -2,6 +2,7 @@ import type Blog from "$lib/models/Blog";
 import { db, toKebab } from "./index";
 import type Experience from "$lib/models/Experience";
 import type ProjectGroup from "$lib/models/ProjectGroup";
+import { getBlog } from "./Getters";
 
 export async function insertBlog(blog: Blog): Promise<unknown> {
 	blog.publicId = toKebab(blog.name);
@@ -16,6 +17,23 @@ export async function insertBlog(blog: Blog): Promise<unknown> {
 	}
 
 	return blog;
+}
+
+export async function uploadBlogImage(imageName: string, image: File): Promise<string> {
+	const imgB64 = Buffer.from(await image.arrayBuffer()).toString("base64");
+
+	const imageDocRaw = {
+		imageName: `${(Math.random() * 100000).toString().substring(0, 4)}_${imageName}`,
+		base64: imgB64
+	};
+
+	const imageDoc = db.doc(`blog-images/${imageDocRaw.imageName}`);
+	const status = await imageDoc.set(imageDocRaw);
+	if (!status) {
+		return "";
+	}
+
+	return imageDocRaw.imageName;
 }
 
 export async function insertProjectsGroup(pg: ProjectGroup): Promise<unknown> {
