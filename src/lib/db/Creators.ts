@@ -3,6 +3,7 @@ import { db, toKebab } from "./index";
 import type Experience from "$lib/models/Experience";
 import type ProjectGroup from "$lib/models/ProjectGroup";
 import { writeFile } from "fs/promises";
+import path from "path";
 
 export async function insertBlog(blog: Blog): Promise<unknown> {
 	blog.publicId = toKebab(blog.name);
@@ -32,7 +33,11 @@ export async function uploadBlogImage(imageName: string, image: File): Promise<s
 	if (!status) {
 		return "";
 	}
-	await writeFile("./static/" + imageDocRaw.imageName, imageDocRaw.base64, { encoding: "base64" });
+
+	const filePath = path.join(process.cwd(), "static", imageDocRaw.imageName);
+	await writeFile(filePath, imageDocRaw.base64, { encoding: "base64" }).catch((err) => {
+		console.error(err);
+	});
 
 	return imageDocRaw.imageName;
 }
