@@ -23,6 +23,10 @@ async function downloadImages(): Promise<void> {
 	}
 
 	for await (const image of images) {
+		const keys = Object.keys(image);
+		if (!keys.includes("imageName") || !keys.includes("base64")) {
+			continue;
+		}
 		console.log(`copying file: ${image.imageName}...`);
 		await writeFile("./static/" + image.imageName, image.base64, { encoding: "base64" });
 		console.log(`copied file: ${image.imageName} 🤘`);
