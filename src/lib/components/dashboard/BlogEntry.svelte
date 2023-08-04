@@ -48,7 +48,9 @@
 				console.log(data);
 				return data["imageId"];
 			});
-		status = `uploaded file: /img/${imageId}`;
+		status = `uploaded file: ${window.location.protocol}//${window.location.hostname}${
+			["80", "443"].includes(window.location.port) ? "" : ":" + window.location.port
+		}/img/${imageId}`;
 	}
 </script>
 
