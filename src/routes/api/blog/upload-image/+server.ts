@@ -8,9 +8,9 @@ const jsonResp = {
 };
 
 export const POST: RequestHandler = async (ev: RequestEvent) => {
-	// if (!isAuth(ev)) {
-	// 	return new Response("oops", { status: 401 });
-	// }
+	if (!isAuth(ev)) {
+		return new Response("oops", { status: 401 });
+	}
 	const image = (await ev.request.formData()).get("image") as File;
 	const imageName = ev.request.headers.get("IMAGE_NAME") ?? "";
 	if (!image || !imageName) {
