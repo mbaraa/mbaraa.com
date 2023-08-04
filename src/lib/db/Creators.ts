@@ -2,7 +2,7 @@ import type Blog from "$lib/models/Blog";
 import { db, toKebab } from "./index";
 import type Experience from "$lib/models/Experience";
 import type ProjectGroup from "$lib/models/ProjectGroup";
-import { getBlog } from "./Getters";
+import { writeFile } from "fs/promises";
 
 export async function insertBlog(blog: Blog): Promise<unknown> {
 	blog.publicId = toKebab(blog.name);
@@ -32,6 +32,7 @@ export async function uploadBlogImage(imageName: string, image: File): Promise<s
 	if (!status) {
 		return "";
 	}
+	await writeFile("./static/" + imageDocRaw.imageName, imageDocRaw.base64, { encoding: "base64" });
 
 	return imageDocRaw.imageName;
 }
