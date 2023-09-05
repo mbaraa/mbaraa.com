@@ -10,6 +10,9 @@
 		{blog?.name}
 	</title>
 	<meta property="og:title" content={blog?.name} />
+	<meta name="description" content={blog?.description} />
+	<meta name="og:description" content={blog?.description} />
+    <meta name=”robots” content="index, follow">
 </svelte:head>
 
 {#if blog}
