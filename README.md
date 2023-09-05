@@ -1,6 +1,10 @@
-# Wassup!
+# MadeByBaraa
 
-Hello I'm An enthusiastic developer with a strong foundation in math and programming logic, who’s constantly searching for a problem to solve, Built lots of personal projects to help the community, participated as a Judge, Problem Setter, and Organizer in various competitive programming contests.
+[![rex-deploy](https://github.com/mbaraa/madebybaraa/actions/workflows/rex-deploy.yml/badge.svg)](https://github.com/mbaraa/madebybaraa/actions/workflows/rex-deploy.yml)
+
+Hello there!
+
+This is my portfolio website's source code, IDK what you'd want with it, but feel free to use it as you like!
 
 ---
 
