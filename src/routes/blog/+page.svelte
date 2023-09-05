@@ -9,6 +9,9 @@
 
 <svelte:head>
 	<title>Blogs By Baraa</title>
+	<meta property="og:title" content="Blogs By Baraa" />
+	<meta name="description" content={data.info.blogIntro} />
+	<meta name="og:description" content={data.info.blogIntro} />
 </svelte:head>
 
 <div class="font-[Vistol]">

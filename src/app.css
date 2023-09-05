@@ -5,15 +5,23 @@
 @layer base {
 	@font-face {
 		font-family: "Vistol";
+		font-weight: 300;
+		font-style: normal;
+		font-display: swap;
 		src: url("/fonts/VistolSans-Light.otf");
 	}
 	@font-face {
 		font-family: "Vistol";
-		src: url("/fonts/VistolSans-Black.otf");
 		font-weight: 1000;
+		font-style: normal;
+		font-display: swap;
+		src: url("/fonts/VistolSans-Black.otf");
 	}
 	@font-face {
 		font-family: "Space";
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
 		src: url("/fonts/SpaceMono-Regular.ttf");
 	}
 }
