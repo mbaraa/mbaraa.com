@@ -23,7 +23,6 @@ th {
 	color: #20db8f;
 	text-decoration-line: underline;
 }
-
 .markdown a:hover {
 	text-decoration-line: none;
 	color: #10ca7e;
@@ -36,6 +35,9 @@ th {
 .markdown ul {
 	list-style-type: circle;
     margin-left: 12px;
+}
+.markdown li {
+    padding: 10px 0;
 }
 .markdown h1 {
 	display: block;
@@ -100,7 +102,7 @@ th {
 	line-height: 1.9;
 }
 .markdown pre {
-	background-color: #282828;
+	background-color: #111111;
 	border-radius: 8px;
 	padding: 10px;
 	color: white;
@@ -109,7 +111,7 @@ th {
     overflow-x: scroll;
 }
 .markdown code {
-	background-color: #282828;
+	background-color: #111111;
 	border-radius: 8px;
 	padding: 3px;
 	color: white;
