@@ -1,7 +1,8 @@
 <script lang="ts">
 	import MarkdownIt from "markdown-it";
 	import hljs from "highlight.js";
-	import "highlight.js/styles/base16/solarized-dark.css";
+	import "highlight.js/styles/base16/gruvbox-dark-hard.css";
+
 
 	export let text: string;
 
