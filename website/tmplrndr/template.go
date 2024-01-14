@@ -17,7 +17,7 @@ var (
 	templates embed.FS
 
 	templatesPaths = map[string][]string{
-		"index": {"html/index.html", "html/header.html", "html/_imports.html"},
+		"index": {"html/index.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
 	}
 
 	_ Template[IndexProps] = &indexTemplate{}
