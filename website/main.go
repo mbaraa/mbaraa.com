@@ -129,9 +129,54 @@ func handleProjectsPage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func handleXpPage(w http.ResponseWriter, r *http.Request) {
+	page := tmplrndr.NewXPs().Render(tmplrndr.XPsProps{
+		ProfessionalWork: tmplrndr.ExperienceGroup{
+			Name: "Professional Work",
+			Xps: []tmplrndr.Experience{
+				{
+					Title:       "ProgressSoft",
+					Description: "JAVAAAAAa",
+					Location:    "Amman, Jordan",
+					StartDate:   "2022",
+					EndDate:     "2023",
+					Roles:       []string{"Nigga", "Paris"},
+				},
+
+				{
+					Title:       "ProgressSoft",
+					Description: "JAVAAAAAa",
+					Location:    "Amman, Jordan",
+					StartDate:   "2022",
+					EndDate:     "2023",
+					Roles:       []string{"Nigga", "Paris"},
+				},
+			},
+		},
+		Volunteering: tmplrndr.ExperienceGroup{
+			Name: "Volunteering",
+			Xps: []tmplrndr.Experience{
+				{
+					Title:       "ProgressHard",
+					Description: "JAVAAAAAa",
+					Location:    "Amman, Jordan",
+					StartDate:   "2022",
+					EndDate:     "2023",
+					Roles:       []string{"Nigga", "Paris"},
+				},
+			},
+		},
+	})
+	_, err := io.Copy(w, page)
+	if err != nil {
+		handelErrorPage(w, r)
+	}
+}
+
 func main() {
 	http.HandleFunc("/", handleHomePage)
 	http.HandleFunc("/projects", handleProjectsPage)
+	http.HandleFunc("/xp", handleXpPage)
 
 	http.Handle("/resources/", http.FileServer(http.FS(res)))
 	log.Infoln("server started at port 3000")
