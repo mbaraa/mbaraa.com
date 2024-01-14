@@ -2,7 +2,6 @@ package tmplrndr
 
 import "io"
 
-// IndexProps it's just here, maybe it'll be of use in the future.
 type IndexProps struct {
 	Name  string
 	Brief string
