@@ -140,7 +140,7 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 					Location:    "Amman, Jordan",
 					StartDate:   "2022",
 					EndDate:     "2023",
-					Roles:       []string{"Nigga", "Paris"},
+					Roles:       []string{"Paris", "Texas"},
 				},
 
 				{
@@ -149,7 +149,7 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 					Location:    "Amman, Jordan",
 					StartDate:   "2022",
 					EndDate:     "2023",
-					Roles:       []string{"Nigga", "Paris"},
+					Roles:       []string{"Margaret"},
 				},
 			},
 		},
@@ -162,7 +162,7 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 					Location:    "Amman, Jordan",
 					StartDate:   "2022",
 					EndDate:     "2023",
-					Roles:       []string{"Nigga", "Paris"},
+					Roles:       []string{"Taco Truck", "Venice Bitch"},
 				},
 			},
 		},
