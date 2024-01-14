@@ -24,6 +24,7 @@ var (
 
 	_ Template[IndexProps]    = &indexTemplate{}
 	_ Template[ProjectsProps] = &projectsTemplate{}
+	_ Template[XPsProps]      = &xpsTemplate{}
 )
 
 // TemplateProps is a TYPED pages props, so that all pages get their props
