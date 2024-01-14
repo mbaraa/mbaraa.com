@@ -1,9 +1,7 @@
 package tmplrndr
 
 import (
-	"bytes"
 	"io"
-	"mbaraacom/log"
 )
 
 type Experience struct {
@@ -32,10 +30,6 @@ func NewXPs() Template[XPsProps] {
 }
 
 func (p *xpsTemplate) Render(props XPsProps) io.Reader {
-	out, err := renderTemplate("xp", props)
-	if err != nil {
-		log.Errorln(err)
-		return bytes.NewBuffer([]byte{})
-	}
+	out, _ := renderTemplate("xp", props)
 	return out
 }
