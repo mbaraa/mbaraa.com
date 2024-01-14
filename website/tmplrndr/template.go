@@ -19,6 +19,7 @@ var (
 	templatesPaths = map[string][]string{
 		"index":    {"html/index.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
 		"projects": {"html/projects.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
+		"xp":       {"html/xp.html", "html/header.html", "html/_imports.html", "html/contact-links.html", "html/xp-group.html"},
 	}
 
 	_ Template[IndexProps]    = &indexTemplate{}
@@ -28,7 +29,7 @@ var (
 // TemplateProps is a TYPED pages props, so that all pages get their props
 // without any funny business when matching names and types.
 type TemplateProps interface {
-	IndexProps | ProjectsProps
+	IndexProps | ProjectsProps | XPsProps
 }
 
 // Template is an interface that represents a renderable html template.
