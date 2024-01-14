@@ -17,16 +17,18 @@ var (
 	templates embed.FS
 
 	templatesPaths = map[string][]string{
-		"index": {"html/index.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
+		"index":    {"html/index.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
+		"projects": {"html/projects.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
 	}
 
-	_ Template[IndexProps] = &indexTemplate{}
+	_ Template[IndexProps]    = &indexTemplate{}
+	_ Template[ProjectsProps] = &projectsTemplate{}
 )
 
 // TemplateProps is a TYPED pages props, so that all pages get their props
 // without any funny business when matching names and types.
 type TemplateProps interface {
-	IndexProps
+	IndexProps | ProjectsProps
 }
 
 // Template is an interface that represents a renderable html template.

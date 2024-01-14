@@ -30,8 +30,109 @@ func handleHomePage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func handleProjectsPage(w http.ResponseWriter, r *http.Request) {
+	page := tmplrndr.NewProjects().Render(tmplrndr.ProjectsProps{
+		Groups: []tmplrndr.ProjectGroup{
+			{
+				Title:       "Bla Bla Bla",
+				Description: "Blyaaaaaaaaaaaaaaaaaaaaaat",
+				Order:       1,
+				PublicId:    "bla-bla-bla",
+				Projects: []struct {
+					Name        string
+					Description string
+					LogoUrl     string
+					SourceCode  string
+					Website     string
+					StartYear   string
+					EndYear     string
+					ComingSoon  bool
+				}{
+					{
+						Name:        "Mbaraa.com",
+						Description: "Website blyat",
+						LogoUrl:     "https://mbaraa.com",
+						SourceCode:  "https://github.com/mbaraa/madebybaraa",
+						Website:     "https://mbaraa.com",
+						StartYear:   "2021",
+						EndYear:     "2023",
+						ComingSoon:  false,
+					},
+					{
+						Name:        "Mbaraa.com",
+						Description: "Website blyat",
+						LogoUrl:     "https://mbaraa.com",
+						Website:     "https://mbaraa.com",
+						StartYear:   "2021",
+						EndYear:     "2023",
+						ComingSoon:  false,
+					},
+					{
+						Name:        "Mbaraa.com",
+						Description: "Website blyat",
+						LogoUrl:     "https://mbaraa.com",
+						StartYear:   "2021",
+						EndYear:     "2023",
+						ComingSoon:  false,
+					},
+				},
+			},
+			{
+				Title:       "Bla Bla Bla 2",
+				Description: "Blyaaaaaaaaaaaaaaaaaaaaaat 2",
+				Order:       1,
+				PublicId:    "bla-bla-bla",
+				Projects: []struct {
+					Name        string
+					Description string
+					LogoUrl     string
+					SourceCode  string
+					Website     string
+					StartYear   string
+					EndYear     string
+					ComingSoon  bool
+				}{
+					{
+						Name:        "Mbaraa.com",
+						Description: "Website blyat",
+						LogoUrl:     "https://mbaraa.com",
+						SourceCode:  "https://github.com/mbaraa/madebybaraa",
+						Website:     "https://mbaraa.com",
+						StartYear:   "2021",
+						EndYear:     "2023",
+						ComingSoon:  false,
+					},
+					{
+						Name:        "Mbaraa.com",
+						Description: "Website blyat",
+						LogoUrl:     "https://mbaraa.com",
+						Website:     "https://mbaraa.com",
+						StartYear:   "2021",
+						EndYear:     "2023",
+						ComingSoon:  false,
+					},
+					{
+						Name:        "Mbaraa.com",
+						Description: "Website blyat",
+						LogoUrl:     "https://mbaraa.com",
+						StartYear:   "2021",
+						EndYear:     "2023",
+						ComingSoon:  false,
+					},
+				},
+			},
+		},
+	})
+	_, err := io.Copy(w, page)
+	if err != nil {
+		handelErrorPage(w, r)
+	}
+}
+
 func main() {
 	http.HandleFunc("/", handleHomePage)
+	http.HandleFunc("/projects", handleProjectsPage)
+
 	http.Handle("/resources/", http.FileServer(http.FS(res)))
 	log.Infoln("server started at port 3000")
 	log.Fatalln(string(log.ErrorLevel), http.ListenAndServe(":3000", nil))
