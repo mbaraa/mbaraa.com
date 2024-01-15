@@ -17,20 +17,25 @@ var (
 	templates embed.FS
 
 	templatesPaths = map[string][]string{
-		"index":    {"html/index.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
-		"projects": {"html/projects.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
-		"xp":       {"html/xp.html", "html/header.html", "html/_imports.html", "html/contact-links.html", "html/xp-group.html"},
+		"index":           {"html/index.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
+		"projects":        {"html/projects.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
+		"xp":              {"html/xp.html", "html/header.html", "html/_imports.html", "html/contact-links.html", "html/xp-group.html"},
+		"markdown-viewer": {"html/markdown-viewer.html"},
+		"about":           {"html/about.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
 	}
 
-	_ Template[IndexProps]    = &indexTemplate{}
-	_ Template[ProjectsProps] = &projectsTemplate{}
-	_ Template[XPsProps]      = &xpsTemplate{}
+	_ Template[IndexProps]          = &indexTemplate{}
+	_ Template[ProjectsProps]       = &projectsTemplate{}
+	_ Template[XPsProps]            = &xpsTemplate{}
+	_ Template[AboutProps]          = &aboutTemplate{}
+	_ Template[MarkdownViewerProps] = &markdownViewerTemplate{}
 )
 
 // TemplateProps is a TYPED pages props, so that all pages get their props
 // without any funny business when matching names and types.
 type TemplateProps interface {
-	IndexProps | ProjectsProps | XPsProps
+	IndexProps | ProjectsProps | XPsProps |
+		MarkdownViewerProps | AboutProps
 }
 
 // Template is an interface that represents a renderable html template.
