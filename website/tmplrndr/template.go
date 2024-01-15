@@ -22,6 +22,8 @@ var (
 		"xp":              {"html/xp.html", "html/header.html", "html/_imports.html", "html/contact-links.html", "html/xp-group.html"},
 		"markdown-viewer": {"html/markdown-viewer.html"},
 		"about":           {"html/about.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
+		"blogs":           {"html/blogs.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
+		"blog":            {"html/blog.html", "html/header.html", "html/_imports.html", "html/contact-links.html"},
 	}
 
 	_ Template[IndexProps]          = &indexTemplate{}
@@ -29,13 +31,16 @@ var (
 	_ Template[XPsProps]            = &xpsTemplate{}
 	_ Template[AboutProps]          = &aboutTemplate{}
 	_ Template[MarkdownViewerProps] = &markdownViewerTemplate{}
+	_ Template[BlogsProps]          = &blogsTemplate{}
+	_ Template[BlogPostProps]       = &blogPostTemplate{}
 )
 
 // TemplateProps is a TYPED pages props, so that all pages get their props
 // without any funny business when matching names and types.
 type TemplateProps interface {
 	IndexProps | ProjectsProps | XPsProps |
-		MarkdownViewerProps | AboutProps
+		MarkdownViewerProps | AboutProps | BlogsProps |
+		BlogPostProps
 }
 
 // Template is an interface that represents a renderable html template.
