@@ -4,7 +4,7 @@ BINARY_NAME=mbaraacom
 
 build:
 	cd tailwindcss && \
-	npx tailwindcss -i ../resources/css/style.css -o ../resources/css/tailwind.css && \
+	npx tailwindcss -i ../resources/css/style.css -o ../resources/css/tailwind.css -m && \
 	cd .. && \
 	go mod tidy && \
 	go build -ldflags="-w -s" -o ${BINARY_NAME}
