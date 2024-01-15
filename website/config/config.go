@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"slidemd/log"
+	"mbaraacom/log"
 )
 
 var (
@@ -12,12 +12,14 @@ var (
 
 func init() {
 	_config = config{
-		Port: getEnv("WEBSITE_PORT", "8080"),
+		Port:  getEnv("WEBSITE_PORT", "8080"),
+		DbUri: getEnv("WEBSITE_DB_URI", ""),
 	}
 }
 
 type config struct {
-	Port string
+	Port  string
+	DbUri string
 }
 
 // Config returns the API's config :)
