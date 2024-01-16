@@ -25,7 +25,7 @@ services:
     depends_on:
       - db
     ports:
-      - "2024:8080"
+      - "3000:3000"
     env_file: ./.env.docker
     stdin_open: true
     networks:
