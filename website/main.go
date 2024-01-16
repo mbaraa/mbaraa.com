@@ -34,7 +34,9 @@ func main() {
 }
 
 func handelErrorPage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Oopsie, forgot the error page! %s", time.Now())
+	log.Errorf("Error happended when calling: %s %s?%s\n", r.Method, r.URL.Path, r.URL.Query().Encode())
+	page := tmplrndr.NewError().Render(tmplrndr.ErrorProps{})
+	_, _ = io.Copy(w, page)
 }
 
 func handleHomePage(w http.ResponseWriter, r *http.Request) {
