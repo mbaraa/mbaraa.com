@@ -13,11 +13,11 @@ services:
     networks:
       - mbaraacom
 
-  app:
-    container_name: "mbaraacom-app"
+  website:
+    container_name: "mbaraacom-website"
     build:
       dockerfile: Dockerfile
-      context: .
+      context: ./website/
     image: "mbaraacom"
     restart: "always"
     volumes:
