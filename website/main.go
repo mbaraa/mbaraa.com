@@ -28,6 +28,7 @@ func main() {
 	http.HandleFunc("/about", handleAboutPage)
 	http.HandleFunc("/blog", handleBlogsPage)
 	http.HandleFunc("/blog/", handleBlogPostPage)
+	http.Handle("/img/", http.StripPrefix("/img", http.FileServer(http.Dir("./_uploads/"))))
 
 	http.Handle("/resources/", http.FileServer(http.FS(res)))
 	log.Infoln("server started at port 3000")
