@@ -43,7 +43,7 @@ func updateDocumentById(coll *mongo.Collection, id string, newThing any) error {
 	if err != nil {
 		return err
 	}
-	_, err = coll.UpdateByID(ctx, primitveId, newThing)
+	_, err = coll.UpdateByID(ctx, primitveId, bson.M{"$set": newThing})
 	if err != nil {
 		return err
 	}

@@ -703,6 +703,12 @@ func handleBlogPostPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	blog.VisitTimes++
+	err = db.UpdateBlog(blog.Id, db.Blog{VisitTimes: blog.VisitTimes})
+	if err != nil {
+		log.Errorln(err)
+	}
+
 	page := tmplrndr.NewBlogPost().Render(tmplrndr.BlogPostProps{
 		BlogPostPreview: tmplrndr.BlogPostPreview{
 			Title:       blog.Title,
