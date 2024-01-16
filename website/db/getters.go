@@ -24,6 +24,19 @@ func GetBlog(id string) (Blog, error) {
 	return getDocumentById[Blog](blogColl, id)
 }
 
+func GetBlogByPublicId(id string) (Blog, error) {
+	row := blogColl.FindOne(ctx, bson.M{"public_id": bson.M{"$eq": id}})
+	if row.Err() != nil {
+		return Blog{}, row.Err()
+	}
+	var blog Blog
+	err := row.Decode(&blog)
+	if err != nil {
+		return Blog{}, err
+	}
+	return blog, nil
+}
+
 func GetProjectGroups() ([]ProjectGroup, error) {
 	return getDocuments[ProjectGroup](projectGroupColl)
 }
