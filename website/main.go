@@ -9,6 +9,8 @@ import (
 	"mbaraacom/log"
 	"mbaraacom/tmplrndr"
 	"net/http"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -503,6 +505,13 @@ func handelErrorPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleHomePage(w http.ResponseWriter, r *http.Request) {
+	if strings.Contains(r.URL.Path, "robots.txt") {
+		robotsFile, _ := os.ReadFile("./resources/robots.txt")
+		w.Header().Set("Content-Type", "text/plain")
+		_, _ = w.Write(robotsFile)
+		return
+	}
+
 	info, err := db.GetInfo()
 	if err != nil {
 		log.Errorln(err)
