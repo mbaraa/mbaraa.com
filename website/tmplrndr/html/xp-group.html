@@ -1,0 +1,43 @@
+{{ define "xp-group" }}
+<div class="text-white mb-[50px] mx-[30px]">
+  <h1 class="font-bold text-[30px] mt-[20px] mb-[30px]">{{ .Name }}:</h1>
+  <ul class="text-green text-[25px] xp-list">
+    {{ range .Xps }}
+    <li class="relative flex gap-[20px]">
+      <div class="font-[Space]">
+        <h3 class="relative top-[-6px] text-[15px] text-center leading-[15px]">
+          {{ .StartDate }}<br />-<br />
+          {{ if .EndDate }} {{ .EndDate }}{{ else }}....{{ end}}
+        </h3>
+      </div>
+      <div class="border-l-[5px] border-l-[white] min-h-auto py-[20px]"></div>
+      <div class="text-[15px] pb-[20px] text-white">
+        <h1 class="text-[25px]">{{ .Title }}</h1>
+        {{ if .Description }}
+        <h3>{{ .Description }}</h3>
+        {{ end }} {{ if .Roles }}
+        <ul class="list-disc">
+          {{ range .Roles }}
+          <li class="ml-[12px]">{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+
+<style scoped>
+  .xp-list ul li::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #20db8f;
+    top: 7px;
+    left: 48.5px;
+  }
+</style>
+{{ end }}
