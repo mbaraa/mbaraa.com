@@ -1,6 +1,6 @@
-# MadeByBaraa
+# mbaraa.com
 
-[![rex-deploy](https://github.com/mbaraa/madebybaraa/actions/workflows/rex-deploy.yml/badge.svg)](https://github.com/mbaraa/madebybaraa/actions/workflows/rex-deploy.yml)
+[![rex-deploy](https://github.com/mbaraa/mbaraa.com/actions/workflows/rex-deploy.yml/badge.svg)](https://github.com/mbaraa/mbaraa.com/actions/workflows/rex-deploy.yml)
 
 Hello there!
 
