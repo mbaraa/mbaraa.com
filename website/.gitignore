@@ -26,11 +26,5 @@ go.work
 
 # End of https://www.toptal.com/developers/gitignore/api/go
 
-out.sh
-.env
-.env.*
-!.env.example
-_*/
-
 tailwindcss/node_modules/
 resources/css/tailwind.css

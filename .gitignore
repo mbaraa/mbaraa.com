@@ -1,2 +1,8 @@
 /dist/
 /target/
+./website/mbaraacom-website
+./dashboard/mbaraacom-dashboard
+.env
+.env.*
+!.env.example
+_*/
