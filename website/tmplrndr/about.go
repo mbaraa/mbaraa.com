@@ -2,9 +2,9 @@ package tmplrndr
 
 import (
 	"bytes"
+	"internal/log"
 	"io"
 	"math"
-	"mbaraacom/log"
 )
 
 type AboutProps struct {

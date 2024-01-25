@@ -16,8 +16,8 @@ services:
   website:
     container_name: "mbaraacom-website"
     build:
-      dockerfile: Dockerfile
-      context: ./website/
+      dockerfile: ./pkg/website/Dockerfile
+      context: .
     image: "mbaraacom"
     restart: "always"
     volumes:
@@ -26,6 +26,24 @@ services:
       - db
     ports:
       - "3000:3000"
+    env_file: ./.env.docker
+    stdin_open: true
+    networks:
+      - mbaraacom
+
+  dashboard:
+    container_name: "mbaraacom-dashboard"
+    build:
+      dockerfile: ./dashboard/Dockerfile
+      context: .
+    image: "mbaraacom-dashboard"
+    restart: "always"
+    volumes:
+      - mbaraacom-uploads:/app/_uploads
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
     env_file: ./.env.docker
     stdin_open: true
     networks:

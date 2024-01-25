@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"mbaraacom/log"
+	"internal/log"
 )
 
 var (

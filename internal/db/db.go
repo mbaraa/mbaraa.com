@@ -2,8 +2,7 @@ package db
 
 import (
 	"context"
-	"mbaraacom/config"
-	"mbaraacom/log"
+	"internal/log"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -20,12 +19,12 @@ var (
 	infoColl                   *mongo.Collection
 )
 
-func init() {
+func Init(dbUri string) {
 	ctx = context.Background()
 	var err error
-	client, err = mongo.Connect(ctx, options.Client().ApplyURI(config.Config().DbUri))
+	client, err = mongo.Connect(ctx, options.Client().ApplyURI(dbUri))
 	if err != nil {
-		log.Errorln(err.Error())
+		log.Fatalln(string(log.ErrorLevel), err.Error())
 	}
 
 	blogColl = client.Database("mbaraacom").Collection("blogs")

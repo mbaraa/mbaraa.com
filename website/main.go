@@ -3,15 +3,17 @@ package main
 import (
 	"embed"
 	"fmt"
+	"internal/db"
+	"internal/log"
 	"io"
-	"mbaraacom/config"
-	"mbaraacom/db"
-	"mbaraacom/log"
-	"mbaraacom/tmplrndr"
 	"net/http"
 	"os"
 	"strings"
 	"time"
+
+	"internal/config"
+
+	"github.com/mbaraa/mbaraa.com/website/tmplrndr"
 )
 
 var (
@@ -20,6 +22,8 @@ var (
 )
 
 func main() {
+	db.Init(config.Config().DbUri)
+
 	http.HandleFunc("/", handleHomePage)
 	http.HandleFunc("/projects", handleProjectsPage)
 	http.HandleFunc("/xp", handleXpPage)

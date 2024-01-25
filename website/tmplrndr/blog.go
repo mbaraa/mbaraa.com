@@ -2,8 +2,8 @@ package tmplrndr
 
 import (
 	"bytes"
+	"internal/log"
 	"io"
-	"mbaraacom/log"
 )
 
 type BlogPostProps struct {
