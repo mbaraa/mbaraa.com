@@ -5,6 +5,4 @@
 *.dylib
 *.test
 *.out
-tailwindcss/node_modules/
-./website/resources/css/tailwind.css
-./dashboard/resources/css/tailwind.css
+resources/css/tailwind.css
