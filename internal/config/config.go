@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"time"
 
 	"internal/log"
 )
@@ -12,16 +13,18 @@ var (
 
 func init() {
 	_config = config{
-		WebsitePort:   getEnv("WEBSITE_PORT", "8080"),
-		DashboardPort: getEnv("DASHBOARD_PORT", "8081"),
-		DbUri:         getEnv("DB_URI", ""),
+		WebsitePort:       getEnv("WEBSITE_PORT", "8080"),
+		DashboardPort:     getEnv("DASHBOARD_PORT", "8081"),
+		DashboardPassword: getEnv("DASHBOARD_PASSWORD", time.Now().String()),
+		DbUri:             getEnv("DB_URI", ""),
 	}
 }
 
 type config struct {
-	WebsitePort   string
-	DashboardPort string
-	DbUri         string
+	WebsitePort       string
+	DashboardPort     string
+	DashboardPassword string
+	DbUri             string
 }
 
 // Config returns the API's config :)
