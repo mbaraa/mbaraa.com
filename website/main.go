@@ -33,8 +33,8 @@ func main() {
 	http.Handle("/img/", http.StripPrefix("/img", http.FileServer(http.Dir("./_uploads/"))))
 
 	http.Handle("/resources/", http.FileServer(http.FS(res)))
-	log.Infoln("server started at port 3000")
-	log.Fatalln(string(log.ErrorLevel), http.ListenAndServe(":"+config.Config().Port, nil))
+	log.Infof("website's server started at port %s\n", config.Config().WebsitePort)
+	log.Fatalln(string(log.ErrorLevel), http.ListenAndServe(":"+config.Config().WebsitePort, nil))
 }
 
 func handelErrorPage(w http.ResponseWriter, r *http.Request) {
