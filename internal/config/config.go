@@ -12,14 +12,16 @@ var (
 
 func init() {
 	_config = config{
-		Port:  getEnv("WEBSITE_PORT", "8080"),
-		DbUri: getEnv("WEBSITE_DB_URI", ""),
+		WebsitePort:   getEnv("WEBSITE_PORT", "8080"),
+		DashboardPort: getEnv("DASHBOARD_PORT", "8081"),
+		DbUri:         getEnv("DB_URI", ""),
 	}
 }
 
 type config struct {
-	Port  string
-	DbUri string
+	WebsitePort   string
+	DashboardPort string
+	DbUri         string
 }
 
 // Config returns the API's config :)
