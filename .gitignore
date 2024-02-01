@@ -1,7 +1,9 @@
 /dist/
 /target/
 ./website/mbaraacom-website
+./website/mbaraacom
 ./dashboard/mbaraacom-dashboard
+./dashboard/mbaraacom
 .env
 .env.*
 !.env.example
