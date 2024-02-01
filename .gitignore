@@ -6,3 +6,6 @@
 .env.*
 !.env.example
 _*/
+tailwindcss/node_modules/
+./website/resources/css/tailwind.css
+./dashboard/resources/css/tailwind.css
