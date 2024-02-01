@@ -18,15 +18,17 @@ var (
 
 	templatesPaths = map[string][]string{
 		"index": {"html/index.html", "html/header.html", "html/_imports.html"},
+		"login": {"html/login.html", "html/header.html", "html/_imports.html"},
 	}
 
 	_ Template[IndexProps] = &indexTemplate{}
+	_ Template[LoginProps] = &loginTemplate{}
 )
 
 // TemplateProps is a TYPED pages props, so that all pages get their props
 // without any funny business when matching names and types.
 type TemplateProps interface {
-	IndexProps
+	IndexProps | LoginProps
 }
 
 // Template is an interface that represents a renderable html template.

@@ -1,4 +1,4 @@
-{{ define "index" }}
+{{ define "login" }}
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,7 +17,21 @@
 
   <body style="min-height: 100dvh" class="font-Vistol bg-black">
     {{ template "header" }}
-    <main class="w-full h-full"></main>
+    <main class="w-full h-full p-[100px]">
+      <form hx-post="/login" hx-swap="innerHTML" hx-replace-url>
+        <input
+          class="p-[5px] rounded-[5px]"
+          placeholder="Enter Password"
+          type="password"
+          name="password"
+        />
+        <button
+          class="text-white p-[5px] border-[1px] border-[white] rounded-[5px]"
+        >
+          Login
+        </button>
+      </form>
+    </main>
   </body>
 </html>
 {{ end }}
