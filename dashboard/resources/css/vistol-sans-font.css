@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Vistol";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url("/resources/fonts/VistolSans-Light.otf");
+}
+@font-face {
+  font-family: "Vistol";
+  font-weight: 1000;
+  font-style: normal;
+  font-display: swap;
+  src: url("/resources/fonts/VistolSans-Black.otf");
+}
