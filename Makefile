@@ -1,15 +1,18 @@
 BINARY_NAME=mbaraacom
 
-build_dashboard:
+build_tailwindcss:
+	cd tailwindcss && \
+	npx tailwindcss -i ../website/resources/css/style.css -o ../website/resources/css/tailwind.css -m && \
+	npx tailwindcss -i ../dashboard/resources/css/style.css -o ../dashboard/resources/css/tailwind.css -m && \
+	cd ..
+
+build_dashboard: build_tailwindcss
 	cd ./dashboard && \
 	go mod tidy && \
 	go build -ldflags="-w -s" -o ${BINARY_NAME}-dashboard
 
-build_website:
+build_website: build_tailwindcss
 	cd ./website && \
-	cd tailwindcss && \
-	npx tailwindcss -i ../resources/css/style.css -o ../resources/css/tailwind.css -m && \
-	cd .. && \
 	go mod tidy && \
 	go build -ldflags="-w -s" -o ${BINARY_NAME}-website
 
