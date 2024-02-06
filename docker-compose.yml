@@ -16,7 +16,7 @@ services:
   website:
     container_name: "mbaraacom-website"
     build:
-      dockerfile: ./pkg/website/Dockerfile
+      dockerfile: ./website/Dockerfile
       context: .
     image: "mbaraacom"
     restart: "always"
