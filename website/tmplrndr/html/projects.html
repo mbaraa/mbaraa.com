@@ -140,7 +140,7 @@
               <li>
                 <div class="timeline-content">
                   <h3 class="date">
-                    ({{ .StartYear }}-{{ .if .EndYear }} {{ .EndYear }} {{ end
+                    ({{ .StartYear }}-{{ if .EndYear }} {{ .EndYear }} {{ end
                     }})
                   </h3>
                   <h4 class="text-green">{{ .Name }}</h4>
