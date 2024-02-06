@@ -10,7 +10,7 @@ FROM alpine:latest as run
 
 WORKDIR /app
 
-COPY --from=build /app/website/mbaraacom ./run
+COPY --from=build /app/website/mbaraacom-website ./run
 COPY --from=build /app/website/resources ./resources
 
 EXPOSE 3000
