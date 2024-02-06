@@ -140,28 +140,30 @@
               <li>
                 <div class="timeline-content">
                   <h3 class="date">
-                    <h4 class="text-green">{{ .Name }}</h4>
-                    <p>{{ .Description }}</p>
-                    <div class="float-right">
-                      {{ if .Website }}
-                      <a
-                        class="underline hover:text-green"
-                        target="_blank"
-                        href="{{ .Website }}"
-                        >Website</a
-                      >
-                      {{ end }} {{ if .SourceCode }}
-                      <a
-                        class="underline hover:text-green"
-                        target="_blank"
-                        href="{{ .SourceCode }}"
-                        >SourceCode</a
-                      >
-                      {{ end }} {{ if .ComingSoon }}
-                      <span class="text-[15px] italic">Coming Soon...</span>
-                      {{ end }}
-                    </div>
+                    ({{ .StartYear }}-{{ .if .EndYear }} {{ .EndYear }} {{ end
+                    }})
                   </h3>
+                  <h4 class="text-green">{{ .Name }}</h4>
+                  <p>{{ .Description }}</p>
+                  <div class="float-right">
+                    {{ if .Website }}
+                    <a
+                      class="underline hover:text-green"
+                      target="_blank"
+                      href="{{ .Website }}"
+                      >Website</a
+                    >
+                    {{ end }} {{ if .SourceCode }}
+                    <a
+                      class="underline hover:text-green"
+                      target="_blank"
+                      href="{{ .SourceCode }}"
+                      >SourceCode</a
+                    >
+                    {{ end }} {{ if .ComingSoon }}
+                    <span class="text-[15px] italic">Coming Soon...</span>
+                    {{ end }}
+                  </div>
                 </div>
               </li>
               {{ end }}
