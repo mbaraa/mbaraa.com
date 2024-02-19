@@ -19,4 +19,4 @@ jobs:
         with:
           server-url: ${{ secrets.REX_SERVER }}
           token: ${{ secrets.REX_KEY }}
-          repo-name: madebybaraa
+          repo-name: mbaraa.com
