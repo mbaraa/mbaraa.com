@@ -85,6 +85,9 @@ func loadProjects() error {
 	if err != nil {
 		return err
 	}
+	slices.SortFunc(prjcts, func(pgI, pgJ ProjectGroup) int {
+		return int(pgI.Order) - int(pgJ.Order)
+	})
 	projects.Set(prjcts)
 	return nil
 }

@@ -2,7 +2,6 @@ package tmplrndr
 
 import (
 	"io"
-	"slices"
 )
 
 type ProjectGroup struct {
@@ -38,9 +37,6 @@ func (p *projectsTemplate) Render(props ProjectsProps) io.Reader {
 			props.Groups[i].Projects[j].ComingSoon = project.SourceCode == "" && project.Website == ""
 		}
 	}
-	slices.SortFunc(props.Groups, func(a, b ProjectGroup) int {
-		return a.Order - b.Order
-	})
 	out, _ := renderTemplate("projects", props)
 	return out
 }
