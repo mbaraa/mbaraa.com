@@ -20,7 +20,7 @@ var (
 )
 
 func main() {
-	timer := time.NewTicker(time.Hour * 24)
+	timer := time.NewTicker(time.Hour)
 	go func() {
 		for range timer.C {
 			err := data.UpdateBlogsMeta()
