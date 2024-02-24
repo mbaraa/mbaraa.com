@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"os"
 	"strings"
 	"time"
 
@@ -55,15 +54,15 @@ func handelErrorPage(w http.ResponseWriter, r *http.Request) {
 
 func handleHomePage(w http.ResponseWriter, r *http.Request) {
 	if strings.Contains(r.URL.Path, "robots.txt") {
-		robotsFile, _ := os.ReadFile("./resources/robots.txt")
+		robotsFile, _ := res.ReadFile("resources/robots.txt")
 		w.Header().Set("Content-Type", "text/plain")
 		_, _ = w.Write(robotsFile)
 		return
 	}
 	if strings.Contains(r.URL.Path, "sitemap.xml") {
-		robotsFile, _ := os.ReadFile("./resources/sitemap.xml")
+		sitemapFile, _ := res.ReadFile("resources/sitemap.xml")
 		w.Header().Set("Content-Type", "text/plain")
-		_, _ = w.Write(robotsFile)
+		_, _ = w.Write(sitemapFile)
 		return
 	}
 
