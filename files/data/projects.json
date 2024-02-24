@@ -1,0 +1,197 @@
+[
+  {
+    "title": "Linux Stuff",
+    "description": "Some Linux Programs",
+    "order": 1,
+    "projects": [
+      {
+        "name": "Dotsync",
+        "description": "A small, free, open-source, blazingly fast dotfiles synchronizer!",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/dotsync",
+        "website": "https://dotsync.org",
+        "start_year": "2023",
+        "end_year": ""
+      },
+      {
+        "name": "Eloi",
+        "description": "Gentoo ebuilds finder and installer, finds ebuilds from various overlay repos, and makes the needed cahnges to install an ebuild.",
+        "logo_url": "/images/gentoo.svg",
+        "source_code": "https://github.com/mbaraa/eloi",
+        "website": "https://wiki.gentoo.org/wiki/Eloi",
+        "start_year": "2023",
+        "end_year": ""
+      },
+      {
+        "name": "Schwifter",
+        "description": "A Gentoo post installer script, inspired from Helmuthdu's AUI, [needs updates for new packages' versions]",
+        "logo_url": "/images/gentoo.svg",
+        "source_code": "https://github.com/mbaraa/schwifter",
+        "website": "",
+        "start_year": "2019",
+        "end_year": "2020"
+      }
+    ]
+  },
+  {
+    "title": "Music",
+    "description": "Music related projects, not really music but eh they make sound don't they?",
+    "order": 2,
+    "projects": [
+      {
+        "name": "Jelly LP",
+        "description": "The coolest cloud music player!, make your own cloud music library.",
+        "logo_url": "",
+        "source_code": "",
+        "website": "",
+        "start_year": "2023",
+        "end_year": ""
+      },
+      {
+        "name": "Grievous",
+        "description": "Named after General Grievous, where it generates noises from text files or a provided URL, just like how Grievous makes weird noises when he talks",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/grievous",
+        "website": "",
+        "start_year": "2023",
+        "end_year": "2023"
+      }
+    ]
+  },
+  {
+    "title": "Google Developer Student Clubs",
+    "description": "Stuff for GDSC - ASU to solve some problems",
+    "order": 3,
+    "projects": [
+      {
+        "name": "GDSC - ASU Home Page",
+        "description": "A home page for the GDSC - ASU chapter, that can be customized easily and reused for any other GDSC chapter.",
+        "logo_url": "/images/gdg.png",
+        "source_code": "https://github.com/GDSC-ASU/website",
+        "website": "https://gdscasu.com",
+        "start_year": "2022",
+        "end_year": "2022"
+      },
+      {
+        "name": "GDSC Logo Generator",
+        "description": "My first web project, my Google Developer Student Clubs chapter's lead thought it would be a great idea if we had a logo generator that every other GDSC chapters can use it, so that every GDSC logos look the same in a neat way.",
+        "logo_url": "/images/logogen.png",
+        "source_code": "https://github.com/mbaraa/dsc_logo_generator",
+        "website": "https://logogen.gdscasu.com",
+        "start_year": "2020",
+        "end_year": "2021"
+      }
+    ]
+  },
+  {
+    "title": "Terminal Games",
+    "description": "Some games to play in the terminal",
+    "order": 4,
+    "projects": [
+      {
+        "name": "Snek",
+        "description": "Funny story, I saw a snake screen saver, and thought to myself, it would be great if I made a snake game, soon it'll solve itself!",
+        "logo_url": "/images/snek.png",
+        "source_code": "https://github.com/mbaraa/console_games/tree/master/Snek",
+        "website": "",
+        "start_year": "2022",
+        "end_year": "2022"
+      },
+      {
+        "name": "Tic Tac Toe",
+        "description": "I was boared again :)",
+        "logo_url": "/images/ttt.png",
+        "source_code": "https://github.com/mbaraa/console_games/tree/master/TicTacToe",
+        "website": "",
+        "start_year": "2021",
+        "end_year": "2021"
+      },
+      {
+        "name": "Tetris",
+        "description": "Terminal based tetris game, this is my fist Go project ever, I made it because I had nothing else to do.",
+        "logo_url": "/images/tetris.png",
+        "source_code": "https://github.com/mbaraa/console_games/tree/master/TheTetrisProject",
+        "website": "",
+        "start_year": "2020",
+        "end_year": "2020"
+      }
+    ]
+  },
+  {
+    "title": "Misc Web",
+    "description": "Some other web stuff",
+    "order": 5,
+    "projects": [
+      {
+        "name": "SlideMD",
+        "description": "Turn your Markdowns to portable web slides.",
+        "logo_url": "",
+        "source_code": "",
+        "website": "https://slidemd.com",
+        "start_year": "2024",
+        "end_year": ""
+      },
+      {
+        "name": " GitHub Graph Drawer ",
+        "description": "A tool that helps typing text on your GitHub contributions graph.",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/github-graph-drawer",
+        "website": "https://github-graph-drawer.mbaraa.com",
+        "start_year": "2023",
+        "end_year": ""
+      },
+      {
+        "name": "Ladder and Snake",
+        "description": "A weird looking Ladder and Snake game.",
+        "logo_url": "/images/ladder-and-snake.png",
+        "source_code": "https://github.com/mbaraa/ladder_and_snake",
+        "website": "",
+        "start_year": "2022",
+        "end_year": "2022"
+      },
+      {
+        "name": "Temco MEP Home Page",
+        "description": "A home page for Temco MEP that displays the services and featurs the company offers.",
+        "logo_url": "/images/temco-mep.png",
+        "source_code": "",
+        "website": "https://temco-mep.com",
+        "start_year": "2022",
+        "end_year": "2022"
+      },
+      {
+        "name": "Shorts Ninja",
+        "description": "My second web project, I was exploring web and I decided to go with the classic hello web project i.e. a URL Shortner.",
+        "logo_url": "/images/shortsninja.png",
+        "source_code": "https://github.com/mbaraa/shortsninja",
+        "website": "",
+        "start_year": "2021",
+        "end_year": "2021"
+      }
+    ]
+  },
+  {
+    "title": "College Related",
+    "description": "Stuff for my faculty",
+    "order": 6,
+    "projects": [
+      {
+        "name": "Ross 2",
+        "description": "My biggest project yet, Ross is a university contest manager, it manages and automates all contest registration and closure routines.",
+        "logo_url": "/images/ross2.png",
+        "source_code": "https://github.com/mbaraa/ross2",
+        "website": "",
+        "start_year": "2021",
+        "end_year": "2022"
+      },
+      {
+        "name": "Sheev",
+        "description": "Form to image generator, I made this project because of the lack of digitized forms in my university.",
+        "logo_url": "/images/sheev.png",
+        "source_code": "https://github.com/mbaraa/sheev",
+        "website": "https://sheev.mbaraa.com",
+        "start_year": "2021",
+        "end_year": "2021"
+      }
+    ]
+  }
+]

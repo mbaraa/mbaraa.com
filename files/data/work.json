@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Jordan Open Source Association",
+    "description": " JOSA is the not for profit organization that works for a better Jordan through openness in technology.",
+    "location": "Amman, Jordan",
+    "start_date": 1682820804,
+    "end_date": 0,
+    "roles": [
+      "Technologist.",
+      "Write Full-stack applications using Nuxt 3, Nest.js and Strapi.",
+      "Write deployment scripts using Docker and Docker compose."
+    ]
+  },
+  {
+    "title": "ProgressSoft",
+    "description": "Real-time Payment Solutions.",
+    "location": "Amman, Jordan",
+    "start_date": 1665540804,
+    "end_date": 1683857604,
+    "roles": [
+      "Associate Java Developer.",
+      "Backend micro-services development using Spring Boot (Java)",
+      "Unit and integration testing using JUnit.",
+      "Manage deployment pipelines health and optimization."
+    ]
+  }
+]

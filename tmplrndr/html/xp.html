@@ -1,0 +1,33 @@
+{{ define "xp" }}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Contributed by Baraa</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/resources/images/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=yes"
+    />
+    <meta
+      name="description"
+      content="Baraa Al-Masri's Personal Website and Blog"
+    />
+    <meta
+      name="keywords"
+      content="dsc,gdsc,mbaraa,Baraa,Baraa Al-Masri,baraa almasri,baraa al-masri,baraa masri,masri"
+    />
+    {{ template "_imports" }}
+  </head>
+
+  <body style="min-height: 100dvh" class="font-Vistol bg-black">
+    {{ template "header" }}
+    <main class="w-full h-full">
+      {{ template "xp-group" .ProfessionalWork }} {{ template "xp-group"
+      .Volunteering }}
+    </main>
+    {{ template "contact-links" }}
+  </body>
+</html>
+{{ end }}

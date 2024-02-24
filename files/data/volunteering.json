@@ -1,0 +1,49 @@
+[
+  {
+    "title": "ASU Coding Cup",
+    "description": "A competitive programming contest for students at Applied Science University.",
+    "location": "Amman, Jordan",
+    "start_date": 1646964804,
+    "end_date": 1686449604,
+    "roles": [
+      "Helped as Judge in the 7th and 8th versions of the contest.",
+      "Helped as Problem Setter in the 7th and 8th versions of the contest.",
+      "Helped as Technical Support in the 7th and 8th versions of the contest."
+    ]
+  },
+  {
+    "title": "Arab Future Programming Contest",
+    "description": "A competitive programming contest for Middle East High school students held by Applied Science University",
+    "location": "Amman, Jordan",
+    "start_date": 1631326404,
+    "end_date": 1662862404,
+    "roles": [
+      "Helped as Judge in the 10th and 11th versions of the contest.",
+      "Helped as Technical Support in the 10th and 11th versions of the contest."
+    ]
+  },
+  {
+    "title": "Google Developer Student Clubs - Applied Science University.",
+    "description": "University based community groups for students interested in Google developer technologies.",
+    "location": "Amman, Jordan",
+    "start_date": 1599790404,
+    "end_date": 0,
+    "roles": [
+      "Mentor of the 2023-2024 chapter.",
+      "Chapter Lead of the 2022-2023 chapter, organized various events and workshops.",
+      "Core Team member in the 2020-2021 chapter, helped organizing various events and developed GDSC Logo Generator."
+    ]
+  },
+  {
+    "title": "Junior Programming Contest",
+    "description": "A competitive programming contest for junior students at Applied Science University",
+    "location": "Amman, Jordan",
+    "start_date": 1615428804,
+    "end_date": 1673403204,
+    "roles": [
+      "Helped as Chief Judge in the 4th, 5th, and 6th versions of the contest. ",
+      "Helped as a Judge in the 3rd version of the contest.",
+      "Problem Setter, and Technical Support in the 3rd, 4th, 5th, and 6th versions."
+    ]
+  }
+]

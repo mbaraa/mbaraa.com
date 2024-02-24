@@ -1,0 +1,179 @@
+{{ define "projects" }}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Made by Baraa</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/resources/images/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=yes"
+    />
+    <meta
+      name="description"
+      content="Baraa Al-Masri's Personal Website and Blog"
+    />
+    <meta
+      name="keywords"
+      content="dsc,gdsc,mbaraa,Baraa,Baraa Al-Masri,baraa almasri,baraa al-masri,baraa masri,masri"
+    />
+    {{ template "_imports" }}
+    <style>
+      .container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+      }
+      .timeline {
+        width: 80%;
+        height: auto;
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .timeline ul {
+        list-style: none;
+      }
+      .timeline ul li {
+        padding: 20px;
+        background-color: #1e1f22;
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+      .timeline ul li:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-content h1 {
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 10px;
+      }
+      .timeline-content p {
+        font-size: 16px;
+        line-height: 30px;
+        font-weight: 300;
+      }
+      .timeline-content .date {
+        font-size: 12px;
+        font-weight: 300;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+      }
+      @media only screen and (min-width: 768px) {
+        .timeline:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 2px;
+          height: 100%;
+          background-color: gray;
+        }
+        .timeline ul li {
+          width: 50%;
+          position: relative;
+          margin-bottom: 50px;
+        }
+        .timeline ul li:nth-child(odd) {
+          float: left;
+          clear: right;
+          transform: translateX(-30px);
+          border-radius: 20px 0px 20px 20px;
+        }
+        .timeline ul li:nth-child(even) {
+          float: right;
+          clear: left;
+          transform: translateX(30px);
+          border-radius: 0px 20px 20px 20px;
+        }
+        .timeline ul li::before {
+          content: "";
+          position: absolute;
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background-color: gray;
+          top: 0px;
+        }
+        .timeline ul li:nth-child(odd)::before {
+          transform: translate(50%, -50%);
+          right: -30px;
+        }
+        .timeline ul li:nth-child(even)::before {
+          transform: translate(-50%, -50%);
+          left: -30px;
+        }
+        .timeline-content .date {
+          position: absolute;
+          top: -30px;
+        }
+        .timeline ul li:hover::before {
+          background-color: #20db8f;
+        }
+      }
+    </style>
+  </head>
+
+  <body style="min-height: 100dvh" class="font-Vistol bg-black">
+    {{ template "header" }}
+    <main class="w-full h-full">
+      {{ range .Groups }}
+      <div class="pb-[50px]">
+        <div
+          class="mx-[10%] my-[20px] md:mt-[50px] md:mb-[70px] bg-white p-[10px] rounded-tr-[15px] rounded-bl-[15px] text-center"
+        >
+          <h1 class="text-[25px] font-bold">{{ .Title }}</h1>
+          <h2 class="text-[15px]">{{ .Description }}</h2>
+        </div>
+
+        <div class="container">
+          <div class="timeline">
+            <ul>
+              {{ range .Projects }}
+              <li>
+                <div class="timeline-content">
+                  <h3 class="date">
+                    ({{ .StartYear }}-{{ if .EndYear }}{{ .EndYear }}{{ else
+                    }}Present{{ end }})
+                  </h3>
+                  <h4 class="text-green">{{ .Name }}</h4>
+                  <p>{{ .Description }}</p>
+                  <div class="float-right">
+                    {{ if .Website }}
+                    <a
+                      class="underline hover:text-green"
+                      target="_blank"
+                      href="{{ .Website }}"
+                      >Website</a
+                    >
+                    {{ end }} {{ if .SourceCode }}
+                    <a
+                      class="underline hover:text-green"
+                      target="_blank"
+                      href="{{ .SourceCode }}"
+                      >SourceCode</a
+                    >
+                    {{ end }} {{ if .ComingSoon }}
+                    <span class="text-[15px] italic">Coming Soon...</span>
+                    {{ end }}
+                  </div>
+                </div>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </main>
+    {{ template "contact-links" }}
+  </body>
+</html>
+{{ end }}

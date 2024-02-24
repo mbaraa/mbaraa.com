@@ -1,0 +1,7 @@
+{
+  "title": "Install Lua LSP for Neovim",
+  "description": "Lua LSP installation on Linux distros that don't include it or has an outdated version of it.",
+  "public_id": "install-lua-lsp-for-neovim",
+  "visited_times": 465,
+  "written_at": 1682372217
+}

@@ -1,0 +1,83 @@
+{{ define "blogs" }}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Blogs by Baraa</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/resources/images/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=yes"
+    />
+    <meta
+      name="description"
+      content="Baraa Al-Masri's Personal Website and Blog"
+    />
+    <meta
+      name="keywords"
+      content="dsc,gdsc,mbaraa,Baraa,Baraa Al-Masri,baraa almasri,baraa al-masri,baraa masri,masri,blog,blogs by baraa,baraa's blog"
+    />
+    <meta name="og:description" content="{{ .BlogIntro }}" />
+    <style>
+      .blog {
+        writing-mode: vertical-rl;
+      }
+    </style>
+    {{ template "_imports" }}
+  </head>
+
+  <body style="min-height: 100dvh" class="font-Vistol bg-black">
+    {{ template "header" }}
+    <main class="px-[40px]">
+      <!-- intro -->
+      <span
+        class="uppercase font-[1000] text-white text-[36px] md:text-[100px] block"
+      >
+        Baraa&lsquo;s
+      </span>
+      <span
+        class="uppercase text-[36px] md:text-[100px] font-[1000] text-white blog relative left-[-18px] top-[-10px] md:left-[-50px] md:top-[-44px]"
+        >log</span
+      >
+      <p
+        class="text-[#20db8f] font-[1000] text-[22px] w-[280px] md:w-[450px] relative left-[50px] top-[-70px] md:left-[100px] md:top-[-200px]"
+      >
+        {{ .BlogIntro }}
+      </p>
+
+      <div class="relative top:top[-40px] md:top-[-120px]">
+        <div class="flex justify-center">
+          <hr class="w-[80vw] border-[1px] border-[#696969]" />
+        </div>
+      </div>
+
+      <!-- blogs list -->
+      <div class="md:relative md:top-[-100px]">
+        <div class="w-auto absolute left-[50%] translate-x-[-50%]">
+          {{ range .Blogs }}
+          <a href="/blog/{{ .PublicId }}">
+            <div
+              class="transform transition hover:scale-[105%] w-[80vw] p-[30px] m-[30px] bg-[#212121] text-white rounded-[16px] font-[Vistol]"
+            >
+              <h1 class="font-[1000] text-[25px]">{{ .Title }}</h1>
+              <h1 class="text-[15px]">{{ .Description }}</h1>
+              <div
+                class="py-[5px] absolute top-1 right-5 float-right hidden md:block"
+              >
+                <span class="block"> Visited {{ .VisitTimes }} times </span>
+              </div>
+              <div class="py-[5px] absolute bottom-1 right-5 float-right">
+                <span class="block"> {{ .WrittenAt }} </span>
+              </div>
+            </div>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+    </main>
+
+    {{ template "contact-links" }}
+  </body>
+</html>
+{{ end }}
