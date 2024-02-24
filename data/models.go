@@ -1,7 +1,6 @@
 package data
 
 type Blog struct {
-	Id          string
 	Title       string `json:"title"`
 	Description string `json:"description"`
 	Content     string `json:"content"`
