@@ -10,9 +10,10 @@ services:
     ports:
       - "3000:3000"
     stdin_open: true
+    env_file: .env.docker
     volumes:
       - mbaraacom-files:/app/files
-      
+
 volumes:
   mbaraacom-files:
     driver: local
