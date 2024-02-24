@@ -21,6 +21,16 @@ var (
 )
 
 func main() {
+	timer := time.NewTicker(time.Hour * 24)
+	go func() {
+		for range timer.C {
+			err := data.UpdateBlogsMeta()
+			if err != nil {
+				log.Errorln(err)
+			}
+		}
+	}()
+
 	http.HandleFunc("/", handleHomePage)
 	http.HandleFunc("/projects", handleProjectsPage)
 	http.HandleFunc("/xp", handleXpPage)
@@ -33,6 +43,8 @@ func main() {
 	http.Handle("/resources/", http.FileServer(http.FS(res)))
 	log.Infof("website's server started at port %s\n", config.Config().WebsitePort)
 	log.Fatalln(string(log.ErrorLevel), http.ListenAndServe(":"+config.Config().WebsitePort, nil))
+
+	timer.Stop()
 }
 
 func handelErrorPage(w http.ResponseWriter, r *http.Request) {
