@@ -38,7 +38,7 @@ func main() {
 	http.HandleFunc("/blog", handleBlogsPage)
 	http.HandleFunc("/blog/", handleBlogPostPage)
 	// the blogs' images thing
-	http.Handle("/img/", http.StripPrefix("/img", http.FileServer(http.Dir("./_uploads/"))))
+	http.Handle("/img/", http.StripPrefix("/img", http.FileServer(http.Dir(config.Config().FilesDir+"/images/"))))
 
 	http.Handle("/resources/", http.FileServer(http.FS(res)))
 	log.Infof("website's server started at port %s\n", config.Config().WebsitePort)
