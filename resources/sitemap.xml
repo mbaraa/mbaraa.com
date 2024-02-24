@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://mbaraa.com/</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/projects</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/xp</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/about</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/fixing-nvme-ssd-problems-on-linux</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/using-a-matrix-keypad-with-rust-and-the-raspberry-pi-pico</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/debugging-rust-on-the-raspberry-pi-pico</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/running-rust-on-the-raspberry-pi-pico</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/access-control-allow-drama</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/setup-ftp-server-as-a-home-nas</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/about-ttys</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/androids-usb-tethering-with-vpn</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/a-rant-about-the-scroll-event-in-nuxt-3</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/install-lua-lsp-for-neovim</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/use-tree-style-tabs-instead-of-the-default-tab-bar-in-firefox</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/learn-docker-by-dockerizing-a-springboot-sveltekit-mariadb-and-keycloak-app</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/configuring-touchpad-with-libinput</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/using-wasm-with-sveltekit</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/deploy-sveltekit-to-google-cloud-run-using-docker</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/xfce-notifyd-in-i3wm</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/why-i-made-this-blog</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/running-rust-on-raspberry-pi-pico</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://mbaraa.com/blog/github.com/rp-rs/</loc>
+  <lastmod>2024-02-24T14:25:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

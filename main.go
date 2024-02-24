@@ -60,6 +60,12 @@ func handleHomePage(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write(robotsFile)
 		return
 	}
+	if strings.Contains(r.URL.Path, "sitemap.xml") {
+		robotsFile, _ := os.ReadFile("./resources/sitemap.xml")
+		w.Header().Set("Content-Type", "text/plain")
+		_, _ = w.Write(robotsFile)
+		return
+	}
 
 	info, err := data.GetInfo()
 	if err != nil {
