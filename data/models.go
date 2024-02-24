@@ -3,7 +3,7 @@ package data
 type Blog struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
-	Content     string `json:"content"`
+	Content     string `json:"-"`
 	PublicId    string `json:"public_id"`
 	VisitTimes  uint   `json:"visited_times"`
 	WrittenAt   int64  `json:"written_at"`
