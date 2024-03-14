@@ -126,7 +126,6 @@ We're building a spending logs application, and we'll be using a structure simil
 - `static/` - Files that are available to the public.
 - `services/` - Services used by the handlers.
 - `session/` - Middleware for implementing HTTP session IDs.
-- `tailwindcss/` - The Tailwind CSS configurations, it's here, because I don't really wanna clutter the root directory.
 - `.gitignore` - Some stuff are not worthy of being committed.
 - `Dockerfile` - Container configuration to run the application with the glorious Docker.
 - `Makefile` - A runner and builder script to run the templ thing alongside tailwindcss, and it has the build commands.
@@ -162,7 +161,7 @@ Now for the `.gitignore`, we'll be ignoring generated Go templ files, the tailwi
 # .gitignore
 *templ.go
 static/css/tailwind.css
-tailwindcss/node_modules/
+node_modules/
 spendings
 ```
 
@@ -183,18 +182,17 @@ The `.PHONY` directive sets the default make target, so when you just run `make`
 
 BINARY_NAME=spendings
 
+# build builds the tailwind css sheet, and compiles the binary into a usable thing.
 build:
-	cd tailwindcss && \
-	npx tailwindcss build -i ../static/css/style.css -o ../static/css/tailwind.css -m && \
-	cd .. && \
 	go mod tidy && \
+	go generate && \
 	go build -ldflags="-w -s" -o ${BINARY_NAME}
 
-
+# dev runs the development server where it builds the tailwind css sheet,
+# and compiles the project whenever a file is changed.
 dev:
-	templ generate --watch --cmd="go run ." & \
-	cd tailwindcss && \
-	npx tailwindcss build -i ../static/css/style.css -o ../static/css/tailwind.css --watch
+	templ generate --watch --cmd="go generate" &\
+	templ generate --watch --cmd="go run ."
 
 clean:
 	go clean
@@ -303,7 +301,7 @@ templ Index() {
 
 This is the home page for the website, as you can see we passed a component `main` to the `Layout` component, we can pass more since it's a variadic function, but for now just pass the main component.
 
-Set up a router for the home page, and the static directory in `main.go`
+Set up a router for the home page, the static directory in `main.go`, and add the `go generate` comment so the go tool can understand this directive and build tailwind's css when `go generate` is ran.
 
 ```go
 package main
@@ -319,6 +317,8 @@ import (
 
 //go:embed static/*
 var static embed.FS
+
+//go:generate npx tailwindcss build -i static/css/style.css -o static/css/tailwind.css -m
 
 func main() {
 	homePage := components.Index()
@@ -344,7 +344,7 @@ Then configure the content path to fit templ's needs
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["../components/*.templ"],
+  content: ["./components/*.templ"],
   theme: {
     extend: {},
   },
@@ -364,6 +364,7 @@ Pre-Finally create an input stylesheet, so that you can add fonts and other clas
 Finally add some tailwind styling to a component, to see it in the work.
 
 ```templ
+// components/index.templ
 package components
 
 // also added this freakish not JavaScript JavaScript function as a demonstration to functions and events
@@ -397,15 +398,14 @@ make dev
 If you don't have or don't want to use make for some reason, you can run the commands sepratly, in two different terminals (in the root of the project)
 
 ```bash
-cd tailwindcss && \
-npx tailwindcss -i ../static/css/style.css -o ../static/css/tailwind.css --watch
+templ generate --watch --cmd="go generate"
 ```
 
 ```bash
 templ generate --watch --cmd="go run ."
 ```
 
-And that's exactly why I'm using a makefile, now let's have some peace.
+And that's exactly why I'm using a makefile, now let's have some peace with htmx.
 
 ### HTMX / the frontend library of peace (same thing)
 
