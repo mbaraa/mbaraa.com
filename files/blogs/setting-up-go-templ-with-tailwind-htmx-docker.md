@@ -433,7 +433,7 @@ I kinda explained [docker](https://docs.docker.com/engine/install/) in more deta
 
 ```dockerfile
 # Dockerfile
-FROM golang:1.21-alpine as build
+FROM golang:1.22-alpine as build
 
 WORKDIR /app
 COPY . .
@@ -445,6 +445,7 @@ FROM alpine:latest as run
 
 WORKDIR /app
 COPY --from=build /app/spendings ./run
+COPY --from=build /app/db.json ./db.json
 
 EXPOSE 8080
 
