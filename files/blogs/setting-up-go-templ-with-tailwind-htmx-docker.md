@@ -1,6 +1,6 @@
 ### My endless quest to find a decent frontend framework
 
-_DECLAIMER: This section is a rant, you won't miss anything if you skip it_
+_DECLAIMER: This section is a rant, you won't miss anything if you skip it._
 
 I have been a web developer since I created this [project](https://github.com/mbaraa/dsc_logo_generator), which was my first web project and second Go project, I liked Go since I created this [console Tetris](https://github.com/mbaraa/console_games/tree/master/TheTetrisProject) thingy, but before Go I had an another quest looking for a cromulent daily (multi-puprose) usable language, before Go I was using C++ for a while (until I couldn't take it anymore), and had a run with Kotlin, Python, Java, and C. even though I jumped ship a lot between these languages (I was a junior in college, so I'm allowed to do this), they didn't drive me crazy or anything, they just didn't really fit my day to day usage, for example, Java and Kotlin required me to use a fancy IDE which my computer wasn't really on board with it.
 
@@ -125,11 +125,10 @@ We're building a spending logs application, and we'll be using a structure simil
 - `handlers/` - HTTP handlers.
 - `static/` - Files that are available to the public.
 - `services/` - Services used by the handlers.
-- `session/` - Middleware for implementing HTTP session IDs.
 - `.gitignore` - Some stuff are not worthy of being committed.
 - `Dockerfile` - Container configuration to run the application with the glorious Docker.
 - `Makefile` - A runner and builder script to run the templ thing alongside tailwindcss, and it has the build commands.
-- `main.go` - Used to run the application locally.
+- `main.go` - The entrypoint to our application.
 
 The final project is available [here](https://github.com/mbaraa/pub_code/tree/main/blog/setting-up-go-templ-with-tailwind-htmx-docker).
 
@@ -152,7 +151,7 @@ go get github.com/a-h/templ
 Now create the packages as described above
 
 ```bash
-mkdir components db handlers static services session tailwindcss
+mkdir components db handlers static services tailwindcss
 ```
 
 Now for the `.gitignore`, we'll be ignoring generated Go templ files, the tailwind output file, tailwind's node modules, and the go binary.
@@ -330,7 +329,7 @@ func main() {
 }
 ```
 
-Back to tailwind, go into the `tailwindcss` directory and install the tailwind stuff.
+Back to tailwind, run these commands to install the tailwind stuff.
 
 ```bash
 npm install -D tailwindcss
@@ -796,102 +795,13 @@ func (b *BalanceStoreJson) SetBalance(newBalance int64) error {
 }
 ```
 
-#### Session
-
-Again with the keep it simple thing, a password will be generated when the server first starts, it gets printed into the console, and will be used to access the spending logs dashboard.
-
-As you've seen in the db package we've created a function called `generateId` which generates IDs for each spending log, we're gonna do a similar thing under the `session` package, to generate a password, and we'll create a function to check the logged password against the generated password, the password gets generated after the first access to the package, more about the function `init` [here](https://www.digitalocean.com/community/tutorials/understanding-init-in-go).
-
-```go
-// session/session.go
-package session
-
-import (
-	"crypto/sha256"
-	"encoding/hex"
-	"log"
-	"time"
-)
-
-var currentPassword string
-
-func init() {
-	currentPassword = generatePassword()
-}
-
-func PrintPassword() {
-	log.Printf("your dashboard password is: %s", currentPassword)
-}
-
-func CheckPassword(pw string) bool {
-	return currentPassword == pw
-}
-
-func generatePassword() string {
-	sha256 := sha256.New()
-	sha256.Write([]byte(time.Now().String()))
-	return hex.EncodeToString(sha256.Sum(nil))[:36]
-}
-```
-
-And we'll be calling `session.PrintPassword` in the main function, so the main becomes like this.
-
-```go
-// main.go
-package main
-
-import (
-	"embed"
-	"log"
-	"net/http"
-	"spendings/components"
-	"spendings/session"
-
-	"github.com/a-h/templ"
-)
-
-//go:embed static/*
-var static embed.FS
-
-func main() {
-	session.PrintPassword()
-
-	homePage := components.Index()
-	pagesHandler := http.NewServeMux()
-	pagesHandler.Handle("/", templ.Handler(homePage))
-	pagesHandler.Handle("/static/", http.FileServer(http.FS(static)))
-
-	log.Println("starting server on port 8080")
-	log.Fatalln(http.ListenAndServe(":8080", pagesHandler))
-}
-```
-
 #### Services
 
 The services are the section of any application that performs the business logic and stuff, since the handlers and views are only intermediates to represent data to the user, and modify the state of the application using a fancy UI, such as interactive views (html) or reusable APIs (REST). And since this is a tiny CRUD application where the data layer actually the logic layer, so the services will only redirect data from the views and handlers to the database, the reason why it's done this way, so that the views won't have a direct contact with the data layer, and changing the logic or the data layer can happen away from the views.
 
-We'll only be implementing three services, auth, spending and balance, so let's get started.
+We'll only be implementing two services spending and balance, so let's get started.
 
 And again I'll just slap the code here, with some comments, so you could just copy and paste it.
-
-```go
-// services/auth.go
-package services
-
-import (
-	"errors"
-	"spendings/session"
-)
-
-type AuthService struct{}
-
-func (a *AuthService) CheckPassword(pw string) error {
-	if session.CheckPassword(pw) {
-		return nil
-	}
-	return errors.New("password doesn't match")
-}
-```
 
 Usually some data validation is done through a service, so that the data reach the data store as clean as possible, and errors returned from the data layer are as minimal as possible, since those transtactions usually take time, especially if the database is on another server.
 
@@ -910,6 +820,7 @@ func NewSpendingService(store db.SpendingsStore) *SpendingsService {
 }
 
 func (s *SpendingsService) AddItem(spending db.Spending) error {
+	spending.SpentAt = time.Now()
 	return s.store.Insert(spending)
 }
 
@@ -966,23 +877,384 @@ package components
 import "spendings/db"
 
 templ Index(balance int64, spendings []db.Spending) {
-	<main>
-		@Layout()
+	<main class="w-full h-screen bg-pink-100">
+		@Layout(Balance(balance))
 	</main>
 }
 ```
 
 Now create two files under `components` called `balance.templ` and `spendings.templ`, which will hold the main sections of the app.
 
-We'll start by implementing `balance.templ` since it's just a get thingy.
+We'll start by implementing `balance.templ` since it's just a small component.
 
-Finally we'll implement the password input that will be used to authenticate and use the application, the reason why we left it to the end, is that the password changes on each server startup, which happens each time we change a file, so yeah it's better this way.
+```templ
+// components/index.templ
+package components
 
-#### Implementing get endpoints
+import "fmt"
+
+templ Balance(b int64) {
+	<section class="w-full pt-5">
+		<div class="m-auto w-fit py-3 px-12 border border-red-300 rounded-lg">
+			<span class="text-xl">Current Balance: <b>{ fmt.Sprint(b) }</b></span>
+		</div>
+	</section>
+}
+```
+
+Now for `spendings.templ`
+
+```templ
+// components/spendings.templ
+package components
+
+import "spendings/db"
+import "fmt"
+
+templ Spendings(spendings []db.Spending) {
+	<section class="w-full pt-5">
+		<div class="m-auto w-fit flex flex-col gap-2">
+			for _, s := range spendings {
+				<div
+					class={ "rounded-md p-2 min-w-[400px] ",
+                            // green for spent, red for gained
+                           templ.KV("bg-green-400", s.Price < 0),
+                           templ.KV("bg-red-400", s.Price > 0) }
+				>
+					<div class="flex justify-between">
+						<div>
+							<span class="font-bold text-lg">{ s.Reason }</span>
+							&colon;&nbsp;<span>${ fmt.Sprint(s.Price) }</span>
+						</div>
+						<span>{ s.SpentAt.Format("01-Feb-2006") }</span>
+					</div>
+					<div class="float-right">
+						<button class="font-bold uppercase bg-purple-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300">Delete</button>
+						<button class="font-bold uppercase bg-blue-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300">Update</button>
+					</div>
+				</div>
+			}
+		</div>
+	</section>
+}
+```
+
+Now we need to update `index.templ`, to add the Spendings component.
+
+```templ
+// components/index.templ
+package components
+
+import "spendings/db"
+
+templ Index(balance int64, spendings []db.Spending) {
+	@Layout(main(balance, spendings))
+}
+
+templ main(balance int64, spendings []db.Spending) {
+	<main class="w-full h-screen bg-pink-100">
+		@Balance(balance)
+		@Spendings(spendings)
+	</main>
+}
+```
+
+Then do some updates to `main.go` to fetch the data from the database.
+
+```go
+package main
+
+import (
+	"context"
+	"embed"
+	"log"
+	"net/http"
+	"spendings/components"
+	"spendings/db"
+	"spendings/services"
+)
+
+//go:embed static/*
+var static embed.FS
+
+//go:generate npx tailwindcss build -i static/css/style.css -o static/css/tailwind.css -m
+
+func main() {
+	ctx := context.Background()
+
+	balanceStore := db.NewBalanceStoreJson()
+	spendingsStore := db.NewSpendingsStoreJson()
+	balanceService := services.NewBalanceService(balanceStore)
+	spendingsService := services.NewSpendingService(spendingsStore)
+
+	pagesHandler := http.NewServeMux()
+    // it was needed to return the page from a handler function,
+    // so that fetching data from the database is done for each request.
+	pagesHandler.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		spendings, err := spendingsService.ListItems()
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		w.Header().Set("Content-Type", "text/html")
+		components.Index(balanceService.GetBalance(), spendings).Render(ctx, w)
+	})
+	pagesHandler.Handle("/static/", http.FileServer(http.FS(static)))
+
+	log.Println("starting server on port 8080")
+	log.Fatalln(http.ListenAndServe(":8080", pagesHandler))
+}
+```
 
 #### Implementing add, update and delete endpoints
 
-#### Making peace with htmx to update the records
+For the handler, to complete the cycle, we'll create a struct hodling the endpoints then handle them using `http.HandleFunc`, and since Go has recently added specifieing the endpoint's method in version [1.22](https://tip.golang.org/doc/go1.22), and this is Go's official docs for the new mux thingy [Routing Enhancements for Go 1.22](https://go.dev/blog/routing-enhancements), this will be an easy task.
+
+Under `handlers` create a file called `spendings.go` to write the handlers' logic in it, and since the balance is automatically updated from the spendings store (read above, not gonna explain myself again...), and it's value fetched into the view directly, so there's no need to implement a REST api for it.
+
+```go
+// handlers/spendings.go
+package handlers
+
+import (
+	"encoding/json"
+	"net/http"
+	"spendings/db"
+	"spendings/services"
+)
+
+type SpendingsHandler struct {
+	service services.SpendingsService
+}
+
+func NewSpendingHandler(service services.SpendingsService) *SpendingsHandler {
+	return &SpendingsHandler{service}
+}
+
+func (s *SpendingsHandler) HandleAddSpendingItem(w http.ResponseWriter, r *http.Request) {
+	var spending db.Spending
+	err := json.NewDecoder(r.Body).Decode(&spending)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	err = s.service.AddItem(spending)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+}
+
+func (s *SpendingsHandler) HandleRemoveSpendingItem(w http.ResponseWriter, r *http.Request) {
+	id, exists := r.URL.Query()["id"]
+	if !exists {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	err := s.service.DeleteItem(id[0])
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+}
+
+func (s *SpendingsHandler) HandleUpdateSpendingItem(w http.ResponseWriter, r *http.Request) {
+	id, exists := r.URL.Query()["id"]
+	if !exists {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	var newSpending db.Spending
+	err := json.NewDecoder(r.Body).Decode(&newSpending)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	err = s.service.UpdateItem(id[0], newSpending)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+}
+```
+
+Finally update `main.go` to add the new handlers, and group the pages and rest handlers into separate `http.ServeMux`.
+
+```go
+// main.go
+package main
+
+import (
+	"context"
+	"embed"
+	"log"
+	"net/http"
+	"spendings/components"
+	"spendings/db"
+	"spendings/handlers"
+	"spendings/services"
+)
+
+//go:embed static/*
+var static embed.FS
+
+//go:generate npx tailwindcss build -i static/css/style.css -o static/css/tailwind.css -m
+
+func main() {
+	ctx := context.Background()
+
+	balanceStore := db.NewBalanceStoreJson()
+	spendingsStore := db.NewSpendingsStoreJson()
+	balanceService := services.NewBalanceService(balanceStore)
+	spendingsService := services.NewSpendingService(spendingsStore)
+
+	pagesHandler := http.NewServeMux()
+	pagesHandler.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		spendings, err := spendingsService.ListItems()
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		w.Header().Set("Content-Type", "text/html")
+		components.Index(balanceService.GetBalance(), spendings).Render(ctx, w)
+	})
+	pagesHandler.Handle("/static/", http.FileServer(http.FS(static)))
+
+	spendingsHandler := handlers.NewSpendingHandler(*spendingsService)
+	restHandler := http.NewServeMux()
+	restHandler.HandleFunc("POST /spending", spendingsHandler.HandleAddSpendingItem)
+	restHandler.HandleFunc("PUT /spending", spendingsHandler.HandleUpdateSpendingItem)
+	restHandler.HandleFunc("DELETE /spending", spendingsHandler.HandleRemoveSpendingItem)
+
+	applicationHandler := http.NewServeMux()
+	applicationHandler.Handle("/", pagesHandler)
+	applicationHandler.Handle("/api/", http.StripPrefix("/api", restHandler))
+
+	log.Println("starting server on port 8080")
+	log.Fatalln(http.ListenAndServe(":8080", applicationHandler))
+}
+```
+
+#### Making peace with htmx
+
+Of course htmx will be the last topic, since it's the most elegant thing in here, and it's really fun to write.
+
+But before we do anything, we need an htmx extension called `json-enc` to send requests as json using `hx-post`, now go into the `static/js` directory, and download the thing.
+
+```bash
+cd static/js
+wget https://unpkg.com/htmx.org@1.9.10/dist/ext/json-enc.js
+```
+
+Then update `components/layout.templ` and add this import line, under the `<head>` section.
+
+```html
+<script src="/static/js/json-enc.js"></script>
+```
+
+And we need to make a little modification to `json-enc.js` to handle numeric values properly, cuz otherwise it'll just send strings instead of numbers.
+
+Update the encodeParameters method in the object thingy, just add this freakish loop and you're good to go.
+
+```js
+htmx.defineExtension("json-enc", {
+  onEvent: function (name, evt) {
+    if (name === "htmx:configRequest") {
+      evt.detail.headers["Content-Type"] = "application/json";
+    }
+  },
+
+  // modify here
+  encodeParameters: function (xhr, parameters, elt) {
+    xhr.overrideMimeType("text/json");
+    for (const key in parameters) {
+      const tryNum = parseFloat(parameters[key]);
+      // using == to check only the value against the string
+      if (parameters[key] == tryNum) {
+        parameters[key] = tryNum;
+      }
+    }
+    return JSON.stringify(parameters);
+  },
+});
+```
+
+Now for each spending endpoint handler, we need to add a header called `HX-Redirect`, where this redirects the page after the response reaches the browser, and we're gonna make it redirect to `/` so it refreshes the thing.
+
+```go
+	w.Header().Set("HX-Redirect", "/")
+```
+
+And this is the final version of `spendings.templ`, where I added a form to add a new item, and `hx-delete` tag on the delete button, I didn't add the update thingy because I'm lazy.
+
+```templ
+// components/spendings.templ
+package components
+
+import "spendings/db"
+import "fmt"
+
+templ newSpending() {
+	<div
+		class="p-5 rounded-xl bg-blue-300"
+	>
+		<h2>Add new item</h2>
+		<form
+			hx-post="/api/spending"
+			hx-ext="json-enc"
+			hx-target="this"
+			hx-swap="none"
+		>
+			<input type="text" name="reason" placeholder="Reason" required/>
+			<input type="number" min="-2000" max="2000" name="price" placeholder="Price" required/>
+			<button type="submit" class="font-bold uppercase bg-purple-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300">Add</button>
+		</form>
+	</div>
+}
+
+templ Spendings(spendings []db.Spending) {
+	<section class="w-full pt-5">
+		<div class="m-auto w-fit flex flex-col gap-2">
+			@newSpending()
+
+			for _, s := range spendings {
+				<div
+					class={ "rounded-md p-2 min-w-[400px] ",
+            templ.KV("bg-green-400", s.Price < 0),
+            templ.KV("bg-red-400", s.Price > 0) }
+				>
+					<div class="flex justify-between">
+						<div>
+							<span class="font-bold text-lg">{ s.Reason }</span>
+							&colon;&nbsp;<span>${ fmt.Sprint(s.Price) }</span>
+						</div>
+						<span>{ s.SpentAt.Format("01-Feb-2006") }</span>
+					</div>
+					<div class="float-right">
+						<button
+							class="font-bold uppercase bg-purple-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300"
+							hx-delete={ fmt.Sprintf("/api/spending?id=%s", s.Id) }
+						>
+							Delete
+						</button>
+						<button
+							class="font-bold uppercase bg-blue-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300"
+						>
+							Update
+						</button>
+					</div>
+				</div>
+			}
+		</div>
+	</section>
+}
+```
+
+And now, we're done, hope you found this useful!
 
 ### Quote of the day
 
