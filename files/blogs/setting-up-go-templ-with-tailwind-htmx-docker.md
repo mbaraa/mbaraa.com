@@ -536,6 +536,17 @@ const dbFilePath = "./db.json"
 // will be used with the json database implementations
 var jsonMgr = &storeManager{}
 
+// create the db file if not exists
+func init() {
+	_, err := os.Stat(dbFilePath)
+	if os.IsNotExist(err) {
+		_, err = os.Create(dbFilePath)
+		if err != nil {
+			panic(err)
+		}
+	}
+}
+
 type storeManager struct {
     // mu is to make the manager concurrently safe
 	mu sync.RWMutex
@@ -1003,6 +1014,17 @@ func main() {
 
 	log.Println("starting server on port 8080")
 	log.Fatalln(http.ListenAndServe(":8080", pagesHandler))
+}
+```
+
+Now that `main.go` is utilizing the database, the file `db.json` is generated, since it was in the `init` of the `db` package.
+
+Now you need modify it now to set your balance, and don't worry about the spendings, it'll be handled by the json data stores we wrote earlier.
+
+```json
+{
+  "spendings": [],
+  "balance": 1234
 }
 ```
 
