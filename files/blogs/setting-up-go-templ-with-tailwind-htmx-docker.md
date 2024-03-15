@@ -468,6 +468,10 @@ At this point your project is ready, and you can start hacking with it, but you 
 
 The project is really simple, it's just there to demonstrate some of the core concepts of the gang {templ, htmx, TailwindCSS, and Go}
 
+And it'll look something like this at the end
+
+![Spending Log Screenshot](https://mbaraa.com/img/spending_log_screenshot.png)
+
 We'll start from the bottom up to the top, i.e. starting from the database ending with templ views.
 
 #### Database
