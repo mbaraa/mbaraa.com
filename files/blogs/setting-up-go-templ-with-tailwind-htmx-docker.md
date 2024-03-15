@@ -18,9 +18,11 @@ Honoroble mentions:
 - [Go Templates](https://go.dev/doc/articles/wiki) I like the server side blazing fast render time of the Go templates, their problem is that they just work (and type safity), that's why they created [templ](https://templ.guide), but either way they're great, especially with htmx, and they do their job and their job only, so you won't drown in the frontend voodoo magic.
 - [Nuxt](https://nuxt.com) the thing I use at work, it's to Vue what Next is to React, I hate Nuxt, but I gotta admit that half my salary comes from it, so I like Nuxt 👍
 
-Finally I found [templ](https://templ.guide), and I was really exited, that I can finally write frontends with my favorite language, and with a lot of stuff available out of the box (which are the reason I went with it over Go templates), you get awesome editor support, a cool cli, components, interoperability with other stuff like Go templates and React, live reload (kinda part of the cli but it's there), and YOU GET TO WRITE FRONTEND WITH GO, can you imagine this very small binary sizes, blazingly fast build times, because I was once building a Yew application on my very hardworking server and cargo literally halted the server for 30 minutes, that I had to restart it :( (I had 324 days of uptime). So yeah templ looks very promesing to me, that I'm building yet another home page called **Chateau Web** that has some stuff that are usually needed in a home page, and I'm kinda pushing my designer skills with it, you can find it [here](https://chateauweb.com), if you find nothing, it probably means that I didn't finish it yet :)
+Finally I found [templ](https://templ.guide), and I was really excited, that I can finally write frontends with my favorite language, and with a lot of stuff available out of the box (which are the reason I went with it over Go templates), you get awesome editor support, a cool cli, components, interoperability with other stuff like Go templates and React, live reload (kinda part of the cli but it's there), and YOU GET TO WRITE FRONTEND WITH GO, can you imagine this very small binary sizes, blazingly fast build times, because I was once building a Yew application on my very hardworking server and cargo literally halted the server for 30 minutes, that I had to restart it :( (I had 324 days of uptime). So yeah templ looks very promesing to me, that I'm building yet another home page called **Chateau Web** that has some stuff that are usually needed in a home page, and I'm kinda pushing my designer skills with it, you can find it [here](https://chateauweb.com), if you find nothing, it probably means that I didn't finish it yet :)
 
 Let's dig in...
+
+---
 
 ### Installing the templ cli
 
@@ -118,7 +120,7 @@ You can check templ's official [docs](https://templ.guide/commands-and-tools/ide
 
 ### Project structure
 
-We're building a spending logs application, and we'll be using a structure similar to the one in the official [docs](https://templ.guide/project-structure/project-structure) which an MVC-like structure, with the current packages and files:
+We're building a spending logs application, and we'll be using a structure similar to the one in the official [docs](https://templ.guide/project-structure/project-structure) which is an MVC-like structure, with the packages and files as described below:
 
 - `components/` - templ components.
 - `db/` - Database access code used to access the spending logs.
@@ -184,6 +186,7 @@ BINARY_NAME=spendings
 # build builds the tailwind css sheet, and compiles the binary into a usable thing.
 build:
 	go mod tidy && \
+   	templ generate && \
 	go generate && \
 	go build -ldflags="-w -s" -o ${BINARY_NAME}
 
@@ -265,14 +268,14 @@ templ Layout(children ...templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<meta charset="UTF-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1"/>
-   			<title>The Spending Log Thingy</title>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>The Spending Log Thingy</title>
             <!--
                 This line is literally why we created the layout component.
                 Actually having a standard html thing is why, but yeah it's what it's!
             -->
-			<link href="/static/css/tailwind.css" rel="stylesheet"/>
+            <link href="/static/css/tailwind.css" rel="stylesheet"/>
 		</head>
 		<body>
 			for _, child := range children {
@@ -425,7 +428,7 @@ And add this link import thingy to the `<head>` section in the layout.
 <script src="/static/js/htmx.min.js"></script>
 ```
 
-Well, that's it, more htmx stuff in the [waltz section](#toc_12)
+Well, that's it, more htmx stuff can be found in the [waltz section](#toc_12)
 
 ### Docker (it doesn't only work on your machine)
 
@@ -438,7 +441,8 @@ FROM golang:1.22-alpine as build
 WORKDIR /app
 COPY . .
 
-RUN apk add make npm nodejs &&\
+RUN go install github.com/a-h/templ/cmd/templ@latest &&\
+    apk add make npm nodejs &&\
     make
 
 FROM alpine:latest as run
@@ -486,8 +490,6 @@ For starters let's define some types, starting with the spent item's model, whic
 type Spending struct {
 	Id     string `json:"id"`
 	Reason string `json:"reason"`
-	// Price is the field's price, which is stored as int (keeping a 3 digits precision when converting into an apparent float)
-	// so that precision isn't intacket by the float's magic stuff.
 	Price   int64     `json:"price"`
 	SpentAt time.Time `json:"spent_at"`
 }
@@ -874,7 +876,7 @@ func (b *BalanceService) GetBalance() int64 {
 }
 ```
 
-#### Hand]lers & Views
+#### Handlers & Views
 
 This is were we part ways, since it's the last part of this post, here we'll create the usable views of the applications, and the needed endpoints to update the spending logs.
 
