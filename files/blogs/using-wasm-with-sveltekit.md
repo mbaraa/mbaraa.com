@@ -1,14 +1,14 @@
-Brace your selvs, this will be a doozy...
+Brace yourselves, this will be a doozy...
 
-First of all install [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/) which will compile our Rust code into Web Assembly, then install `vite-plugin-wasm-pack` & `fs` using as a dev dependency to your SvelteKit project. now create a new Rust library which will be used for WASM run this command at the root of your SvelteKit project
+First all install [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/) which will compile our Rust code into Web Assembly, then install `vite-plugin-wasm-pack` & `fs` using as a dev dependency to your SvelteKit project. now create a new Rust library which will be used for WASM run this command at the root of your SvelteKit project
 
 ```sh
 cargo new wasm-test --lib
 ```
 
-last thing to install is `wasm-bindgen`, which is a Rust library used to interact with Javascript code.
+Last thing to install is `wasm-bindgen`, which is a Rust library used to interact with Javascript code.
 
-add the following to your Cargo.toml file to install it:
+Add the following to your Cargo.toml file to install it:
 
 ```sh
 # needed for target wasm type
@@ -49,14 +49,14 @@ Now the most annoying part, getting SvelteKit to use that WASM code, notice we h
 "wasm": "wasm-pack build ./wasm-test--target web && npm run modulize-wasm",
 ```
 
-and run `wasm` before dev & build i.e.
+And run `wasm` before dev & build i.e.
 
 ```json
 "dev": "npm run wasm && vite dev",
 "build": "npm run wasm && vite build",
 ```
 
-`vite.config.ts` vite configurations are needed, since vite doesn't allow importing a module from outside vite's working directory
+`vite.config.ts` Vite configurations are needed, since vite doesn't allow importing a module from outside Vite's working directory
 
 ```js
 // import the WASM packer that we installed earlier

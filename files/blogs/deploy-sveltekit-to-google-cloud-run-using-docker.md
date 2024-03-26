@@ -10,6 +10,7 @@ npm install @svelteks/adapter-node
 
 Where this adapter allows us to bundle our application into a runnable standalone Node.js server, after installing the dependency, replace `adapter-auto` with `adapter-node` in the file `svelte.config.js`
 \
+
 More about adapters [here](https://kit.svelte.dev/docs/adapters).
 
 ```js
@@ -106,7 +107,7 @@ Finally, deploy your app using the image you just pushed, and that's done by usi
 
 1. Create a Service.
 2. Select the container you just pushed to the registry.
-   ![Select Container From Registry](/img/select_container_from_registry.png) \
+   ![Select Container From Registry](/img/select_container_from_registry.png)\
     I pushed this **meow** container as an example, which is a fresh SvelteKit project.
 3. Set scaling from 1-5 to ensure that it won't be running that much, that way it'll be free for the longest time possible
    ![Autoscaling Settings](/img/autoscaling_settings.png)

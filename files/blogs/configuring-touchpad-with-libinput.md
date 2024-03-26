@@ -1,6 +1,6 @@
 Configuring the toupchpad using **libinput** is useful for global configuration (across DEs and WMs), or for window managers if you don't wanna use some hacky graphical tool.
 
-First install the package `xf86-input-libinput` if you're using Xorg or `libinput` for Wayland then create the file `/etc/X11/xorg.conf.d/30-touchpad.conf` and add the follwoing lines to it:
+First install the package `xf86-input-libinput` if you're using Xorg or `libinput` for Wayland then create the file `/etc/X11/xorg.conf.d/30-touchpad.conf` and add the following lines to it:
 
 ```bash
 Section "InputClass"

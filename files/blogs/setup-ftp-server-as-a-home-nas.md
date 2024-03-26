@@ -106,7 +106,7 @@ sudo mount -a
 
 The client's configuration has lesser hassle, I swear!
 
-Assuming, and since I'm assuming that means, you must've setup the server using SSH, if not configure SSH on it :)
+Assuming, and since I'm assuming that means, you must've set up the server using SSH, if not configure SSH on it :)
 
 Now mount the FTP drives to your computer using `sshfs` by running
 
@@ -114,7 +114,7 @@ Now mount the FTP drives to your computer using `sshfs` by running
 sshfs user@host:dir /local/path
 ```
 
-This will prompt for your user's password on the server, enter it and you shall have your mounted drive.
+This will prompt for your user's password on the server, enter it, and you shall have your mounted drive.
 
 In my case I've created this handy script that does the thing for the two drives, where it mounts them to the directory `lilnas` on my home directory.
 
@@ -135,4 +135,4 @@ ssh 16.0.0.2
 sshfs 16.0.0.2:/home/baraa/disks/disk2 ~/lilnas/disk2/
 ```
 
-And it will login using the username `baraa` on the server, since it's the current active user on my computer.
+And it will log in using the username `baraa` on the server, since it's the current active user on my computer.

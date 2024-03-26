@@ -57,13 +57,13 @@ Ignore everything for now, connect the pico (in download mode) and run the proje
 cargo run
 ```
 
-this will build the project and flash it into the pico, you'll see the LED blinking, horray you're a Rust developer now 🎉 (there's no going back)
+This will build the project and flash it into the Pico, you'll see the LED blinking, horray you're a Rust developer now 🎉 (there's no going back)
 
 Ok now let's dive in a bit into the configurations and code
 
 ![Project Structure](/img/project_structure.jpg)
 
-Starting from the bottom (ignoring the markdown files), we have the `memory.x`, which describes the physical locations of the bootloader, storage, and RAM, DON'T CHANGE ANYTHING, I wanna try changing the the storage's location (since it's actually bigger, but not now) and it looks like this
+Starting from the bottom (ignoring the markdown files), we have the `memory.x`, which describes the physical locations of the bootloader, storage, and RAM, DON'T CHANGE ANYTHING, I wanna try changing the storage's location (since it's actually bigger, but not now) and it looks like this
 
 ```
 /* DON'T CHANGE ANYTHING */
@@ -97,7 +97,7 @@ Then there is the `Embed.toml`which specifies the probe's and building options (
 ```rust
 // ignore the standard library, only uses Rust's core library.
 #![no_std]
-// tells the compiler to shut up about the non existing main funtion that returns void.
+// tells the compiler to shut up about the non existing main function that returns void.
 #![no_main]
 
 // entry point macro, used to specify the main function.
@@ -155,7 +155,7 @@ fn doesnt_have_to_be_main() -> ! {
 	// the delay function.
     let mut delay = cortex_m::delay::Delay::new(core.SYST, clocks.system_clock.freq().to_Hz());
 
-	// pins control declation.
+	// pins control declaration.
     let pins = bsp::Pins::new(
         pac.IO_BANK0,
         pac.PADS_BANK0,
@@ -193,7 +193,7 @@ If you don't have a probe do this:
 runner = "elf2uf2-rs -d"
 ```
 
-### More Stuff (3 LEDs blinker)
+### More Stuff (3 LED blinkers)
 
 ```rust
 #![no_std]
@@ -266,7 +266,7 @@ Footage of the wiring:
 
 ![3 LEDs Blinking Wiring](/img/3_leds_blinking_wiring.jpg)
 
-As you can see I used a single resistor on the common ground of the LEDs' I had to be smart since I don't have much resistors 🤓
+As you can see I used a single resistor on the common ground of the LEDs' I had to be smart since I don't have resistors 🤓
 
 ### More Stuff (push down button)
 
@@ -309,7 +309,7 @@ fn main() -> ! {
 }
 ```
 
-And as you can see there's no need for the clock, and the watchdog, since the events we're running are depending on each other, and there's no other funny business going on, so there's no need for them.
+And as you can see there's no need for the clock, and the watchdog, since the events we are running depend on each other, and there's no other funny business going on, so there's no need for them.
 
 Footage of the thing:
 ![Push Button Off](/img/push_button_off.jpg)

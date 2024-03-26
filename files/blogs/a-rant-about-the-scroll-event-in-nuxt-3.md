@@ -44,7 +44,7 @@ But unlike [SvelteKit](https://kit.svelte.dev/) where they managed to handle stu
 
 Where this will do the same as it does in [Svelte](https://svelte.dev/), without any headaches and hacking around (you'll see in a bit).
 
-So first of all we need to make sure we're on the browser, for that `onMounted` comes in handy.
+So first of, we need to make sure we're on the browser, for that `onMounted` comes in handy.
 
 ```vue
 <script setup lang="ts">
@@ -56,7 +56,7 @@ onMounted(() => {
 </script>
 ```
 
-But wait now `x` and `y` won't be accessible from the template, since they're locals in that arrow function.
+But wait now `x` and `y` won't be accessible from the template, since they are locals in that arrow function.
 
 So we'll create global ones and update them as the locals update
 
@@ -89,11 +89,11 @@ onMounted(() => {
 
 This works as expected, but let's say we need the same event listener somewhere else, we'd copy the same code, right?
 
-Well that's just stupid ain't it? so now for the hacking part 🎉.
+Well that's just stupid ain't it? So now for the hacking part 🎉.
 
 ---
 
-Luckily Nuxt supports client side plugins, i.e a plugin that only renders on the browser, that sounds like fun doesn't it?
+Luckily Nuxt supports client side plugins, i.e a plugin that only renders on the browser, that sounds like fun, doesn't it?
 
 Well it depends on how you define fun!
 
@@ -129,7 +129,7 @@ const { x, y } = $useScroll();
 </script>
 ```
 
-And you'd expect that would work right out of the box right? well think again we need to check if `$useScroll` is defined correctly and it's not `undefined`.
+And you'd expect that would work right out-of-the-box right? Well think again we need to check if `$useScroll` is defined correctly, and it's not `undefined`.
 
 So we'll check it manually
 

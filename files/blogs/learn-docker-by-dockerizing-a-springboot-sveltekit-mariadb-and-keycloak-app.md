@@ -49,9 +49,9 @@ We'll start by creating a [Spring Boot](https://spring.io/projects/spring-boot) 
 | Building System | Maven (gradle is just too easy)                          |
 | Spring Boot     | Version 2.7.8 (that's what goes with Java 11 these days) |
 | Spring Web      | Just add it from the dependencies :)                     |
-| Packaging       | Jar (if you like WAR you're on your own 😉 )             |
+| Packaging       | Jar (if you like WAR you're on your own)                 |
 
-Now after unzipping the downloaded spring project, open it in your favorite editor, and add a [Rest Controller](https://spring.io/guides/tutorials/rest/) so we can test out this thing
+Now after unzipping the downloaded spring project, open it in your favorite editor, and add a [Rest Controller](https://spring.io/guides/tutorials/rest/), so we can test out this thing
 
 ```java
 // controllers/HelloController.java
@@ -114,7 +114,7 @@ EXPOSE 8081
 CMD ["java", "-jar", "./run.jar"]
 ```
 
-That's the configuration needed to run a Spring Boot app inside a docker container, but I owe you some explanation, first as you can see the file is separated into two sections, build and run, well this is useful to save disk storage, I mean imaging building three applications like this, with each container having all the build files, jdk, maven, ....
+That's the configuration needed to run a Spring Boot app inside a docker container, but I owe you some explanation, first as you can see the file is separated into two sections, build and run, well this is useful to save disk storage, I mean imaging building three applications like this, with each container having all the build files, JDK, maven, ....
 
 It would be a nightmare, so, here we are separating the build from the run, let's talk about the build stage for a bit, first, we're pulling an image called [Alpine Linux](https://www.alpinelinux.org/) using the `FROM` keyword the column after the image's name specifies the version of the image to be pulled, here we're using the latest version of Alpine available, Alpine is a light Linux distro that is suited for small containers and virtual machines like this, after pulling the image, we see
 
@@ -122,7 +122,7 @@ It would be a nightmare, so, here we are separating the build from the run, let'
 RUN apk add openjdk11-jdk openjdk11-jre openjdk11-src maven
 ```
 
-`RUN` is used to run a shell command inside the container, `apk` is the package manager used by Alpine, and no it has nothing to do with Android. back to docker, here we're installing JDK, JRE, and maven, so we can compile the application into a single JAR file.
+`RUN` is used to run a shell command inside the container, `apk` is the package manager used by Alpine, and no it has nothing to do with Android. Now back to docker, here we're installing JDK, JRE, and maven, so we can compile the application into a single JAR file.
 
 `WORKDIR` is just like `cd` which changes the current working directory, here we're using `/app` which is just a naming, and it can be whatever you want, but `/app` is just convenient enough.
 
@@ -132,14 +132,14 @@ Now to build the project and produce a single JAR file we have to run `mvn clean
 
 ---
 
-After the building process is done we need to prepare the run container image, and again we're pulling the same Alpine image, but the difference here is we're not installing JDK, or maven, since their job was done in the build stage, now we just copy the JAR file into the run container, add some magic and we're ready to go.
+After the building process is done we need to prepare the run container image, and again we're pulling the same Alpine image, but the difference here is we're not installing JDK, or maven, since their job was done in the build stage, now we just copy the JAR file into the run container, add some magic, and we're ready to go.
 
 The magic:
-`EXPOSE` allows a port from the container to be viewed by the docker network for the host to be able to use it, remember the port we set in `application.yml` was 8081 so we expose that same port.
+`EXPOSE` allows a port from the container to be viewed by the docker network for the host to be able to use it, remember the port we set in `application.yml` was 8081, so we expose that same port.
 
 `CMD` is what docker will run in the container after starting it, but as you can notice it's an array of strings, which is the original command string split by a space.
 
-for example the running command is `java -jar ./run.jar`, in which it becomes `["java", "-jar", "./run.jar"]`
+For example the running command is `java -jar ./run.jar`, in which it becomes `["java", "-jar", "./run.jar"]`
 
 ---
 
@@ -222,7 +222,7 @@ docker run -v ./auth/realms_backups/:/tmp/backups/\
 
 This might be scary at first sight, but it's not if we break it down into parts.
 
-First, there is the `-v` flag specifies volume mounting, just like the port forwarding, but this one is for volumes, i.e it mounts a path from the host to the container.
+First, there is the `-v` flag specifies volume mounting, just like the port forwarding, but this one is for volumes, i.e. it mounts a path from the host to the container.
 `-v /path/in/host/:/path/in/container`, and here the host directory is `./auth/realms_backups/` since there we'll be keeping the realm backup(s).
 
 Then we got the `-e` flag, which specifies an environment variable, in this case, we're specifying the admin's username and password, which are "admin", "admin" respectively.
@@ -307,7 +307,7 @@ public class KeycloakAdapterConfig extends KeycloakWebSecurityConfigurerAdapter 
 }
 ```
 
-Well, this is a docker tutorial, so all you need to understand from this file is the `antMatchers` these specify the path, http method, and who can use it, here we have a `GET` method on the route `/super-hello` that only can be used by a user with the `superuser` role.
+Well, this is a docker tutorial, so all you need to understand from this file is the `antMatchers` these specify the path, HTTP method, and who can use it, here we have a `GET` method on the route `/super-hello` that only can be used by a user with the `superuser` role.
 
 AND NOW for the REST API, we'll need to add the endpoint `/super-hello`, modify the `HelloController`, and add:
 
@@ -359,14 +359,14 @@ then you should get a response like this
 }
 ```
 
-as you can see we have the access token to the client `dori-client` from the `dori` realm, using the user `nemo`, now when we use the token with the `/super-hello` it'll work.
+As you can see we have the access token to the client `dori-client` from the `dori` realm, using the user `nemo`, now when we use the token with the `/super-hello` it'll work.
 
 ```bash
 curl http://localhost:8081/super-hello/Eloi\
     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
-This is so cool, right? but we're not done yet, we need to containerize the thing right?
+This is so cool, right? But we're not done yet, we need to containerize the thing right?
 
 Now we'll introduce [docker-compose](https://docs.docker.com/compose/compose-file/) that will allow us to run more than one container at the same time (not really, but it appears to do that) with a related setup, in this case, we need a network between the Spring Boot, and the Keycloak server, finally things are getting along :)
 
@@ -573,13 +573,13 @@ First, we need to configure Spring Boot with JPA, now we need JPA and MariaDB de
 ...
 ```
 
-update your dependency tree using
+Update your dependency tree using
 
 ```bash
 mvn dependency:resolve
 ```
 
-and update your `application.yml` to use MariaDB with JPA.
+And update your `application.yml` to use MariaDB with JPA.
 
 ```yml
 server:
@@ -602,7 +602,7 @@ keycloak:
   bearer-only: true
 ```
 
-now for the model, we'll be using a book model with string title attribute.
+Now for the model, we'll be using a book model with string title attribute.
 
 ```java
 // models/Book.java
@@ -634,7 +634,7 @@ public class Book {
 }
 ```
 
-the repo
+The repo
 
 ```java
 // repos/BookRepo.java
@@ -730,9 +730,9 @@ volumes:
   db-data:
 ```
 
-here's a new attribute in the house `volumes` which defines volumes that can be used by the containers, and MariaDB needs a configuration, and data volumes, to keep the database's data persistently.
+Here's a new attribute in the house `volumes` which defines volumes that can be used by the containers, and MariaDB needs a configuration, and data volumes, to keep the database's data persistently.
 
-now re-build and run the containers
+Now re-build and run the containers
 
 ```bash
 docker compose build
@@ -744,7 +744,7 @@ and we can test the setup now
 ```bash
 curl -X POST http://localhost:8080/book\
 	-H "Content-Type: application/json"\
-	--data '{"title": "The Alchimest"}'
+	--data '{"title": "The Alchemist"}'
 ```
 
 and we can retrieve that, just to make sure
@@ -849,7 +849,7 @@ add some stuff to `src/routes/+page.svelte` to make it interactive with the back
 
 Now for the docker part, first install `@sveltejs/adapter-node` to make it a standalone server, to save the effort of making a server, and dealing with the routes, but keep in mind that the node adapter uses port 3000.
 
-then update `svelte.config.js`
+Then update `svelte.config.js`
 
 ```js
 // import adapter from "@sveltejs/adapter-auto";
@@ -942,6 +942,6 @@ volumes:
   db-data:
 ```
 
-As usual, build and run and you should see some results.
+As usual, build and run, and you should see some results.
 
 And now we're done.

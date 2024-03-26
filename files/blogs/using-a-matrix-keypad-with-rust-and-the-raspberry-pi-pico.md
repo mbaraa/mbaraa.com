@@ -216,7 +216,7 @@ fn main() -> ! {
     .unwrap();
 
     let mut row1 = pins.gpio2.into_push_pull_output().into_dyn_pin(); // dyn pins allow us to
-                                                                      // specifiy its type for the
+                                                                      // specify its type for the
                                                                       // get_pressed_key function
     let mut row2 = pins.gpio3.into_push_pull_output().into_dyn_pin();
     let mut row3 = pins.gpio4.into_push_pull_output().into_dyn_pin();
@@ -310,7 +310,7 @@ impl ColOrder {
 
 ### Assigning actions to a key's press
 
-Instead of just printing the pressed key's location, add an action for it to do, I would've demonstrated with LEDs, but I don't have enough to to that, and well that'll be it.
+Instead of just printing the pressed key's location, add an action for it to do, I would've demonstrated with LEDs, but I don't have enough to that, and well that'll be it.
 
 ### Quote of the day
 
