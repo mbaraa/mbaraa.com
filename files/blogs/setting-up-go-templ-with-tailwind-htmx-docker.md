@@ -475,7 +475,7 @@ The project is really simple, it's just there to demonstrate some of the core co
 
 And it'll look something like this at the end
 
-![Spending Log Screenshot](https://mbaraa.com/img/spending_log_screenshot.png)
+![Spending Log Screenshot](/img/spending_log_screenshot.png)
 
 We'll start from the bottom up to the top, i.e. starting from the database ending with templ views.
 

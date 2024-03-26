@@ -78,7 +78,7 @@ sudo systemctl enable --now vsftpd
 #### FSTAB
 
 1. List your connected drives' UUIDs using `sudo blkid`, you should expect output like this
-   ![sudo blkid output](https://mbaraa.com:/img/5287_undefined)
+   ![sudo blkid output](/img/blkid.png)
    These values will differ on your device, as UUID is unique on each generation (at least for the next 100 years)
 2. As seen each partition has a `PARTUUID` value which will use to mount the drives (using UUID is essential so that we don't mix the drives)
 3. Create the mount point directories

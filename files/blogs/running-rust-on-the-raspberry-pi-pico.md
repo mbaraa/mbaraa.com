@@ -47,7 +47,7 @@ Now where Rust kicks in, first create a project using rp-hal's template (it has 
 cargo generate --git https://github.com/rp-rs/rp2040-project-template
 ```
 
-![Cargo Generate Enter Name](https://mbaraa.com/img/7932_cargo_generate_enter_name.jpg)
+![Cargo Generate Enter Name](/img/cargo_generate_enter_name.jpg)
 
 You need to specify the project's name here, in my case I'll name it `pico-test`
 
@@ -61,7 +61,7 @@ this will build the project and flash it into the pico, you'll see the LED blink
 
 Ok now let's dive in a bit into the configurations and code
 
-![Project Structure](https://mbaraa.com/img/6883_project_structure.jpg)
+![Project Structure](/img/project_structure.jpg)
 
 Starting from the bottom (ignoring the markdown files), we have the `memory.x`, which describes the physical locations of the bootloader, storage, and RAM, DON'T CHANGE ANYTHING, I wanna try changing the the storage's location (since it's actually bigger, but not now) and it looks like this
 
@@ -264,7 +264,7 @@ fn main() -> ! {
 
 Footage of the wiring:
 
-![3 LEDs Blinking Wiring](https://mbaraa.com/img/8637_3_leds_blinking_wiring.jpg)
+![3 LEDs Blinking Wiring](/img/3_leds_blinking_wiring.jpg)
 
 As you can see I used a single resistor on the common ground of the LEDs' I had to be smart since I don't have much resistors 🤓
 
@@ -312,13 +312,13 @@ fn main() -> ! {
 And as you can see there's no need for the clock, and the watchdog, since the events we're running are depending on each other, and there's no other funny business going on, so there's no need for them.
 
 Footage of the thing:
-![Push Button Off](https://mbaraa.com/img/2890_push_button_off.jpg)
-![Push Button Off](https://mbaraa.com/img/1111_push_button_on.jpg)
+![Push Button Off](/img/push_button_off.jpg)
+![Push Button Off](/img/push_button_on.jpg)
 
 I don't have a push button either, so I used the wires.
 
 ### Debugging
 
-![Debugging Meme](https://mbaraa.com/img/4035_debugging_meme.jpg)
+![Debugging Meme](/img/debugging_meme.jpg)
 
 Well, I wrote [this](https://mbaraa.com/blog/debugging-rust-on-the-raspberry-pi-pico) blog about debugging the Pico while using Rust.

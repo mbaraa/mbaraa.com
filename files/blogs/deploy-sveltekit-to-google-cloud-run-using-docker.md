@@ -1,4 +1,4 @@
-Did you ever wondered what would it take to deploy your [SvelteKit](https://kit.svelte.dev) app for free\*?
+Did you ever wonder what would it take to deploy your [SvelteKit](https://kit.svelte.dev) app for free\*?
 
 Well you just need to have some docker knowledge, for now just install [docker](https://docs.docker.com/engine/install) and [gcloud cli](https://cloud.google.com/sdk/docs/install) on whatever platform you're running.
 
@@ -102,17 +102,17 @@ docker image prune
 ```
 
 \
-Finally deploy your app using the image you just pushed, and that's done by using [Google Cloud Run](https://cloud.google.com/run/?hl=en)
+Finally, deploy your app using the image you just pushed, and that's done by using [Google Cloud Run](https://cloud.google.com/run/?hl=en)
 
 1. Create a Service.
 2. Select the container you just pushed to the registry.
-   ![Select Container From Registry](https://mbaraa.com/img/5009_select_container_from_registry.png) \
+   ![Select Container From Registry](/img/select_container_from_registry.png) \
     I pushed this **meow** container as an example, which is a fresh SvelteKit project.
-3. Set scaling from 1-5 to insure that it won't be running that much, that way it'll be free for the longest time possible
-   ![Autoscaling Settings](https://mbaraa.com/img/3057_autoscaling_settings.png)
+3. Set scaling from 1-5 to ensure that it won't be running that much, that way it'll be free for the longest time possible
+   ![Autoscaling Settings](/img/autoscaling_settings.png)
 4. Set authority, I'll be setting it to any unauthorized request so that the website can be opened from anywhere.
-5. Finally update the container's port
-   ![Container Port](https://mbaraa.com/img/6779_container_port.png)\
+5. Finally, update the container's port
+   ![Container Port](/img/container_port.png)\
    This will set the environmental variable `PORT` to the given value, where the built SvelteKit server will use it as its serving port.
 6. Click on `Create Service` and wait for a bit, and you shall have a deployed application, with a domain form GCP assigned to it.
 

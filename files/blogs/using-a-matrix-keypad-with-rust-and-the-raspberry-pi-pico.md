@@ -35,7 +35,7 @@ So there are 3 types of initial pin states (yes 3)
 
 3. Floating state
    It's a bit uncertain like Schrodinger's cat or grandma's Schrodinger's plates
-   ![Shrodinger's Plates](https://mbaraa.com/img/7545_shrodingers_plates.jpg)
+   ![Shrodinger's Plates](/img/shrodingers_plates.jpg)
    <<image pulled from duckduckgo, I really tried to find the source>>
 
 \
@@ -63,7 +63,7 @@ loop {
 
 The matrix keypad has a clever wiring which utilizes a matrix with its wiring, hence the name, here's a details image of the thing.
 
-![Matrix Keypad 4x4](https://mbaraa.com/img/2502_matrix_keypad.jpg)
+![Matrix Keypad 4x4](/img/matrix_keypad.jpg)
 
 \
 Now what we're gonna do is wire the rows to output pins, and the columns to pull-down input pins, then send high voltage (3.3v) from each row, and whatever pin receives the voltage will tell us what button was exactly pressed.
@@ -142,7 +142,7 @@ loop {
 
 #### Wiring
 
-![keypad wiring](https://mbaraa.com:/img/4581_keypad_wiring.jpg)
+![keypad wiring](/img/keypad_wiring.jpg)
 
 \
 As shown in the image, I'm using GPIOs [2-5] as rows (inputs), and GPIOs [6-9] as columns (outputs), and the code below will clarify the wiring even more.

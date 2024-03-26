@@ -1,14 +1,14 @@
 ### Some History
 
-TTY , teletypewriter or teleprinter was an interface to communicate with a computer, where it was literally a typewriter with some signal sent in/out to it.
+TTY, teletypewriter or teleprinter was an interface to communicate with a computer, where it was literally a typewriter with some signal sent in/out to it.
 
-![Siemens t37h](https://mbaraa.com/img/9161_early-tty.jpg "Siemens t37h teletypewriter")
+![Siemens t37h](/img/early-tty.jpg "Siemens t37h teletypewriter")
 Image source [Wikipedia](https://en.wikipedia.org/wiki/Teleprinter)
 
-Oh and for anyone who have been to my blog before, I have written this whole blog post to flex the new image embedding 🤘
+Oh, and for anyone who have been to my blog before, I have written this whole blog post to flex the new image embedding 🤘
 
 \
-So this typewriter looking device was actually a computer terminal, where the key strokes are sent using the keyboard, and the output will be printed on a piece of paper, this was originally made in the late 1830s for sending telegraphs, and it was slapped on a computer nearly 1930s (dates might be incorrect, don't judge me), in which the characters were displayed using an early version of the ASCII encoding called [Baudot](https://en.wikipedia.org/wiki/Baudot_code) which was 5 bits in length, so it didn't have much characters choices, that it didn't even have lower-case Latin letters.
+So this typewriter looking device was actually a computer terminal, where the key-strokes are sent using the keyboard, and the output will be printed on a piece of paper, this was originally made in the late 1830s for sending telegraphs, and it was slapped on a computer nearly 1930s (dates might be incorrect, don't judge me), in which the characters were displayed using an early version of the ASCII encoding called [Baudot](https://en.wikipedia.org/wiki/Baudot_code) which was 5 bits in length, so it didn't have much characters choices, that it didn't even have lower-case Latin letters.
 
 Some time after that the paper was replaced by a display with the same logging style, i.e. the characters are written on the lowest row and scrolled up on each new line.
 
@@ -47,7 +47,7 @@ And every operating system these days includes a terminal (terminal emulator for
 
 Typically a Unix-like system will greet you with a tty screen where you can use the computer like that or start a window manager or desktop environment.
 
-![Gentoo TTY](https://mbaraa.com/img/5107_gentoo-tty.jpg "Gentoo Linux installing a package using emerge in the tty")
+![Gentoo TTY](/img/gentoo-tty.jpg "Gentoo Linux installing a package using emerge in the tty")
 Some OSes like Gentoo, Arch, Void, and FreeBSD, don't include a GUI installer where you have to do the installation process from the tty, and some users (like myself) don't use a display manager to start the window manager (oh it's so bloated OMG), so we use the console tty more often than the average display manager enjoyer.
 
 And since you opened this blog you probably want to customize that tty screen don't you?
