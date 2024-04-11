@@ -5,6 +5,15 @@
     "order": 1,
     "projects": [
       {
+        "name": "linuxipsum",
+        "description": "A Linux flavored lorem ipsum.",
+        "logo_url": "",
+        "source_code": "https://linuxipsum.org",
+        "website": "https://github.com/mbaraa/linuxipsum",
+        "start_year": "2024",
+        "end_year": "2024"
+      },
+      {
         "name": "Dotsync",
         "description": "A small, free, open-source, blazingly fast dotfiles synchronizer!",
         "logo_url": "",
@@ -15,7 +24,7 @@
       },
       {
         "name": "Eloi",
-        "description": "Gentoo ebuilds finder and installer, finds ebuilds from various overlay repos, and makes the needed cahnges to install an ebuild.",
+        "description": "Gentoo ebuilds finder and installer, finds ebuilds from various overlay repos, and makes the needed changes to install an ebuild.",
         "logo_url": "/images/gentoo.svg",
         "source_code": "https://github.com/mbaraa/eloi",
         "website": "https://wiki.gentoo.org/wiki/Eloi",
@@ -63,6 +72,15 @@
     "description": "Stuff for GDSC - ASU to solve some problems",
     "order": 3,
     "projects": [
+      {
+        "name": "CP Tools",
+        "description": "Competitive Programming Helper Tools.",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/cptools",
+        "website": "https://cptools.gdscasu.com",
+        "start_year": "2024",
+        "end_year": ""
+      },
       {
         "name": "GDSC - ASU Home Page",
         "description": "A home page for the GDSC - ASU chapter, that can be customized easily and reused for any other GDSC chapter.",
@@ -123,6 +141,24 @@
     "order": 5,
     "projects": [
       {
+        "name": "ChâteauWeb",
+        "description": "A home page or something.",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/chateauweb",
+        "website": "https://chateauweb.com",
+        "start_year": "2024",
+        "end_year": ""
+      },
+      {
+        "name": "HTMX Profile Picture Maker",
+        "description": "Generate an htmx styled (lasered) profile picture!",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/htmx-profile-picture-maker",
+        "website": "https://htmx.pics",
+        "start_year": "2024",
+        "end_year": "2024"
+      },
+      {
         "name": "SlideMD",
         "description": "Turn your Markdowns to portable web slides.",
         "logo_url": "",
@@ -132,13 +168,13 @@
         "end_year": ""
       },
       {
-        "name": " GitHub Graph Drawer ",
+        "name": "GitHub Graph Drawer",
         "description": "A tool that helps typing text on your GitHub contributions graph.",
         "logo_url": "",
         "source_code": "https://github.com/mbaraa/github-graph-drawer",
         "website": "https://github-graph-drawer.mbaraa.com",
         "start_year": "2023",
-        "end_year": ""
+        "end_year": "2024"
       },
       {
         "name": "Ladder and Snake",
@@ -151,7 +187,7 @@
       },
       {
         "name": "Temco MEP Home Page",
-        "description": "A home page for Temco MEP that displays the services and featurs the company offers.",
+        "description": "A home page for Temco MEP that displays the services and features the company offers.",
         "logo_url": "/images/temco-mep.png",
         "source_code": "",
         "website": "https://temco-mep.com",
