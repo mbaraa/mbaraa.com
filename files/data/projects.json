@@ -8,8 +8,8 @@
         "name": "linuxipsum",
         "description": "A Linux flavored lorem ipsum.",
         "logo_url": "",
-        "source_code": "https://linuxipsum.org",
-        "website": "https://github.com/mbaraa/linuxipsum",
+        "source_code": "https://github.com/mbaraa/linuxipsum",
+        "website": "https://linuxipsum.org",
         "start_year": "2024",
         "end_year": "2024"
       },
