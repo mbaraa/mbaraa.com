@@ -12,7 +12,7 @@ Either one of the methods requires a high speed network switch or router, for ex
 
 A proper [RAID](https://en.wikipedia.org/wiki/RAID) setup is a plus, that is to improve performance (dedicates drives accesses) and for data redundancy (some RAIDs have copies of the drives) but more on RAID later, as of the time that I'm writing this I only have a 1TB and 500GB HDDs.
 
-#### My setup has the following hardware:
+**My setup has the following hardware:**
 
 1. Raspberry Pi 3 model b+
 2. [TP-Link UH720 USB Hub](https://www.tp-link.com/us/home-networking/usb-hub/uh720/)
@@ -29,15 +29,15 @@ And a moment of appreciation for the hub's power switch, which is super handy (g
 
 Anyways, I hooked the HDDs to the hub, the Raspberry Pi to the power port on the hub, the hub's data cable to one of the Raspberry Pi's USBs and the Raspberry Pi to the router using an RJ-45 (Ethernet) cable.
 
-## tldr
+**tldr**
 
 Just a declaimer, I'm using Linux on both the client and server, but it's simple FTP, you can check the configuration for your OS on your own.
 
-### Configuring the FTP server
+# Configuring the FTP server
 
 This one is easy, since it's just installing the FTP server software and doing a bit of [fstab](https://wiki.archlinux.org/title/Fstab) configuration.
 
-#### VSFTPD
+## VSFTPD
 
 1. Install `vsftpd`, using your distro's package manager, it's included on all Linux distro's that I've tested on. but since I'm using a Raspberry Pi with Raspberry Pi OS, I'll just use `apt`
 
@@ -75,7 +75,7 @@ local_root=/home/baraa/disks
 sudo systemctl enable --now vsftpd
 ```
 
-#### FSTAB
+## FSTAB
 
 1. List your connected drives' UUIDs using `sudo blkid`, you should expect output like this
    ![sudo blkid output](/img/blkid.png)
@@ -102,7 +102,7 @@ PARTUUID=d9e4b195-6654-46fd-aad8-dc1d4f5d7302 /home/baraa/disks/disk2 ext4 nosui
 sudo mount -a
 ```
 
-### Configuring the client
+# Configuring the client
 
 The client's configuration has lesser hassle, I swear!
 

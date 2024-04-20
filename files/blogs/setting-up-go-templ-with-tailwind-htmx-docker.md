@@ -1,4 +1,4 @@
-### My endless quest to find a decent frontend framework
+# My endless quest to find a decent frontend framework
 
 _DECLAIMER: This section is a rant, you won't miss anything if you skip it._
 
@@ -24,7 +24,7 @@ Let's dig in...
 
 ---
 
-### Installing the templ cli
+# Installing the templ cli
 
 The CLI will be used to generate Go code from `.templ` files, and can also be used to run a hot-reloadable server, so yeah, we kinda need it installed.
 
@@ -36,9 +36,9 @@ With Go 1.20 or greater installed, run:
 go install github.com/a-h/templ/cmd/templ@latest
 ```
 
-### Editor setup
+# Editor setup
 
-#### Neovim (lsp-zero)
+## Neovim (lsp-zero)
 
 I use this setup function with my [Neovim](https://neovim.io) setup, in which it takes care of the whole templ stuff, and if I decided not to use it, I simply don't call it.
 
@@ -114,11 +114,11 @@ setup_templ()
 
 Now just restart Neovim, and it should load the templ language server, with formatting and everything.
 
-#### Other Editors
+## Other Editors
 
 You can check templ's official [docs](https://templ.guide/commands-and-tools/ide-support) for other editros :)
 
-### Project structure
+# Project structure
 
 We're building a spending logs application, and we'll be using a structure similar to the one in the official [docs](https://templ.guide/project-structure/project-structure) which is an MVC-like structure, with the packages and files as described below:
 
@@ -134,9 +134,9 @@ We're building a spending logs application, and we'll be using a structure simil
 
 The final project is available [here](https://github.com/mbaraa/pub_code/tree/main/blog/setting-up-go-templ-with-tailwind-htmx-docker).
 
-### Hello templ
+# Hello templ
 
-#### Boilerplate setup
+## Boilerplate setup
 
 Let's start by initializing a Go module
 
@@ -210,7 +210,7 @@ make dev    # to start the development server
 
 And that's make for you, totally unrelated but it can be handy when dealing with scripts. Sadly I'm not really sure if it runs on Windows, so you're gonna have to find out yourself.
 
-#### Your First templ component
+## Your First templ component
 
 Under components create a file named `greet.templ` with the following content
 
@@ -252,7 +252,7 @@ func main() {
 }
 ```
 
-### Tailwind CSS?
+# Tailwind CSS?
 
 Before we do anything related to [Tailwind CSS](https://tailwindcss.com), we need to setup a layout component, so that we look fancy like the other frontend devs.
 
@@ -409,7 +409,7 @@ templ generate --watch --cmd="go run ."
 
 And that's exactly why I'm using a makefile, now let's have some peace with htmx.
 
-### HTMX / the frontend library of peace (same thing)
+# HTMX / the frontend library of peace (same thing)
 
 Download the latest version of `htmx.min.js` from [here](https://htmx.org/docs/#download-a-copy), as of the time I wrote this post, the latest version is `1.9.10` so the version might differ.
 
@@ -430,7 +430,7 @@ And add this link import thingy to the `<head>` section in the layout.
 
 Well, that's it, more htmx stuff can be found in the [waltz section](#toc_12)
 
-### Docker (it doesn't only work on your machine)
+# Docker (it doesn't only work on your machine)
 
 I kinda explained [docker](https://docs.docker.com/engine/install/) in more details in a previous [post](https://mbaraa.com/blog/learn-docker-by-dockerizing-a-springboot-sveltekit-mariadb-and-keycloak-app) of mine, so go check it out if you have no idea what docker is.
 
@@ -465,7 +465,7 @@ var static embed.FS
 
 This copies the pointed at directory into the Go binary, so no need to copy them to the container, and this is the best way to serve **SMALL** static website assets in Go, they explained it briefly in [here](https://pkg.go.dev/embed).
 
-### Let's Waltz this out
+# Let's Waltz this out
 
 At this point your project is ready, and you can start hacking with it, but you can continue reading to create a full working project with the whole mix to see how things go.
 
@@ -479,9 +479,9 @@ And it'll look something like this at the end
 
 We'll start from the bottom up to the top, i.e. starting from the database ending with templ views.
 
-#### Database
+## Database
 
-##### Types
+### Types
 
 For starters let's define some types, starting with the spent item's model, which will look like this.
 
@@ -519,7 +519,7 @@ type BalanceStore interface {
 }
 ```
 
-##### JSON Database
+### JSON Database
 
 We'll be using a JSON database, but since we have 2 interfaces representing the stores, the underlying database implementation doesn't matter.
 
@@ -813,7 +813,7 @@ func (b *BalanceStoreJson) SetBalance(newBalance int64) error {
 }
 ```
 
-#### Services
+## Services
 
 The services are the section of any application that performs the business logic and stuff, since the handlers and views are only intermediates to represent data to the user, and modify the state of the application using a fancy UI, such as interactive views (html) or reusable APIs (REST). And since this is a tiny CRUD application where the data layer actually the logic layer, so the services will only redirect data from the views and handlers to the database, the reason why it's done this way, so that the views won't have a direct contact with the data layer, and changing the logic or the data layer can happen away from the views.
 
@@ -876,13 +876,13 @@ func (b *BalanceService) GetBalance() int64 {
 }
 ```
 
-#### Handlers & Views
+## Handlers & Views
 
 This is were we part ways, since it's the last part of this post, here we'll create the usable views of the applications, and the needed endpoints to update the spending logs.
 
 Stuff in here will be split faily between templ and htmx, where templ will handle the get operations, since it's the view part of our application, and htmx will handle the add, update and delete operations, since those are not handled by the http method `GET` and require the usage of other methods, in which it doesn't make any sense doing them from the template.
 
-#### Implementing templ components
+## Implementing templ components
 
 Revisiting the index page we implemented earlier, in which it'll be the page that displays the balance and the spending logs.
 
@@ -1035,7 +1035,7 @@ Now you need modify it now to set your balance, and don't worry about the spendi
 }
 ```
 
-#### Implementing add, update and delete endpoints
+## Implementing add, update and delete endpoints
 
 For the handler, to complete the cycle, we'll create a struct hodling the endpoints then handle them using `http.HandleFunc`, and since Go has recently added specifieing the endpoint's method in version [1.22](https://tip.golang.org/doc/go1.22), and this is Go's official docs for the new mux thingy [Routing Enhancements for Go 1.22](https://go.dev/blog/routing-enhancements), this will be an easy task.
 
@@ -1168,7 +1168,7 @@ func main() {
 }
 ```
 
-#### Making peace with htmx
+## Making peace with htmx
 
 Of course htmx will be the last topic, since it's the most elegant thing in here, and it's really fun to write.
 
@@ -1285,7 +1285,7 @@ templ Spendings(spendings []db.Spending) {
 
 And now, we're done, hope you found this useful!
 
-### Quote of the day
+# Quote of the day
 
 "He who conquers others is strong; He who conquers himself is mighty."
 \

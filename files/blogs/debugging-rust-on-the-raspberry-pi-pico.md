@@ -2,7 +2,7 @@ If you have a probe get out, since there's an [official](https://www.raspberrypi
 
 Now for debugging, I know I made some drama about it in my previous [post](https://mbaraa.com/blog/running-rust-on-raspberry-pi-pico#debugging), but I just got the Pico, and I was used to the Arduino's serial thingy built-in to the IDE, so it wasn't that much to think about, I haven't used C or MicroPython with the Pico, so I don't really know what's the debugging deal with them, but with Rust it was a bit of a hassle.
 
-### Preface
+# Preface
 
 So my first solution was the one in the [rp-hal's docs](https://docs.rs/rp2040-hal/latest/rp2040_hal/uart/index.html), it was working and I could catch the serial signal with a UART or the Pico's serial, but it was blocking the other pins (or at least that's what I thought), so I couldn't use the other pins for basic GPIO stuff, and that led me to search the dark web (not really but I did search for a solution for like 4 hours).
 
@@ -10,7 +10,7 @@ There's [this](https://www.reddit.com/r/rust/comments/14atkm3/media_debug_pi_pic
 
 But the problem was from [defmt](https://docs.rs/defmt/latest/defmt) where the code in the example (the template project) used `demt_probe` which was the reason of blocking the pins, I'm not really sure, but that's what I saw, so...
 
-### Getting into action
+# Getting into action
 
 Now before we start we need to make sure that `cargo run` flashes into the Pico directly via a UF2 image, to do that, hop into `.cargo/config.toml`, and edit the following:
 
@@ -128,7 +128,7 @@ Run the code with
 cargo run --release # release is to reduce the binary's size
 ```
 
-### Receiving the serial messages
+# Receiving the serial messages
 
 1. Install [minicom](https://linux.die.net/man/1/minicom) via your package manager.
    - example on Gentoo

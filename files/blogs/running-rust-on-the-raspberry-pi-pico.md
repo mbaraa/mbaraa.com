@@ -16,7 +16,7 @@ Differences between the two boards:
 | Thermal Sensor                                                        | Yes                                                  | No (what a shame) |
 | Is it cool?                                                           | Yes                                                  | Yes, but in blue  |
 
-### Installing Rust
+# Installing Rust
 
 So since Rust is mainly used for low level programming, and the low level thing, and there are plenty of HALs (Hardware Abstraction Layer) written in Rust and are ready to use with the Pico, e.g [rp-hal](https://github.com/rp-rs/rp-hal), for more details [rp-hal docs](https://docs.rs/rp2040-hal/latest/rp2040_hal) which what we'll use with the pico.
 
@@ -38,7 +38,7 @@ cargo install elf2uf2-rs --locked
 cargo install cargo-generate
 ```
 
-### Creating a project
+# Creating a project
 
 Now where Rust kicks in, first create a project using rp-hal's template (it has all the wanted configurations to be done)
 
@@ -76,7 +76,7 @@ MEMORY {
 EXTERN(BOOT2_FIRMWARE)
 
 SECTIONS {
-    /* ### Boot loader */
+    /* # Boot loader */
     .boot2 ORIGIN(BOOT2) :
     {
         KEEP(*(.boot2));
@@ -193,7 +193,7 @@ If you don't have a probe do this:
 runner = "elf2uf2-rs -d"
 ```
 
-### More Stuff (3 LED blinkers)
+# More Stuff (3 LED blinkers)
 
 ```rust
 #![no_std]
@@ -268,7 +268,7 @@ Footage of the wiring:
 
 As you can see I used a single resistor on the common ground of the LEDs' I had to be smart since I don't have resistors 🤓
 
-### More Stuff (push down button)
+# More Stuff (push down button)
 
 ```rust
 #![no_std]
@@ -317,7 +317,7 @@ Footage of the thing:
 
 I don't have a push button either, so I used the wires.
 
-### Debugging
+# Debugging
 
 ![Debugging Meme](/img/debugging_meme.jpg)
 

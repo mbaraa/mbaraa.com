@@ -1,6 +1,6 @@
 Assuming you're here because you want LSP(Language Server Protocol) for your neovim setup, but your Linux distro doesn't provide the latest version of lua-language-server, so in this article we'll install lua-language-server from source.
 
-#### Dependencies installation
+# Dependencies installation
 
 Make sure that you have, Ninja Build, GCC (some distros need G++ as well), and Clang.
 
@@ -10,16 +10,16 @@ To install the dependencies on Gentoo run:
 sudo emerge -qav sys-devel/gcc sys-devel/clang dev-util/ninja
 ```
 
-#### Compiling LSP's source code
+# Compiling LSP's source code
 
-##### Cloning the repo:
+## Cloning the repo:
 
 - Clone LSP's repo into a directory where you keep bins and stuff
 - I use `~/.local/bin`, so I'll just clone it there
 - `git clone https://github.com/LuaLS/lua-language-server ~/.local/bin/lua-language-server`
 - `cd ~/.local/bin/lua-language-server`
 
-##### Compile the stuff:
+## Compile the stuff:
 
 - Download the submodules of the cloned repo
 - `git submodule update --recursive`
@@ -31,7 +31,7 @@ sudo emerge -qav sys-devel/gcc sys-devel/clang dev-util/ninja
 - `cd ../../`
 - `./3rd/luamake/luamake rebuild`
 
-##### Add the executables' path to your path
+## Add the executables' path to your path
 
 ```bash
 SHELL_NAME=`basename $SHELL`
@@ -46,7 +46,7 @@ source $SHELL_RC
 $SHELL_NAME
 ```
 
-##### Require the new installed LSP server
+# Require the new installed LSP server
 
 Add this line to `~/.config/nvim/init.lua` or to where you put lsp's config in Neovim
 

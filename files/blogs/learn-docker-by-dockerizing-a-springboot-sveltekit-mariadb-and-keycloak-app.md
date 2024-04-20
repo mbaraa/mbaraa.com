@@ -1,6 +1,6 @@
 This project is a mix of lots of technologies, that will be somehow hard to dockerize together, but it will be fun along the way since it includes [volumes](https://docs.docker.com/storage/volumes/), [networks](https://docs.docker.com/network/), and the glue that holds it all together [docker compose](https://docs.docker.com/compose/), so let's get started.
 
-## Project Structure:
+# Project Structure:
 
 As we said earlier this project consists of Spring Boot (backend server), SvelteKit (web client), MariaDB (database), and Keycloak (Authentication provider), and the project outline should look like this:
 
@@ -14,7 +14,7 @@ As we said earlier this project consists of Spring Boot (backend server), Svelte
 ---- ...more spring boot files\
 -- docker-compose.yml\
 
-## Installing Docker
+# Installing Docker
 
 I'll demonstrate how to install docker on Gentoo Linux, other Linux distros and platforms can be found [here](https://docs.docker.com/engine/install/).
 
@@ -39,7 +39,7 @@ Installing docker has 5 steps most of which are the same on any other Linux dist
 
 ---
 
-## Dockerizing a simple Spring Boot App:
+# Dockerizing a simple Spring Boot App:
 
 We'll start by creating a [Spring Boot](https://spring.io/projects/spring-boot) application using the [initializer](https://start.spring.io/) with the following configs:
 
@@ -181,7 +181,7 @@ The docker run command attaches the specified image to a docker container, and t
 
 ---
 
-## Configuring and Dockerizing Keycloak
+# Configuring and Dockerizing Keycloak
 
 Configuring Keycloak requires two stages, the actual realm configuration, and the docker configuration for Keycloak, let's get started
 
@@ -550,7 +550,7 @@ And gladly I can finally say that this part is over.
 
 ---
 
-## Dockerizing MariaDB
+# Dockerizing MariaDB
 
 This part is cuter than Keycloak, since we'll just create a model, a simple controller, and modify some configuration files, that should be easy.
 
@@ -759,7 +759,7 @@ Now we can see that everything is in its place. See told you this was easy :)
 
 ---
 
-## Final Round, Wrapping everything up with a little frontend SvelteKit
+# Final Round, Wrapping everything up with a little frontend SvelteKit
 
 First, we'll create our SvelteKit skeleton project using npm:
 

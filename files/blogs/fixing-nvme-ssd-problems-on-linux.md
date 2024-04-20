@@ -1,4 +1,4 @@
-### The Problem
+# The Problem
 
 Most NVMe SSDs have a power saving mode called APST (Autonomous Power State Transition) in which, if sat properly the drive will suspend at some periods of time to save power, while the computer is on, on suspend and hibernate it turns off to save more power, but that's not the case.
 
@@ -7,7 +7,7 @@ The thing is, that some drives are programmed to ignore this power switching, an
 \
 More details in [this](https://unix.stackexchange.com/questions/612096/clarifying-nvme-apst-problems-for-linux) stack exchange post.
 
-### The Solution
+# The Solution
 
 Nothing fancy, it's just a workaround to disable APST, in which the drive stays on as long as the OS says so (i.e. not suspended or hibernated)
 
@@ -55,7 +55,7 @@ If it prints a value other than 0, double check `/etc/default/grub`, or regenera
 \
 NOTE: this was the configuration for [GRUB](https://wiki.gentoo.org/wiki/GRUB), i.e if you have [LILO](https://wiki.gentoo.org/wiki/LILO) or [Systemd-boot](https://wiki.archlinux.org/title/Systemd-boot), or any bootloader other than GRUB you might to look up how to add a kernel parameter for that particular bootloader, other than that it's pretty straight forward.
 
-### Quote of the day
+# Quote of the day
 
 "Success lasts until someone screws them, failures are forever”
 \

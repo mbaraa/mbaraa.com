@@ -1,6 +1,6 @@
 I'm using [this](https://www.amazon.com/Matrix-Membrane-Switch-Keyboard-Arduino/dp/B07THCLGCZ/ref=sr_1_1?crid=GK1F31O71PSP&keywords=matrix+keypad&qid=1699285904&sprefix=matrix+keypad%2Caps%2C234&sr=8-1) matrix keypad, but any will do.
 
-### Input pin types
+# Input pin types
 
 Input pins have different types, it's called resistive pull, where you set a GPIO to an opposite state of what you want to read from the pin, and the initial state helps us to expect what to read from the pin, e.g in pull-up the pin reads high by default, and until provided with a low (below 1.8v) it'll stay in high state.
 
@@ -59,7 +59,7 @@ loop {
 }
 ```
 
-### Matrix keypad wiring
+# Matrix keypad wiring
 
 The matrix keypad has a clever wiring which utilizes a matrix with its wiring, hence the name, here's a details image of the thing.
 
@@ -84,9 +84,9 @@ loop {
 }
 ```
 
-### Reading key presses from a keypad
+# Reading key presses from a keypad
 
-#### Quick setup
+## Quick setup
 
 1. Generate a project from [rp-rs](github.com/rp-rs/)'s template using [cargo generate](https://github.com/cargo-generate/cargo-generate)
    ```bash
@@ -140,14 +140,14 @@ loop {
    // ...
    ```
 
-#### Wiring
+## Wiring
 
 ![keypad wiring](/img/keypad_wiring.jpg)
 
 \
 As shown in the image, I'm using GPIOs [2-5] as rows (inputs), and GPIOs [6-9] as columns (outputs), and the code below will clarify the wiring even more.
 
-#### The code amalgamation
+## The code amalgamation
 
 ```rust
 #![no_std]
@@ -308,11 +308,11 @@ impl ColOrder {
 }
 ```
 
-### Assigning actions to a key's press
+# Assigning actions to a key's press
 
 Instead of just printing the pressed key's location, add an action for it to do, I would've demonstrated with LEDs, but I don't have enough to that, and well that'll be it.
 
-### Quote of the day
+# Quote of the day
 
 It's more like quote of the time I wrote the blog post, I'll keep doing this as long as I remember.
 \

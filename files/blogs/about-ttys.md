@@ -1,4 +1,4 @@
-### Some History
+# Some History
 
 TTY, teletypewriter or teleprinter was an interface to communicate with a computer, where it was literally a typewriter with some signal sent in/out to it.
 
@@ -19,15 +19,15 @@ These display terminals are called [Dumb Terminals](https://www.pcmag.com/news/t
 
 ---
 
-### TTY now days
+# TTY now days
 
-#### Phones
+## Phones
 
 It's somehow related here, that's why it's here, anyways, TTY on phones is used by people with speech and hearing impairments, where a person can type a message and it is turned into speech, or the other way around, this helps these people a lot by making communication easier for them.
 
 ---
 
-#### Computers
+## Computers
 
 Each shell you open on your Unix-like machine corresponds to a TTY, that interacts with the system, to see all of your running TTYs run
 
@@ -56,7 +56,7 @@ Well hop on the next section.
 
 ---
 
-### Customizing TTY's Greeting Message on Linux
+# Customizing TTY's Greeting Message on Linux
 
 When you turn on your computer a message like this will appear (I don't use Debian on my computer, but my current TTY message is a bit inappropriate)
 
