@@ -45,5 +45,20 @@
       "Helped as a Judge in the 3rd version of the contest.",
       "Problem Setter, and Technical Support in the 3rd, 4th, 5th, and 6th versions."
     ]
+  },
+  {
+    "title": "Jordan Open Source Association (community)",
+    "description": "JOSA is the not for profit organization that works for a better Jordan through openness in technology.",
+    "location": "Amman, Jordan",
+    "start_date": 1618886283,
+    "end_date": 0,
+    "roles": [
+      "Helped organising the 30th Linux birthdate, by introducing new people to Linux.",
+      "Held a Linux and free & open source software introduction workshop at Applied Science University",
+      "Git trainer and facilitator at Hacktoberfest Amman 2023.",
+      "Assisted with Nuha's workshop at the Hashemite University about Nuha: the Arabic AI-enabled tool to help sorting out online gender-based hate speech (nuha.josa.ngo)",
+      "Co-Trained students at the University of Jordan about Git and open source software.",
+      "Helped introducing people to open source software and JOSA at DroidCon Amman 2024."
+    ]
   }
 ]

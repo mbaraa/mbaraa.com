@@ -1,7 +1,15 @@
 [
   {
+    "title": "Jodel",
+    "description": "The Hyperlocal Community, Jodel connects you instantly with the people around you with #GoodVibesOnly.",
+    "location": "Berlin, Germany",
+    "start_date": 1712037653,
+    "end_date": 0,
+    "roles": ["Backend Engineer"]
+  },
+  {
     "title": "Jordan Open Source Association",
-    "description": " JOSA is the not for profit organization that works for a better Jordan through openness in technology.",
+    "description": "JOSA is the not for profit organization that works for a better Jordan through openness in technology.",
     "location": "Amman, Jordan",
     "start_date": 1682820804,
     "end_date": 0,
