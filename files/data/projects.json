@@ -172,7 +172,7 @@
         "description": "A tool that helps typing text on your GitHub contributions graph.",
         "logo_url": "",
         "source_code": "https://github.com/mbaraa/github-graph-drawer",
-        "website": "https://github-graph-drawer.mbaraa.com",
+        "website": "https://github-graph-drawer.mbaraa.xyz",
         "start_year": "2023",
         "end_year": "2024"
       },
@@ -224,7 +224,7 @@
         "description": "Form to image generator, I made this project because of the lack of digitized forms in my university.",
         "logo_url": "/images/sheev.png",
         "source_code": "https://github.com/mbaraa/sheev",
-        "website": "https://sheev.mbaraa.com",
+        "website": "",
         "start_year": "2021",
         "end_year": "2021"
       }
