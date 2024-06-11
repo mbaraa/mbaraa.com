@@ -5,9 +5,11 @@
     {{ range .Xps }}
     <li class="relative flex gap-[20px]">
       <div class="font-[Space]">
-        <h3 class="relative top-[-6px] text-[15px] text-center leading-[15px]">
+        <h3
+          class="relative top-[-6px] text-[15px] text-center leading-[15px] w-[75px]"
+        >
           {{ .StartDate }}<br />-<br />
-          {{ if .EndDate }} {{ .EndDate }}{{ else }}....{{ end}}
+          {{ if .EndDate }} {{ .EndDate }}{{ else }}••••{{ end}}
         </h3>
       </div>
       <div class="border-l-[5px] border-l-[white] min-h-auto py-[20px]"></div>
@@ -37,7 +39,7 @@
     border-radius: 50%;
     background-color: #20db8f;
     top: 7px;
-    left: 48.5px;
+    left: 87.5px;
   }
 </style>
 {{ end }}

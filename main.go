@@ -2,7 +2,6 @@ package main
 
 import (
 	"embed"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -151,11 +150,11 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 	for _, work := range work {
 		startYear := ""
 		if work.StartDate != 0 {
-			startYear = fmt.Sprint(time.Unix(work.StartDate, 0).Year())
+			startYear = time.Unix(work.StartDate, 0).Format("Jan/2006")
 		}
 		endYear := ""
 		if work.EndDate != 0 {
-			endYear = fmt.Sprint(time.Unix(work.EndDate, 0).Year())
+			endYear = time.Unix(work.EndDate, 0).Format("Jan/2006")
 		}
 		workXpView.Xps = append(workXpView.Xps, tmplrndr.Experience{
 			Title:       work.Title,
@@ -174,11 +173,11 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 	for _, vol := range vol {
 		startYear := ""
 		if vol.StartDate != 0 {
-			startYear = fmt.Sprint(time.Unix(vol.StartDate, 0).Year())
+			startYear = time.Unix(vol.StartDate, 0).Format("Jan/2006")
 		}
 		endYear := ""
 		if vol.EndDate != 0 {
-			endYear = fmt.Sprint(time.Unix(vol.EndDate, 0).Year())
+			endYear = time.Unix(vol.EndDate, 0).Format("Jan/2006")
 		}
 		volXpView.Xps = append(volXpView.Xps, tmplrndr.Experience{
 			Title:       vol.Title,
