@@ -104,7 +104,7 @@
         "description": "My first web project, my Google Developer Student Clubs chapter's lead thought it would be a great idea if we had a logo generator that every other GDSC chapters can use it, so that every GDSC logos look the same in a neat way.",
         "logo_url": "/images/logogen.png",
         "source_code": "https://github.com/mbaraa/dsc_logo_generator",
-        "website": "https://logogen.gdscasu.com",
+        "website": "https://gdsclogo.mbaraa.xyz",
         "start_year": "2020",
         "end_year": "2021"
       }
