@@ -46,7 +46,8 @@ This function has some parts from the official [docs](https://templ.guide/comman
 
 ```lua
 -- ~/.config/nvim/after/plugin/templ.lua
--- IDK where is the neovim configuration on Mac or Windows, so you need to do some research :)
+-- IDK where is the neovim configuration on Mac or Windows,
+-- so you need to do some research :)
 
 local function setup_templ()
     local lspconfig = require 'lspconfig'
@@ -144,7 +145,7 @@ Let's start by initializing a Go module
 go mod init spendings
 ```
 
-Then add templ to the project
+Then adding templ to the project
 
 ```bash
 go get github.com/a-h/templ
@@ -256,7 +257,7 @@ func main() {
 
 Before we do anything related to [Tailwind CSS](https://tailwindcss.com), we need to setup a layout component, so that we look fancy like the other frontend devs.
 
-So the reason why we need the layout component, to hold the links imports such as HTMX and Tailwind's stylesheet.
+So the reason why we need the layout component, is to hold the links imports such as HTMX and Tailwind's stylesheet and so they're not duplicated in each page.
 
 Under `components` Create the files `layout.templ` and `index.templ`
 
