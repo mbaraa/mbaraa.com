@@ -4,6 +4,7 @@ import (
 	"embed"
 	"io"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
@@ -11,6 +12,14 @@ import (
 	"github.com/mbaraa/mbaraa.com/data"
 	"github.com/mbaraa/mbaraa.com/log"
 	"github.com/mbaraa/mbaraa.com/tmplrndr"
+
+	"github.com/tdewolff/minify/v2"
+	"github.com/tdewolff/minify/v2/css"
+	"github.com/tdewolff/minify/v2/html"
+	"github.com/tdewolff/minify/v2/js"
+	"github.com/tdewolff/minify/v2/json"
+	"github.com/tdewolff/minify/v2/svg"
+	"github.com/tdewolff/minify/v2/xml"
 )
 
 var (
@@ -29,18 +38,27 @@ func main() {
 		}
 	}()
 
-	http.HandleFunc("/", handleHomePage)
-	http.HandleFunc("/projects", handleProjectsPage)
-	http.HandleFunc("/xp", handleXpPage)
-	http.HandleFunc("/about", handleAboutPage)
-	http.HandleFunc("/blog", handleBlogsPage)
-	http.HandleFunc("/blog/", handleBlogPostPage)
-	// the blogs' images thing
-	http.Handle("/img/", http.StripPrefix("/img", http.FileServer(http.Dir(config.Config().FilesDir+"/images/"))))
+	m := minify.New()
+	m.AddFunc("text/css", css.Minify)
+	m.AddFunc("text/html", html.Minify)
+	m.AddFunc("image/svg+xml", svg.Minify)
+	m.AddFuncRegexp(regexp.MustCompile("^(application|text)/(x-)?(java|ecma)script$"), js.Minify)
+	m.AddFuncRegexp(regexp.MustCompile("[/+]json$"), json.Minify)
+	m.AddFuncRegexp(regexp.MustCompile("[/+]xml$"), xml.Minify)
+	appHandler := http.NewServeMux()
 
-	http.Handle("/resources/", http.FileServer(http.FS(res)))
+	appHandler.HandleFunc("/", handleHomePage)
+	appHandler.HandleFunc("/projects", handleProjectsPage)
+	appHandler.HandleFunc("/xp", handleXpPage)
+	appHandler.HandleFunc("/about", handleAboutPage)
+	appHandler.HandleFunc("/blog", handleBlogsPage)
+	appHandler.HandleFunc("/blog/", handleBlogPostPage)
+	// the blogs' images thing
+	appHandler.Handle("/img/", http.StripPrefix("/img", http.FileServer(http.Dir(config.Config().FilesDir+"/images/"))))
+
+	appHandler.Handle("/resources/", http.FileServer(http.FS(res)))
 	log.Infof("website's server started at port %s\n", config.Config().WebsitePort)
-	log.Fatalln(string(log.ErrorLevel), http.ListenAndServe(":"+config.Config().WebsitePort, nil))
+	log.Fatalln(string(log.ErrorLevel), http.ListenAndServe(":"+config.Config().WebsitePort, m.Middleware(appHandler)))
 
 	timer.Stop()
 }
