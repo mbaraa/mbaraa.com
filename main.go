@@ -93,6 +93,7 @@ func handleHomePage(w http.ResponseWriter, r *http.Request) {
 		Name:  "Baraa Al-Masri",
 		Brief: info.BriefAbout,
 	})
+	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
 		log.Errorln(err)
@@ -140,6 +141,7 @@ func handleProjectsPage(w http.ResponseWriter, r *http.Request) {
 	page := tmplrndr.NewProjects().Render(tmplrndr.ProjectsProps{
 		Groups: viewGroups,
 	})
+	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
 		log.Errorln(err)
@@ -211,6 +213,7 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 		ProfessionalWork: workXpView,
 		Volunteering:     volXpView,
 	})
+	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
 		log.Errorln(err)
@@ -230,6 +233,7 @@ func handleAboutPage(w http.ResponseWriter, r *http.Request) {
 		PrerenderedMarkdown: info.FullAbout,
 		Technologies:        info.Technologies,
 	})
+	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
 		handelErrorPage(w, r)
@@ -267,6 +271,7 @@ func handleBlogsPage(w http.ResponseWriter, r *http.Request) {
 		BlogIntro: info.BlogIntro,
 		Blogs:     blogViews,
 	})
+	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
 		handelErrorPage(w, r)
@@ -298,6 +303,7 @@ func handleBlogPostPage(w http.ResponseWriter, r *http.Request) {
 		},
 		Content: blog.Content,
 	})
+	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
 		handelErrorPage(w, r)
