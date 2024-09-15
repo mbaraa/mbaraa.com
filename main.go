@@ -45,8 +45,8 @@ func main() {
 	m.AddFuncRegexp(regexp.MustCompile("^(application|text)/(x-)?(java|ecma)script$"), js.Minify)
 	m.AddFuncRegexp(regexp.MustCompile("[/+]json$"), json.Minify)
 	m.AddFuncRegexp(regexp.MustCompile("[/+]xml$"), xml.Minify)
-	appHandler := http.NewServeMux()
 
+	appHandler := http.NewServeMux()
 	appHandler.HandleFunc("/", handleHomePage)
 	appHandler.HandleFunc("/projects", handleProjectsPage)
 	appHandler.HandleFunc("/xp", handleXpPage)
@@ -63,8 +63,8 @@ func main() {
 	timer.Stop()
 }
 
-func handelErrorPage(w http.ResponseWriter, r *http.Request) {
-	log.Errorf("Error happended when calling: %s %s?%s\n", r.Method, r.URL.Path, r.URL.Query().Encode())
+func handleErrorPage(w http.ResponseWriter, r *http.Request) {
+	log.Errorf("Error happened when calling: %s %s?%s\n", r.Method, r.URL.Path, r.URL.Query().Encode())
 	page := tmplrndr.NewError().Render(tmplrndr.ErrorProps{})
 	_, _ = io.Copy(w, page)
 }
@@ -86,7 +86,7 @@ func handleHomePage(w http.ResponseWriter, r *http.Request) {
 	info, err := data.GetInfo()
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 	}
 	page := tmplrndr.NewIndex().Render(tmplrndr.IndexProps{
@@ -97,7 +97,7 @@ func handleHomePage(w http.ResponseWriter, r *http.Request) {
 	_, err = io.Copy(w, page)
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 	}
 }
 
@@ -105,7 +105,7 @@ func handleProjectsPage(w http.ResponseWriter, r *http.Request) {
 	pgs, err := data.GetProjectGroups()
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 	}
 	var viewGroups []tmplrndr.ProjectGroup
@@ -145,7 +145,7 @@ func handleProjectsPage(w http.ResponseWriter, r *http.Request) {
 	_, err = io.Copy(w, page)
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 	}
 }
 
@@ -153,13 +153,13 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 	work, err := data.GetWorkXP()
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 	}
 	vol, err := data.GetVolunteeringXP()
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 	}
 
@@ -217,7 +217,7 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 	_, err = io.Copy(w, page)
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 	}
 }
 
@@ -225,7 +225,7 @@ func handleAboutPage(w http.ResponseWriter, r *http.Request) {
 	info, err := data.GetInfo()
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 	}
 
@@ -236,7 +236,7 @@ func handleAboutPage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		log.Errorln(err)
 	}
 }
@@ -245,14 +245,14 @@ func handleBlogsPage(w http.ResponseWriter, r *http.Request) {
 	blogs, err := data.GetBlogs()
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 
 	}
 	info, err := data.GetInfo()
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 	}
 
@@ -274,7 +274,7 @@ func handleBlogsPage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		log.Errorln(err)
 	}
 }
@@ -284,7 +284,7 @@ func handleBlogPostPage(w http.ResponseWriter, r *http.Request) {
 	blog, err := data.GetBlogByPublicId(blogId)
 	if err != nil {
 		log.Errorln(err)
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 		return
 	}
 
@@ -306,6 +306,6 @@ func handleBlogPostPage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	_, err = io.Copy(w, page)
 	if err != nil {
-		handelErrorPage(w, r)
+		handleErrorPage(w, r)
 	}
 }
