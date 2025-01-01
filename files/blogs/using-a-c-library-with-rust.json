@@ -2,6 +2,6 @@
   "title": "Using a C Library with Rust",
   "description": "A quick starter to use a C library within a Rust cargo project with CMake.",
   "public_id": "using-a-c-library-with-rust",
-  "visited_times": 155,
+  "visited_times": 229,
   "written_at": 1726602667
 }
