@@ -13,5 +13,4 @@ tailwindcss/node_modules/
 *.dylib
 *.test
 *.out
-resources/css/tailwind.css
 .git
