@@ -4,7 +4,7 @@ BINARY_NAME=mbaraacom
 
 build:
 	cd tailwindcss && \
-	npx tailwindcss -i ../resources/css/style.css -o ../resources/css/tailwind.css -m && \
+	npx @tailwindcss/cli -i ../resources/css/style.css -o ../resources/css/tailwind.css -m && \
 	cd .. && \
 	go mod tidy && \
 	go build -ldflags="-w -s" -o ${BINARY_NAME}
@@ -13,7 +13,7 @@ build:
 # install inotify-tools
 dev:
 	cd tailwindcss && \
-	npx tailwindcss -i ../resources/css/style.css -o ../resources/css/tailwind.css --watch & \
+	npx @tailwindcss/cli -i ../resources/css/style.css -o ../resources/css/tailwind.css --watch & \
 	while true; do \
 	  go build -o ${BINARY_NAME}; \
 	  ./${BINARY_NAME} & \

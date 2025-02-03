@@ -1,0 +1,17 @@
+/dist/
+/target/
+./mbaraacom
+.env
+.env.*
+!.env.example
+_*/
+tailwindcss/node_modules/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+resources/css/tailwind.css
+.git
