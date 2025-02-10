@@ -5,7 +5,7 @@
 .env.*
 !.env.example
 _*/
-tailwindcss/node_modules/
+node_modules/
 *.exe
 *.exe~
 *.dll
