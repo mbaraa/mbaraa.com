@@ -1,9 +1,30 @@
 @import "tailwindcss";
 
+* {
+  font-family: "Vistol", sans-serif, ui-sans-serif, system-ui;
+}
+
+html,
+body {
+  background-color: #000;
+}
+
+body {
+  min-height: 100dvh;
+}
+
 html,
 body,
 div,
 ul,
 table {
   scroll-behavior: smooth;
+}
+
+a:hover {
+  color: #20db8f;
+}
+
+.text-green {
+  color: #20db8f;
 }

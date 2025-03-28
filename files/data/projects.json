@@ -43,10 +43,28 @@
     ]
   },
   {
-    "title": "Music",
-    "description": "Music related projects, not really music but eh they make sound don't they?",
+    "title": "Multimedia",
+    "description": "Sound, Video and more...",
     "order": 2,
     "projects": [
+      {
+        "name": "DankLyrics",
+        "description": "A Genius-powered lyrics finder.",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/danklyrics",
+        "website": "https://danklyrics.com/",
+        "start_year": "2025",
+        "end_year": "2025"
+      },
+      {
+        "name": "Gonius",
+        "description": "A Go client library for accessing the Genius API.",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/gonius",
+        "website": "https://godoc.org/github.com/mbaraa/gonius",
+        "start_year": "2025",
+        "end_year": ""
+      },
       {
         "name": "DankMuzikk",
         "description": "Create, Share and Play Music Playlists.",
@@ -57,13 +75,13 @@
         "end_year": ""
       },
       {
-        "name": "Jelly LP",
-        "description": "The coolest cloud music player!, make your own cloud music library.",
+        "name": "YT Scrape",
+        "description": "YouTube Scraper Searcher.",
         "logo_url": "",
-        "source_code": "",
-        "website": "",
-        "start_year": "2023",
-        "end_year": ""
+        "source_code": "https://github.com/mbaraa/ytscrape",
+        "website": "https://pkg.go.dev/github.com/mbaraa/ytscrape",
+        "start_year": "2024",
+        "end_year": "2024"
       },
       {
         "name": "Grievous",
@@ -77,9 +95,25 @@
     ]
   },
   {
+    "title": "CI / CD",
+    "description": "Deployment and infrasructure related stuff.",
+    "order": 3,
+    "projects": [
+      {
+        "name": "Rex",
+        "description": "Redeploy docker compose containers after git push",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/rex",
+        "website": "https://github.com/marketplace/actions/rex-7567-e27",
+        "start_year": "2023",
+        "end_year": ""
+      }
+    ]
+  },
+  {
     "title": "Google Developer Student Clubs",
     "description": "Stuff for GDSC - ASU to solve some problems",
-    "order": 3,
+    "order": 4,
     "projects": [
       {
         "name": "CP Tools",
@@ -113,7 +147,7 @@
   {
     "title": "Terminal Games",
     "description": "Some games to play in the terminal",
-    "order": 4,
+    "order": 5,
     "projects": [
       {
         "name": "Snek",
@@ -145,45 +179,61 @@
     ]
   },
   {
-    "title": "Misc Web",
-    "description": "Some other web stuff",
-    "order": 5,
+    "title": "Misc CLI",
+    "description": "Some other CLI stuff",
+    "order": 6,
     "projects": [
       {
-        "name": "ChâteauWeb",
-        "description": "A home page or something.",
+        "name": "LSD Cat",
+        "description": " Rainbows and unicorns in your terminal, a rewrite for lolcat in Rust!",
         "logo_url": "",
-        "source_code": "https://github.com/mbaraa/chateauweb",
-        "website": "https://chateauweb.com",
+        "source_code": "https://github.com/mbaraa/lsdcat",
+        "website": "https://crates.io/crates/lsdcat",
         "start_year": "2024",
-        "end_year": ""
+        "end_year": "2024"
+      }
+    ]
+  },
+  {
+    "title": "Misc Web",
+    "description": "Some other web stuff",
+    "order": 7,
+    "projects": [
+      {
+        "name": "Todooo",
+        "description": "The first htmx app with C (Ulfius)",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/todooo",
+        "website": "https://todooo.mbaraa.xyz/",
+        "start_year": "2024",
+        "end_year": "2024"
+      },
+      {
+        "name": "DankScreen",
+        "description": "Display capture card's output into your browser.",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/dankscreen",
+        "website": "https://dankscreen.mbaraa.xyz/",
+        "start_year": "2024",
+        "end_year": "2024"
       },
       {
         "name": "HTMX Profile Picture Maker",
         "description": "Generate an htmx styled (lasered) profile picture!",
         "logo_url": "",
         "source_code": "https://github.com/mbaraa/htmx-profile-picture-maker",
-        "website": "https://htmx.pics",
+        "website": "",
         "start_year": "2024",
         "end_year": "2024"
-      },
-      {
-        "name": "SlideMD",
-        "description": "Turn your Markdowns to portable web slides.",
-        "logo_url": "",
-        "source_code": "",
-        "website": "https://slidemd.com",
-        "start_year": "2024",
-        "end_year": ""
       },
       {
         "name": "GitHub Graph Drawer",
         "description": "A tool that helps typing text on your GitHub contributions graph.",
         "logo_url": "",
         "source_code": "https://github.com/mbaraa/github-graph-drawer",
-        "website": "https://github-graph-drawer.mbaraa.xyz",
+        "website": "",
         "start_year": "2023",
-        "end_year": "2024"
+        "end_year": "2023"
       },
       {
         "name": "Ladder and Snake",
@@ -195,44 +245,10 @@
         "end_year": "2022"
       },
       {
-        "name": "Temco MEP Home Page",
-        "description": "A home page for Temco MEP that displays the services and features the company offers.",
-        "logo_url": "/images/temco-mep.png",
-        "source_code": "",
-        "website": "https://temco-mep.com",
-        "start_year": "2022",
-        "end_year": "2022"
-      },
-      {
         "name": "Shorts Ninja",
-        "description": "My second web project, I was exploring web and I decided to go with the classic hello web project i.e. a URL Shortner.",
+        "description": "I was exploring web and I decided to go with the classic hello web project i.e. a URL Shortner.",
         "logo_url": "/images/shortsninja.png",
         "source_code": "https://github.com/mbaraa/shortsninja",
-        "website": "",
-        "start_year": "2021",
-        "end_year": "2021"
-      }
-    ]
-  },
-  {
-    "title": "College Related",
-    "description": "Stuff for my faculty",
-    "order": 6,
-    "projects": [
-      {
-        "name": "Ross 2",
-        "description": "My biggest project yet, Ross is a university contest manager, it manages and automates all contest registration and closure routines.",
-        "logo_url": "/images/ross2.png",
-        "source_code": "https://github.com/mbaraa/ross2",
-        "website": "",
-        "start_year": "2021",
-        "end_year": "2022"
-      },
-      {
-        "name": "Sheev",
-        "description": "Form to image generator, I made this project because of the lack of digitized forms in my university.",
-        "logo_url": "/images/sheev.png",
-        "source_code": "https://github.com/mbaraa/sheev",
         "website": "",
         "start_year": "2021",
         "end_year": "2021"
