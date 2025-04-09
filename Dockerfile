@@ -1,19 +1,14 @@
-FROM golang:bookworm AS build
+FROM golang:alpine AS build
 
 WORKDIR /app
 COPY . .
 
 
-RUN apt update && \
-    apt install -y curl make &&\
-    make download-tailwindcss-binary && \
-    mv tailwindcss-cli /usr/bin/tailwindcss-cli
-
-RUN ls -la /usr/bin | grep tailwindcss-cli
+RUN apk add --no-cache npm nodejs make
 
 RUN make
 
-FROM debian:bookworm-slim AS run
+FROM alpine:latest AS run
 
 WORKDIR /app
 

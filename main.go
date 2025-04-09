@@ -164,7 +164,7 @@ func handleXpPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	workXpView := tmplrndr.ExperienceGroup{
-		Name: "ProfessionalWork",
+		Name: "Professional Work",
 		Xps:  nil,
 	}
 	for _, work := range work {
