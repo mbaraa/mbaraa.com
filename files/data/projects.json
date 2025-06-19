@@ -49,10 +49,19 @@
     "projects": [
       {
         "name": "DankLyrics",
-        "description": "A Genius-powered lyrics finder.",
+        "description": "A lyrics finder API, Website and Go package!",
         "logo_url": "",
         "source_code": "https://github.com/mbaraa/danklyrics",
         "website": "https://danklyrics.com/",
+        "start_year": "2025",
+        "end_year": ""
+      },
+      {
+        "name": "LRCLib-Go",
+        "description": "A Go client library for accessing the LyricFind API.",
+        "logo_url": "",
+        "source_code": "https://github.com/mbaraa/lrclibgo",
+        "website": "https://godoc.org/github.com/mbaraa/lrclibgo",
         "start_year": "2025",
         "end_year": "2025"
       },
@@ -63,7 +72,7 @@
         "source_code": "https://github.com/mbaraa/gonius",
         "website": "https://godoc.org/github.com/mbaraa/gonius",
         "start_year": "2025",
-        "end_year": ""
+        "end_year": "2025"
       },
       {
         "name": "DankMuzikk",
