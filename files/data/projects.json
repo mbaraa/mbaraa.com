@@ -209,11 +209,11 @@
     "order": 7,
     "projects": [
       {
-        "name": "Todooo",
+        "name": "DankTodo",
         "description": "The first htmx app with C (Ulfius)",
         "logo_url": "",
-        "source_code": "https://github.com/mbaraa/todooo",
-        "website": "https://todooo.mbaraa.xyz/",
+        "source_code": "https://github.com/mbaraa/danktodo",
+        "website": "https://todo.dankstuff.net/",
         "start_year": "2024",
         "end_year": "2024"
       },
@@ -240,18 +240,9 @@
         "description": "A tool that helps typing text on your GitHub contributions graph.",
         "logo_url": "",
         "source_code": "https://github.com/mbaraa/github-graph-drawer",
-        "website": "",
+        "website": "https://github-graph-drawer.mbaraa.xyz",
         "start_year": "2023",
         "end_year": "2023"
-      },
-      {
-        "name": "Ladder and Snake",
-        "description": "A weird looking Ladder and Snake game.",
-        "logo_url": "/images/ladder-and-snake.png",
-        "source_code": "https://github.com/mbaraa/ladder_and_snake",
-        "website": "",
-        "start_year": "2022",
-        "end_year": "2022"
       },
       {
         "name": "Shorts Ninja",
