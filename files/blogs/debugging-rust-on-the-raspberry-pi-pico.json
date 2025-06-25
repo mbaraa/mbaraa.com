@@ -2,6 +2,6 @@
   "title": "Debugging Rust on the Raspberry Pi Pico",
   "description": "Logging the Pico's output to a UART serial monitor without using a probe",
   "public_id": "debugging-rust-on-the-raspberry-pi-pico",
-  "visited_times": 2180,
+  "visited_times": 2642,
   "written_at": 1699184816
 }
