@@ -1,4 +1,4 @@
-_**UPDATE: Firefox has added this in version 136, check [this post](https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs), so ignore what's below lol.**_
+_**UPDATE: Firefox has added this in version 136, check [this post](https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs), and ignore what's below lol.**_
 
 First install [Tree Style Tab](https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/) plugin.
 
